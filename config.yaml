@@ -1,0 +1,8 @@
+# https://openapi-generator.tech/docs/usage/#generate
+apiPackage: Api
+gitRepoId: economic-rest
+gitUserId: spysystem
+invokerPackage: EconomicRest
+modelPackage: Model
+composerVendorName: spysystem
+composerProjectName: economic-rest
