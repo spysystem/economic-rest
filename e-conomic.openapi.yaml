@@ -1,0 +1,2302 @@
+openapi: "3.0.0"
+info:
+  title: "e-conomic JSON-schema REST API"
+  version: "1.0.0"
+
+servers:
+  - url: https://restapi.e-conomic.com
+    description: URL for regular access to e-conomic JSON REST API
+
+tags:
+  - name: AccountingYears
+  - name: Accounts
+  - name: Company
+  - name: Customer
+  - name: Journals
+  - name: JournalVouchers
+  - name: JournalEntries
+  - name: PaymentTerm
+  - name: Supplier
+  - name: VatAccounts
+
+security:
+  - X-AppSecretToken: []
+  - X-AgreementGrantToken: []
+
+paths:
+  #region Company
+  /self:
+    get:
+      operationId: getCompanySettings
+      tags:
+        - Company
+      responses:
+        200:
+          description: Get Company Settings Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetCompanySettingsResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /departments:
+    get:
+      operationId: searchDepartments
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Departments Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchDepartmentsResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /departments/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getDepartment
+      tags:
+        - Accounts
+      responses:
+        200:
+          description: Get Department Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /departmental-distributions:
+    get:
+      operationId: searchDepartmentalDistributions
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Departmental Distributions Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchDepartmentalDistributionsResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  #endregion
+
+  #region Accounts
+  /accounts:
+    get:
+      operationId: searchAccounts
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Accounts Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchAccountsResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /accounts/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getAccount
+      tags:
+        - Accounts
+      responses:
+        200:
+          description: Get Account Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Account'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+  #endregion
+
+  #region AccountingYears
+  /accounting-years:
+    get:
+      operationId: searchAccountingYears
+      tags:
+        - AccountingYears
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Accounting Years Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchAccountingYearsResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /accounting-years/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getAccountingYear
+      tags:
+        - AccountingYears
+      responses:
+        200:
+          description: Get Accounting Year Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountingYear'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /accounting-years/{id}/periods:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: searchAccountingYearPeriods
+      tags:
+        - AccountingYears
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Accounting Year Periods Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchAccountingYearPeriodsResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /accounting-years/{yearId}/periods/{id}:
+    parameters:
+      - name: yearId
+        in: path
+        schema:
+          type: integer
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getAccountingYearPeriod
+      tags:
+        - AccountingYears
+      responses:
+        200:
+          description: Get Accounting Year Period Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Period'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  #endregion
+
+  #region Customer
+  /customers:
+    get:
+      operationId: searchCustomers
+      tags:
+        - Customer
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Customers Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchCustomerResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+    post:
+      operationId: createCustomer
+      tags:
+        - Customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        200:
+          description: Create Customer Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /customers/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getCustomer
+      tags:
+        - Customer
+      responses:
+        200:
+          description: Get Customer Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+    put:
+      operationId: updateCustomer
+      tags:
+        - Customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        200:
+          description: Update Customer Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Customer'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /customer-groups:
+    get:
+      operationId: searchCustomerGroups
+      tags:
+        - Customer
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Customer Groups Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchCustomerGroupsResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+    post:
+      operationId: createCustomerGroup
+      tags:
+        - Customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerGroup'
+      responses:
+        200:
+          description: Create Customer Group Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerGroup'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+
+  /customer-groups/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getCustomerGroup
+      tags:
+        - Customer
+      responses:
+        200:
+          description: Get Customer Group Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerGroup'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+    put:
+      operationId: updateCustomerGroup
+      tags:
+        - Customer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerGroup'
+      responses:
+        200:
+          description: Update Customer Group Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerGroup'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  #endregion
+
+  #region Journals
+  /journals:
+    get:
+      operationId: searchJournals
+      tags:
+        - Journals
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Journals Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchJournalsResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /journals/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getJournal
+      tags:
+        - Journals
+      responses:
+        200:
+          description: Get Journal Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Journal'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  #endregion
+
+  #region JournalVouchers
+
+  /journals/{journalId}/vouchers:
+    parameters:
+      - $ref: '#/components/parameters/journalId'
+    get:
+      operationId: searchVouchers
+      tags:
+        - JournalVouchers
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Vouchers Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchVouchersResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+    post:
+      operationId: createVoucher
+      tags:
+        - JournalVouchers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Voucher'
+      responses:
+        200:
+          description: Create Voucher Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Voucher'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  #endregion
+
+  #region PaymentTerm
+  /payment-terms:
+    get:
+      operationId: searchPaymentTerms
+      tags:
+        - PaymentTerm
+      parameters:
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Payment Terms Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchPaymentTermsResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+    post:
+      operationId: createPaymentTerm
+      tags:
+        - PaymentTerm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentTerm'
+      responses:
+        200:
+          description: Create Customer Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentTerm'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /payment-terms/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getPaymentTerm
+      tags:
+        - PaymentTerm
+      responses:
+        200:
+          description: Get Payment Term Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentTerm'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+    put:
+      operationId: updatePaymentTerm
+      tags:
+        - PaymentTerm
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentTerm'
+      responses:
+        200:
+          description: Update PaymentTerm Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentTerm'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+  #endregion
+
+
+components:
+  securitySchemes:
+    X-AppSecretToken:
+      type: apiKey
+      name: "X-AppSecretToken"
+      in: header
+
+    X-AgreementGrantToken:
+      type: apiKey
+      name: "X-AgreementGrantToken"
+      in: header
+
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: integer
+
+    journalId:
+      name: journalId
+      in: path
+      required: true
+      schema:
+        type: integer
+
+    filterParameter:
+      name: filter
+      in: query
+      schema:
+        type: string
+
+    sortParameter:
+      name: sort
+      in: query
+      schema:
+        type: string
+
+    pageSizeParameter:
+      name: pageSize
+      in: query
+      schema:
+        type: integer
+        maximum: 1000
+        minimum: 1
+
+    skipPagesParameter:
+      name: skipPages
+      in: query
+      schema:
+        type: integer
+
+  responses:
+    ErrorResponse:
+      description: Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+
+  schemas:
+    #region Common
+    DefaultResponse:
+      type: object
+      properties:
+        'self':
+          type: string
+        'pagination':
+          $ref: '#/components/schemas/Pagination'
+
+    Pagination:
+      type: object
+      required:
+        - maxPageSizeAllowed
+        - skipPages
+        - pageSize
+        - results
+        - resultsWithoutFilter
+      properties:
+        'maxPageSizeAllowed':
+          type: integer
+        'skipPages':
+          type: integer
+        'pageSize':
+          type: integer
+        'results':
+          type: integer
+        'resultsWithoutFilter':
+          type: integer
+        'firstPage':
+          type: string
+        'nextPage':
+          type: string
+        'lastPage':
+          type: string
+        'developerHint':
+          type: string
+
+    Error:
+      type: object
+      properties:
+        'message':
+          type: string
+        'errorCode':
+          type: string
+        'developerHint':
+          type: string
+        'logId':
+          type: string
+        'httpStatusCode':
+          type: integer
+        'logTime':
+          type: string
+
+    #endregion
+
+    #region Company
+    GetCompanySettingsResponse:
+      type: object
+      properties:
+        'agreementNumber':
+          type: integer
+        'agreementType':
+          $ref: '#/components/schemas/AgreementType'
+        'userName':
+          type: string
+        'signupDate':
+          type: string
+        'user':
+          $ref: '#/components/schemas/User'
+        'company':
+          $ref: '#/components/schemas/Company'
+        'bankInformation':
+          $ref: '#/components/schemas/BankInformation'
+        'application':
+          $ref: '#/components/schemas/Application'
+        'settings':
+          $ref: '#/components/schemas/CompanySettings'
+        'companyAffiliation':
+          type: string
+        'canSendElectronicInvoice':
+          type: boolean
+        'modules':
+          type: array
+          items:
+            $ref: '#/components/schemas/Module'
+        'self':
+          type: string
+
+    AgreementType:
+      type: object
+      properties:
+        'agreementTypeNumber':
+          type: integer
+        'name':
+          type: string
+        'subscriptionPlanLevel':
+          type: string
+
+    User:
+      type: object
+      properties:
+        'loginId':
+          type: string
+        'email':
+          type: string
+        'name':
+          type: string
+        'language':
+          $ref: '#/components/schemas/Language'
+        'agreementNumber':
+          type: integer
+
+    Language:
+      type: object
+      properties:
+        'languageNumber':
+          type: integer
+        'name':
+          type: string
+        'culture':
+          type: string
+        'self':
+          type: string
+
+    Company:
+      type: object
+      properties:
+        'addressLine1':
+          type: string
+        'addressLine2':
+          type: string
+        'attention':
+          type: string
+        'city':
+          type: string
+        'companyIdentificationNumber':
+          type: string
+        'country':
+          type: string
+        'email':
+          type: string
+        'name':
+          type: string
+        'phoneNumber':
+          type: string
+        'vatNumber':
+          type: string
+        'webSite':
+          type: string
+        'zip':
+          type: string
+
+    BankInformation:
+      type: object
+      properties:
+        'bankAccountNumber':
+          type: string
+        'bankGiroNumber':
+          type: string
+        'bankName':
+          type: string
+        'bankSortCode':
+          type: string
+        'pbcCustomerGroupNumber':
+          type: string
+        'pbsFISupplierNumber':
+          type: string
+
+    Application:
+      type: object
+      properties:
+        'appNumber':
+          type: integer
+        'name':
+          type: string
+        'appPublicToken':
+          type: string
+        'created':
+          type: string
+        'requiredRoles':
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
+        'self':
+          type: string
+
+    Role:
+      type: object
+      properties:
+        'roleNumber':
+          type: integer
+        'name':
+          type: string
+
+    CompanySettings:
+      type: object
+      properties:
+        'baseCurrency':
+          type: string
+        'internationalLedger':
+          type: boolean
+
+    Module:
+      type: object
+      properties:
+        'moduleNumber':
+          type: integer
+        'name':
+          type: string
+        'self':
+          type: string
+
+    SearchDepartmentsResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/Department'
+
+    Department:
+      type: object
+      description: A schema for a single department.
+      properties:
+        departmentNumber:
+          type: integer
+          description: A unique identifier of the department.
+        name:
+          type: string
+          maxLength: 250
+          description: The name of the department.
+        barred:
+          type: boolean
+          description: Indicates if the department is barred from usage. Default is null
+            which also means false.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the department item.
+
+    SearchDepartmentalDistributionsResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/DepartmentalDistribution'
+
+    DepartmentalDistribution:
+      type: object
+      description: Information about a departmental distribution.
+      properties:
+        departmentalDistributionNumber:
+          type: integer
+          description: A unique numeric identifier for the departmental distribution.
+        name:
+          type: string
+          maxLength: 250
+          description: A descriptive name of the specific departmental distribution.
+        distributionType:
+          type: string
+          enum:
+            - distribution
+            - department
+          description: This property indicates whether the distribution is system generated
+            from a department or if it is one created by a user. In order to make it easy
+            to distribute everything to one department, the system generates a distribution
+            for each department.
+        distributions:
+          type: array
+          description: A list of departments and their share of the distribution in percentage.
+            The percentages always add up to 100%.
+          items:
+            $ref: '#/components/schemas/Distribution'
+        self:
+          type: string
+          format: uri
+          description: The unique self reference of the departmental distribution.
+
+    Distribution:
+      type: object
+      description: Description of the distributions that make up a departmental distribution.
+      properties:
+        percentage:
+          type: number
+          maximum: 100
+          minimum: 0
+          exclusiveMinimum: true
+          description: The percentage distributed to this department.
+        department:
+          $ref: '#/components/schemas/DepartmentHandler'
+
+    #endregion
+
+    #region Journals
+    SearchJournalsResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/Journal'
+
+    Journal:
+      type: object
+      description: A schema for fetching specific journal.
+      properties:
+        name:
+          type: string
+          description: The name of the journal
+        settings:
+          $ref: '#/components/schemas/JournalSettings'
+        vouchers:
+          type: string
+          format: uri
+          description: A link to the collection of vouchers on the given journal, categorized
+            according to the type.
+        entries:
+          type: string
+          format: uri
+          description: A link to the collection of entries on the given journal, regardless
+            of their type.
+        templates:
+          $ref: '#/components/schemas/JournalTemplates'
+        journalNumber:
+          type: integer
+          description: Unique journal number
+        self:
+          type: string
+          format: uri
+          description: The unique self reference of the journals collection.
+
+    JournalTemplates:
+      type: object
+      description: Templates allowing easy entry creation.
+      properties:
+        financeVoucher:
+          type: string
+          format: uri
+          description: The unique reference to the finance voucher template
+        manualCustomerInvoice:
+          type: string
+          format: uri
+          description: The unique reference to the manual customer invoice template
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the templates resource.
+
+    JournalSettings:
+      type: object
+      description: Settings of the journal.
+      properties:
+        voucherNumbers:
+          $ref: '#/components/schemas/JournalVoucherNumbers'
+        entryTypeRestrictedTo:
+          enum:
+            - financeVoucher
+            - supplierInvoice
+            - supplierPayment
+            - customerPayment
+            - manualCustomerInvoice
+          description: Allowed entry type on given journal.
+        contraAccounts:
+          $ref: '#/components/schemas/JournalContraAccounts'
+
+    JournalVoucherNumbers:
+      type: object
+      properties:
+        minimumVoucherNumber:
+          type: integer
+          minimum: 0
+          description: Minimum voucher number defined in settings.
+        maximumVoucherNumber:
+          type: integer
+          minimum: 999999999
+          description: Maximum voucher number defined in settings.
+
+    JournalContraAccounts:
+      type: object
+      description: Default contra account for given entry type
+      properties:
+        customerPayments:
+          $ref: '#/components/schemas/AccountHandler'
+        supplierPayments:
+          $ref: '#/components/schemas/AccountHandler'
+        financeVouchers:
+          $ref: '#/components/schemas/AccountHandler'
+    #endregion
+
+    #region JournalVouchers
+    SearchVouchersResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/Voucher'
+
+    Voucher:
+      description: A schema for getting a specific entry belonging to a voucher.
+      type: object
+      properties:
+        accountingYear:
+          $ref: '#/components/schemas/AccountingYearHandler'
+        journal:
+          $ref: '#/components/schemas/JournalHandler'
+        entries:
+          $ref: '#/components/schemas/VoucherEntries'
+        attachment:
+          type: string
+          format: uri
+          description: A unique reference to the attachment file on the given voucher.
+        voucherNumber:
+          type: number
+          minimum: 1
+          description: Voucher number
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the specific voucher.
+
+    VoucherEntries:
+      type: object
+      description: Entries, separated by type, for the journal.
+      properties:
+        financeVouchers:
+          type: array
+          description: An array containing finance vouchers.
+          items:
+            $ref: '#/components/schemas/FinanceVoucherEntry'
+        customerPayments:
+          type: array
+          description: An array containing customer payments.
+          items:
+            $ref: '#/components/schemas/CustomerPaymentEntry'
+        supplierInvoices:
+          type: array
+          description: An array containing finance vouchers.
+          items:
+            $ref: '#/components/schemas/SupplierInvoiceEntry'
+        supplierPayments:
+          type: array
+          description: An array containing finance vouchers.
+          items:
+            $ref: '#/components/schemas/SupplierPaymentEntry'
+        manualCustomerInvoices:
+          type: array
+          description: An array containing finance vouchers.
+          items:
+            $ref: '#/components/schemas/ManualCustomerInvoiceEntry'
+
+    FinanceVoucherEntry:
+      type: object
+      description: Finance Voucher entry.
+      properties:
+        text:
+          type: string
+          maxLength: 250
+          description: Entry description.
+        journal:
+          $ref: '#/components/schemas/JournalHandler'
+        amount:
+          type: number
+        contraAccount:
+          $ref: '#/components/schemas/AccountHandler'
+        contraVatAccount:
+          $ref: '#/components/schemas/vatCodeHandler'
+        costType:
+          $ref: '#/components/schemas/CostTypeHandler'
+        currency:
+          $ref: '#/components/schemas/CurrencyHandler'
+        date:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: Entry date. Format according to ISO-8601 (YYYY-MM-DD).
+        departmentalDistribution:
+          $ref: '#/components/schemas/DepartmentalDistributionHandler'
+        exchangeRate:
+          type: number
+          description: The exchange rate between the base currency and the invoice
+            currency.
+        entryType:
+          enum:
+            - financeVoucher
+          description: Type of the journal entry. This is automatically set to
+            financeVoucher.
+        voucher:
+          $ref: '#/components/schemas/VoucherHandler'
+        contraVatAmount:
+          type: number
+          description: The amount of VAT on the entry on the contra account.
+        contraVatAmountInBaseCurrency:
+          type: number
+          description: The amount of VAT on the entry on the contra account in
+            base currency.
+        amountBaseCurrency:
+          type: number
+          description: The amount in base currency.
+        remainder:
+          type: number
+          description: Remaining amount to be paid.
+        remainderInDefaultCurrency:
+          type: number
+          description: Remaining amount to be paid in default currency.
+        account:
+          $ref: '#/components/schemas/AccountHandler'
+        vatAccount:
+          $ref: '#/components/schemas/vatCodeHandler'
+        vatAmount:
+          type: number
+          description: The amount of VAT on the entry. Used if the entry has a
+            VAT account.
+        vatAmountBaseCurrency:
+          type: number
+          description: The amount of VAT on the voucher in base currency.
+
+    CustomerPaymentEntry:
+      type: object
+      description: Customer Payment entry.
+      properties:
+        text:
+          type: string
+          maxLength: 250
+          description: Entry description.
+        journal:
+          $ref: '#/components/schemas/JournalHandler'
+        amount:
+          type: number
+          x-maxDecimal: 2
+        contraAccount:
+          $ref: '#/components/schemas/AccountHandler'
+        contraVatAccount:
+          $ref: '#/components/schemas/vatCodeHandler'
+        currency:
+          $ref: '#/components/schemas/CurrencyHandler'
+        date:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: Entry date. Format according to ISO-8601 (YYYY-MM-DD).
+        departmentalDistribution:
+          $ref: '#/components/schemas/DepartmentalDistributionHandler'
+        exchangeRate:
+          type: number
+          description: The exchange rate between the base currency and the invoice
+            currency.
+          x-maxDecimals: 6
+        entryType:
+          enum:
+            - customerPayment
+          description: Type of the journal entry. This is automatically set to
+            customerPayment.
+        voucher:
+          $ref: '#/components/schemas/VoucherHandler'
+        contraVatAmount:
+          type: number
+          description: The amount of VAT on the entry on the contra account.
+          x-maxDecimal: 2
+        contraVatAmountInBaseCurrency:
+          type: number
+          description: The amount of VAT on the entry on the contra account in
+            base currency.
+          x-maxDecimal: 2
+        amountBaseCurrency:
+          type: number
+          description: The amount in base currency.
+          x-maxDecimal: 2
+        remainder:
+          type: number
+          description: Remaining amount to be paid.
+          x-maxDecimal: 2
+          x-readonly: true
+        remainderInDefaultCurrency:
+          type: number
+          description: Remaining amount to be paid in default currency.
+          x-maxDecimal: 2
+          x-readonly: true
+        customer:
+          $ref: '#/components/schemas/CustomerHandler'
+        customerInvoice:
+          type: integer
+          minimum: 1
+          description: Customer invoice number.
+
+    SupplierInvoiceEntry:
+      type: object
+      description: Supplier Invoice entry.
+      properties:
+        text:
+          type: string
+          maxLength: 250
+          description: Entry description.
+        journal:
+          $ref: '#/components/schemas/JournalHandler'
+        amount:
+          type: number
+          x-maxDecimal: 2
+        contraAccount:
+          $ref: '#/components/schemas/AccountHandler'
+        contraVatAccount:
+          $ref: '#/components/schemas/vatCodeHandler'
+        costType:
+          $ref: '#/components/schemas/CostTypeHandler'
+        currency:
+          $ref: '#/components/schemas/CurrencyHandler'
+        date:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: Entry date. Format according to ISO-8601 (YYYY-MM-DD).
+        departmentalDistribution:
+          $ref: '#/components/schemas/DepartmentalDistributionHandler'
+        exchangeRate:
+          type: number
+          description: The exchange rate between the base currency and the invoice
+            currency.
+          x-maxDecimals: 6
+        entryType:
+          enum:
+            - supplierInvoice
+          description: Type of the journal entry. This is automatically set to
+            supplierInvoice.
+        voucher:
+          $ref: '#/components/schemas/VoucherHandler'
+        contraVatAmount:
+          type: number
+          description: The amount of VAT on the entry on the contra account.
+          x-maxDecimal: 2
+        contraVatAmountInBaseCurrency:
+          type: number
+          description: The amount of VAT on the entry on the contra account in
+            base currency.
+          x-maxDecimal: 2
+        amountBaseCurrency:
+          type: number
+          description: The amount in base currency.
+          x-maxDecimal: 2
+        remainder:
+          type: number
+          description: Remaining amount to be paid.
+          x-maxDecimal: 2
+          x-readonly: true
+        remainderInDefaultCurrency:
+          type: number
+          description: Remaining amount to be paid in default currency.
+          x-maxDecimal: 2
+          x-readonly: true
+        supplier:
+          $ref: '#/components/schemas/SupplierHandler'
+        supplierInvoiceNumber:
+          type: string
+          maxLength: 30
+          description: The unique identifier of the supplier invoice gotten from
+            the supplier.
+        dueDate:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: The date the entry is due for payment. Format according
+            to ISO-8601 (YYYY-MM-DD).
+
+    SupplierPaymentEntry:
+      type: object
+      description: Supplier Payment entry.
+      properties:
+        text:
+          type: string
+          maxLength: 250
+          description: Entry description.
+        journal:
+          $ref: '#/components/schemas/JournalHandler'
+        amount:
+          type: number
+          x-maxDecimal: 2
+        contraAccount:
+          $ref: '#/components/schemas/AccountHandler'
+        contraVatAccount:
+          $ref: '#/components/schemas/vatCodeHandler'
+        currency:
+          $ref: '#/components/schemas/CurrencyHandler'
+        date:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: Entry date. Format according to ISO-8601 (YYYY-MM-DD).
+        departmentalDistribution:
+          $ref: '#/components/schemas/DepartmentalDistributionHandler'
+        exchangeRate:
+          type: number
+          description: The exchange rate between the base currency and the invoice
+            currency.
+          x-maxDecimals: 6
+        entryType:
+          enum:
+            - supplierPayment
+          description: Type of the journal entry. This is automatically set to
+            supplierPayment.
+        voucher:
+          $ref: '#/components/schemas/VoucherHandler'
+        contraVatAmount:
+          type: number
+          description: The amount of VAT on the entry on the contra account.
+          x-maxDecimal: 2
+        contraVatAmountInBaseCurrency:
+          type: number
+          description: The amount of VAT on the entry on the contra account in
+            base currency.
+          x-maxDecimal: 2
+        amountBaseCurrency:
+          type: number
+          description: The amount in base currency.
+          x-maxDecimal: 2
+        remainder:
+          type: number
+          description: Remaining amount to be paid.
+          x-maxDecimal: 2
+          x-readonly: true
+        remainderInDefaultCurrency:
+          type: number
+          description: Remaining amount to be paid in default currency.
+          x-maxDecimal: 2
+          x-readonly: true
+        supplier:
+          $ref: '#/components/schemas/SupplierHandler'
+        supplierInvoiceNumber:
+          type: string
+          maxLength: 30
+          description: The unique identifier of the supplier invoice gotten from
+            the supplier.
+
+    ManualCustomerInvoiceEntry:
+      type: object
+      description: Manual Customer Invoice entry.
+      properties:
+        text:
+          type: string
+          maxLength: 250
+          description: Entry description.
+        journal:
+          $ref: '#/components/schemas/JournalHandler'
+        amount:
+          type: number
+          x-maxDecimal: 2
+        contraAccount:
+          $ref: '#/components/schemas/AccountHandler'
+        contraVatAccount:
+          $ref: '#/components/schemas/vatCodeHandler'
+        currency:
+          $ref: '#/components/schemas/CurrencyHandler'
+        date:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: Entry date. Format according to ISO-8601 (YYYY-MM-DD).
+        departmentalDistribution:
+          $ref: '#/components/schemas/DepartmentalDistributionHandler'
+        exchangeRate:
+          type: number
+          description: The exchange rate between the base currency and the invoice
+            currency.
+          x-maxDecimals: 6
+        entryType:
+          enum:
+            - manualCustomerInvoice
+          description: Type of the journal entry. This is automatically set to
+            manualCustomerInvoice.
+        voucher:
+          $ref: '#/components/schemas/VoucherHandler'
+        contraVatAmount:
+          type: number
+          description: The amount of VAT on the entry on the contra account.
+          x-maxDecimal: 2
+        contraVatAmountInBaseCurrency:
+          type: number
+          description: The amount of VAT on the entry on the contra account in
+            base currency.
+          x-maxDecimal: 2
+        amountBaseCurrency:
+          type: number
+          description: The amount in base currency.
+          x-maxDecimal: 2
+        remainder:
+          type: number
+          description: Remaining amount to be paid.
+          x-maxDecimal: 2
+          x-readonly: true
+        remainderInDefaultCurrency:
+          type: number
+          description: Remaining amount to be paid in default currency.
+          x-maxDecimal: 2
+          x-readonly: true
+        customer:
+          $ref: '#/components/schemas/CustomerHandler'
+        customerInvoice:
+          type: integer
+          minimum: 1
+          description: Customer invoice number.
+        dueDate:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: The date the entry is due for payment. Format according
+            to ISO-8601 (YYYY-MM-DD).
+    #endregion
+
+    #region Accounts
+    SearchAccountsResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/Account'
+
+    Account:
+      type: object
+      properties:
+        accountNumber:
+          type: integer
+          description: The account's number.
+        accountType:
+          enum:
+            - profitAndLoss
+            - status
+            - totalFrom
+            - heading
+            - headingStart
+            - sumInterval
+            - sumAlpha
+          default: profitAndLoss
+          description: The type of account in the chart of accounts.
+        balance:
+          type: number
+          description: The current balance of the account.
+        draftBalance:
+          type: number
+          description: The current balance of the account including draft (not yet booked) entries.
+        barred:
+          type: boolean
+          description: Shows if the account is barred from being used.
+        blockDirectEntries:
+          type: boolean
+          description: Determines if the account can be manually updated with entries.
+        contraAccount:
+          $ref: '#/components/schemas/AccountHandler'
+        debitCredit:
+          enum:
+            - debit
+            - credit
+          default: debit
+          description: Describes the default update type of the account.
+        name:
+          type: string
+          maxLength: 125
+          description: The name of the account.
+        vatAccount:
+          $ref: '#/components/schemas/vatCodeHandler'
+        accountsSummed:
+          type: array
+          description: An array of the account intervals used for calculating the total for this account.
+          items:
+            $ref: '#/components/schemas/AccountInterval'
+        totalFromAccount:
+          $ref: '#/components/schemas/AccountHandler'
+        accountingYears:
+          type: string
+          format: uri
+          description: A link to a list of accounting years for which the account is usable.
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the account resource.
+
+    AccountInterval:
+      type: object
+      description: An account interval.
+      properties:
+        fromAccount:
+          $ref: '#/components/schemas/AccountHandler'
+        toAccount:
+          $ref: '#/components/schemas/AccountHandler'
+
+    #endregion
+
+    #region AccountingYears
+    SearchAccountingYearsResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/AccountingYear'
+
+    AccountingYear:
+      type: object
+      properties:
+        fromDate:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: The first date in the accounting year in the format YYYY-MM-DD. Except
+            for the first accounting year on an agreement, it must be the date immediately
+            following the previous accounting year, and thus must be the first day of a
+            month. The first accounting year on an agreement can begin on any day of the
+            month.
+        toDate:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: The last date in the accounting year in the format YYYY-MM-DD. It
+            must be the last date in the last month of the accounting year. An accounting
+            year can at most have a duration of 18 months.
+        closed:
+          type: boolean
+          description: If true this indicates that the accounting year is closed for further
+            transactions.
+        year:
+          type: string
+          pattern: "^(19|20)\\d{2}([a-j])?|^(19|20)\\d{2}(/(19|20)\\d{2})?"
+          description: The calendar year or years spanned by the accounting year in the
+            format YYYY or YYYY/YYYY.
+        periods:
+          type: string
+          format: uri
+          description: A link to the collection of accounting year periods in the accounting
+            year.
+        entries:
+          type: string
+          format: uri
+          description: A link to a collection of all entries booked in the accounting year.
+        totals:
+          type: string
+          format: uri
+          description: A link to the chart of accounts with the years total in base currency.
+        vouchers:
+          type: string
+          format: uri
+          description: A link to a collection of vouchers created in the accounting year.
+            This requires that international ledger is enabled.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the accounting year item.
+
+    SearchAccountingYearPeriodsResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/Period'
+
+    Period:
+      description: A schema for retrieving a period of an accounting year.
+      type: object
+      properties:
+        periodNumber:
+          type: integer
+          minimum: 1
+          description: A unique identifier of the period.
+        accountingYear:
+          $ref: '#/components/schemas/AccountingYearHandler'
+        fromDate:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: The first date in the period formatted according to ISO-8601(YYYY-MM-DD).
+        toDate:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: The last date in the period formatted according to ISO-8601(YYYY-MM-DD).
+        closed:
+          type: boolean
+          description: If true this indicates that the accounting period is closed for further
+            transactions.
+        entries:
+          type: string
+          format: uri
+          description: A link to a collection of all entries booked in the period.
+        totals:
+          type: string
+          format: uri
+          description: A link to the chart of accounts with the periods total in base currency.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the period item.
+
+    #endregion
+
+    #region Customer
+    SearchCustomerResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            'collection':
+              type: array
+              items:
+                $ref: '#/components/schemas/Customer'
+
+    Customer:
+      type: object
+      properties:
+        address:
+          type: string
+          maxLength: 510
+          description: Address for the customer including street and number.
+        balance:
+          type: number
+          readOnly: true
+          description: The outstanding amount for this customer.
+        barred:
+          type: boolean
+          description: Boolean indication of whether the customer is barred from invoicing.
+        city:
+          type: string
+          maxLength: 50
+          description: The customer's city.
+        corporateIdentificationNumber:
+          type: string
+          maxLength: 40
+          description: Corporate Identification Number. For example CVR in Denmark.
+        pNumber:
+          type: string
+          minLength: 10
+          maxLength: 10
+          description: Extension of corporate identification number (CVR). Identifying
+            separate production unit (p-nummer).
+        country:
+          type: string
+          maxLength: 50
+          description: The customer's country.
+        creditLimit:
+          type: number
+          description: A maximum credit for this customer. Once the maximum is reached
+            or passed in connection with an order/quotation/invoice for this customer
+            you see a warning in e-conomic.
+        currency:
+          type: string
+          maxLength: 3
+          minLength: 3
+          description: Default payment currency.
+        customerNumber:
+          type: integer
+          maximum: 999999999
+          minimum: 1
+          description: The customer number is a positive unique numerical identifier
+            with a maximum of 9 digits.
+        dueAmount:
+          type: number
+          readOnly: true
+          description: Due amount that the customer needs to pay.
+        ean:
+          type: string
+          maxLength: 13
+          description: European Article Number. EAN is used for invoicing the Danish
+            public sector.
+        email:
+          type: string
+          maxLength: 255
+          description: 'Customer e-mail address where e-conomic invoices should be
+            emailed. Note: you can specify multiple email addresses in this field,
+            separated by a space. If you need to send a copy of the invoice or write
+            to other e-mail addresses, you can also create one or more customer contacts.'
+        lastUpdated:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z"
+          description: The date this customer was last updated. The date is formatted
+            according to ISO-8601.
+        name:
+          type: string
+          maxLength: 255
+          minLength: 1
+          description: The customer name.
+        publicEntryNumber:
+          type: string
+          maxLength: 50
+          description: The public entry number is used for electronic invoicing, to
+            define the account invoices will be registered on at the customer.
+        telephoneAndFaxNumber:
+          type: string
+          maxLength: 255
+          description: The customer's telephone and/or fax number.
+        mobilePhone:
+          type: string
+          maxLength: 50
+          description: The customer's mobile phone number.
+        eInvoicingDisabledByDefault:
+          type: boolean
+          description: Boolean indication of whether the default sending method should
+            be email instead of e-invoice. This property is updatable only by using
+            PATCH to /customers/:customerNumber
+        vatNumber:
+          type: string
+          maxLength: 20
+          description: The customer's value added tax identification number. This
+            field is only available to agreements in Sweden, UK, Germany, Poland and
+            Finland. Not to be mistaken for the danish CVR number, which is defined
+            on the corporateIdentificationNumber property.
+        website:
+          type: string
+          maxLength: 255
+          description: Customer website, if applicable.
+        zip:
+          type: string
+          maxLength: 30
+          description: The customer's postcode.
+        contacts:
+          type: string
+          format: uri
+          description: A unique link reference to the customer contacts items.
+        deliveryLocations:
+          type: string
+          format: uri
+          description: A unique link reference to the customer delivery locations
+            items.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the delivery location.
+        paymentTerms:
+          $ref: '#/components/schemas/PaymentTermHandler'
+        vatZone:
+          $ref: '#/components/schemas/VatZoneHandler'
+        customerGroup:
+          $ref: '#/components/schemas/CustomerGroupHandler'
+
+    SearchCustomerGroupsResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            'collection':
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerGroup'
+
+    CustomerGroup:
+      type: object
+      description: A schema for retrieving a single customer groups.
+      properties:
+        customerGroupNumber:
+          type: integer
+          description: The customer group number.
+          x-filterable: true
+          x-sortable: true
+        name:
+          type: string
+          maxLength: 50
+          description: The name of the customer group.
+          x-filterable: true
+          x-sortable: true
+        account:
+          $ref: '#/components/schemas/AccountHandler'
+        customers:
+          type: string
+          format: uri
+          description: The unique self reference of the customers belonging to this customer
+            group.
+        layout:
+          $ref: '#/components/schemas/CustomerGroupLayout'
+        self:
+          type: string
+          format: uri
+          description: The unique self reference of the customer group.
+
+    CustomerGroupLayout:
+      type: object
+      description: The default layout used by the customer group.
+      properties:
+        layoutNumber:
+          type: integer
+          description: The layout number.
+        name:
+          type: string
+          maxLength: 100
+          description: The name of the layout.
+        deleted:
+          type: boolean
+          description: If true this indicates that the layout is deleted and can't be
+            used anymore.
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the layout resource.
+
+
+
+
+    #endregion
+
+
+    #region PaymentTerm
+    SearchPaymentTermsResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            'collection':
+              type: array
+              items:
+                $ref: '#/components/schemas/PaymentTerm'
+
+    PaymentTerm:
+      type: object
+      description: A schema for retrieval of a single payment term.
+      properties:
+        paymentTermsNumber:
+          type: integer
+          description: A unique identifier of the payment term.
+        daysOfCredit:
+          type: integer
+          description: The number of days before payment must be made.
+        description:
+          type: string
+          maxLength: 1000
+          description: A description of the payment term.
+        name:
+          type: string
+          maxLength: 50
+          description: The name of the payment term.
+        paymentTermsType:
+          enum:
+            - net
+            - invoiceMonth
+            - paidInCash
+            - prepaid
+            - dueDate
+            - factoring
+            - invoiceWeekStartingSunday
+            - invoiceWeekStartingMonday
+            - creditcard
+          description: The type of payment term defines how the payment term behaves.
+        contraAccountForPrepaidAmount:
+          $ref: '#/components/schemas/AccountHandler'
+        contraAccountForRemainderAmount:
+          $ref: '#/components/schemas/AccountHandler'
+        percentageForPrepaidAmount:
+          type: number
+          description: The % to be pre paid.
+          x-maxDecimal: 2
+        percentageForRemainderAmount:
+          type: number
+          description: The % to be post paid.
+          x-maxDecimal: 2
+        creditCardCompany:
+          $ref: '#/components/schemas/CustomerHandler'
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the payment term item.
+    #endregion
+
+    #region Handlers
+
+    AccountHandler:
+      type: object
+      description: AccountHandler
+      properties:
+        accountNumber:
+          type: integer
+          description: Account number of the first account.
+        self:
+          type: string
+          format: uri
+          description: The unique self link of the first account.
+
+    vatCodeHandler:
+      type: object
+      properties:
+        vatCode:
+          type: string
+          maxLength: 5
+          description: The VAT code of the VAT account.
+        self:
+          type: string
+          format: uri
+          description: The unique self link of the VAT code.
+
+    PaymentTermHandler:
+      type: object
+      description: "The default payment terms for the customer."
+      properties:
+        'paymentTermsNumber':
+          type: integer
+        'self':
+          type: string
+
+    CustomerGroupHandler:
+      type: object
+      description: "In order to set up a new customer, it is necessary to specify a customer group. It is useful to group a company’s customers (e.g., ‘domestic’ and ‘foreign’ customers) and to link the group members to the same account when generating reports."
+      properties:
+        'customerGroupNumber':
+          type: integer
+        'self':
+          type: string
+
+    VatZoneHandler:
+      type: object
+      description: "Indicates in which VAT-zone the customer is located (e.g.: domestically, in Europe or elsewhere abroad)."
+      properties:
+        'vatZoneNumber':
+          type: integer
+        'self':
+          type: string
+
+    AccountingYearHandler:
+      type: object
+      description: The accounting year.
+      properties:
+        year:
+          type: string
+          maxLength: 4
+          description: A unique identifier of the accounting year.
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the accounting year resource.
+
+    DepartmentHandler:
+      type: object
+      description: A reference to the department.
+      properties:
+        departmentNumber:
+          type: integer
+          minimum: 1
+          description: A unique identifier of the department.
+        self:
+          type: string
+          format: uri
+          description: The unique self reference of the department.
+
+    JournalHandler:
+      type: object
+      description: A Journal Handler.
+      properties:
+        journalNumber:
+          type: number
+          description: Journal number that must be at least 1.
+          minimum: 1
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the journal resource.
+
+    CostTypeHandler:
+      type: object
+      description: A cost type handler.
+      properties:
+        costTypeNumber:
+          type: integer
+          description: The unique identifier of the cost type.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the cost type.
+
+    CurrencyHandler:
+      type: object
+      description: A currency handler.
+      properties:
+        code:
+          type: string
+          pattern: "[a-zA-Z]{3}"
+          description: The ISO 4217 3-letter currency code of the entry.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the currency item.
+
+    DepartmentalDistributionHandler:
+      type: object
+      description: A departmental distribution defines which departments this
+        entry is distributed between. This requires the departments module
+        to be enabled.
+      properties:
+        departmentalDistributionNumber:
+          type: integer
+          minimum: 1
+          description: A unique identifier of the departmental distribution.
+        distributionType:
+          type: string
+          description: Type of the distribution
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the departmental distribution
+            resource.
+
+    VoucherHandler:
+      type: object
+      description: Voucher handler
+      properties:
+        voucherNumber:
+          type: number
+          minimum: 1
+          description: Journal voucher number that must be at least 1.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the voucher item.
+
+    CustomerHandler:
+      type: object
+      description: The customer handler
+      properties:
+        customerNumber:
+          type: integer
+          maximum: 999999999
+          minimum: 1
+          description: The customer number is a positive unique numerical identifier with a maximum of 9 digits.
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the customer resource.
+
+    SupplierHandler:
+      type: object
+      description: The supplier handler
+      properties:
+        supplierNumber:
+          type: integer
+          description: The supplier number is a positive unique numerical identifier with a maximum of 9 digits.
+          maximum: 999999999
+          minimum: 1
+        self:
+          type: string
+          format: uri
+          description: A unique self reference of the supplier.
+    #endregion
