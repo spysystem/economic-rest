@@ -85,7 +85,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountingYearsApi* | [**getAccountingYear**](docs/Api/AccountingYearsApi.md#getaccountingyear) | **GET** /accounting-years/{id} | 
 *AccountingYearsApi* | [**getAccountingYearPeriod**](docs/Api/AccountingYearsApi.md#getaccountingyearperiod) | **GET** /accounting-years/{yearId}/periods/{id} | 
-*AccountingYearsApi* | [**searchAccountingYearPeriods**](docs/Api/AccountingYearsApi.md#searchaccountingyearperiods) | **GET** /accounting-years/{id}/periods | 
+*AccountingYearsApi* | [**searchAccountingYearPeriods**](docs/Api/AccountingYearsApi.md#searchaccountingyearperiods) | **GET** /accounting-years/{accountingYear}/periods | 
 *AccountingYearsApi* | [**searchAccountingYears**](docs/Api/AccountingYearsApi.md#searchaccountingyears) | **GET** /accounting-years | 
 *AccountsApi* | [**getAccount**](docs/Api/AccountsApi.md#getaccount) | **GET** /accounts/{id} | 
 *AccountsApi* | [**getDepartment**](docs/Api/AccountsApi.md#getdepartment) | **GET** /departments/{id} | 

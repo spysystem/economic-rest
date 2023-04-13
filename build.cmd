@@ -1,3 +1,5 @@
+move lib\Api\ProjectConstants.php .
+
 del /s /q .openapi-generator docs lib test > nul 2>&1
 
 docker pull spysystem/openapi-generator:spy_branch

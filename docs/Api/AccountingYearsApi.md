@@ -6,7 +6,7 @@ All URIs are relative to https://restapi.e-conomic.com, except if the operation 
 | ------------- | ------------- | ------------- |
 | [**getAccountingYear()**](AccountingYearsApi.md#getAccountingYear) | **GET** /accounting-years/{id} |  |
 | [**getAccountingYearPeriod()**](AccountingYearsApi.md#getAccountingYearPeriod) | **GET** /accounting-years/{yearId}/periods/{id} |  |
-| [**searchAccountingYearPeriods()**](AccountingYearsApi.md#searchAccountingYearPeriods) | **GET** /accounting-years/{id}/periods |  |
+| [**searchAccountingYearPeriods()**](AccountingYearsApi.md#searchAccountingYearPeriods) | **GET** /accounting-years/{accountingYear}/periods |  |
 | [**searchAccountingYears()**](AccountingYearsApi.md#searchAccountingYears) | **GET** /accounting-years |  |
 
 
@@ -145,7 +145,7 @@ try {
 ## `searchAccountingYearPeriods()`
 
 ```php
-searchAccountingYearPeriods($id, $filter, $sort, $skip_pages, $page_size): \EconomicRest\Model\SearchAccountingYearPeriodsResponse
+searchAccountingYearPeriods($accounting_year, $filter, $sort, $skip_pages, $page_size): \EconomicRest\Model\SearchAccountingYearPeriodsResponse
 ```
 
 
@@ -174,14 +174,14 @@ $apiInstance = new EconomicRest\Api\AccountingYearsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int
+$accounting_year = 'accounting_year_example'; // string
 $filter = 'filter_example'; // string
 $sort = 'sort_example'; // string
 $skip_pages = 56; // int
 $page_size = 56; // int
 
 try {
-    $result = $apiInstance->searchAccountingYearPeriods($id, $filter, $sort, $skip_pages, $page_size);
+    $result = $apiInstance->searchAccountingYearPeriods($accounting_year, $filter, $sort, $skip_pages, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountingYearsApi->searchAccountingYearPeriods: ', $e->getMessage(), PHP_EOL;
@@ -192,7 +192,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **id** | **int**|  | |
+| **accounting_year** | **string**|  | |
 | **filter** | **string**|  | [optional] |
 | **sort** | **string**|  | [optional] |
 | **skip_pages** | **int**|  | [optional] |

@@ -302,10 +302,6 @@ class AccountingYearHandler implements ModelInterface, ArrayAccess, \JsonSeriali
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['year']) && (mb_strlen($this->container['year']) > 4)) {
-            $invalidProperties[] = "invalid value for 'year', the character length must be smaller than or equal to 4.";
-        }
-
         return $invalidProperties;
     }
 
@@ -343,10 +339,6 @@ class AccountingYearHandler implements ModelInterface, ArrayAccess, \JsonSeriali
         if (is_null($year)) {
             throw new \InvalidArgumentException('non-nullable year cannot be null');
         }
-        if ((mb_strlen($year) > 4)) {
-            throw new \InvalidArgumentException('invalid length for $year when calling AccountingYearHandler., must be smaller than or equal to 4.');
-        }
-
         $this->container['year'] = $year;
 
         return $this;
