@@ -256,9 +256,9 @@ paths:
         500:
           $ref: '#/components/responses/ErrorResponse'
 
-  /accounting-years/{id}/periods:
+  /accounting-years/{accountingYear}/periods:
     parameters:
-      - $ref: '#/components/parameters/id'
+      - $ref: '#/components/parameters/accountingYear'
     get:
       operationId: searchAccountingYearPeriods
       tags:
@@ -809,6 +809,13 @@ components:
       schema:
         type: integer
 
+    accountingYear:
+      name: accountingYear
+      in: path
+      required: true
+      schema:
+        type: string
+    
     journalId:
       name: journalId
       in: path
@@ -2182,7 +2189,6 @@ components:
       properties:
         year:
           type: string
-          maxLength: 4
           description: A unique identifier of the accounting year.
         self:
           type: string
