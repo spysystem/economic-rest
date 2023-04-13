@@ -788,6 +788,62 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
   #endregion
 
+  #region VatAccounts
+  /vat-accounts:
+    get:
+      operationId: searchVatAccounts
+      tags:
+        - VatAccount
+      parameters:
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Vat Accounts Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchVatAccountsResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /vat-accounts/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getVatAccount
+      tags:
+        - VatAccounts
+      responses:
+        200:
+          description: Get Vat Account Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VatAccount'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+  #endregion
 
 components:
   securitySchemes:
@@ -2128,6 +2184,78 @@ components:
           type: string
           format: uri
           description: A unique link reference to the payment term item.
+    #endregion
+
+    #region VatAccounts
+    SearchVatAccountsResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            'collection':
+              type: array
+              items:
+                $ref: '#/components/schemas/VatAccount'
+
+    VatAccount:
+      type: object
+      description: A schema for retrieval of a single vat account.
+      properties:
+        account:
+          type: object
+          description: The account for this vat account.
+          properties:
+            accountNumber:
+              type: integer
+              description: A unique identifier of the account.
+            self:
+              type: string
+              format: uri
+              description: A unique link reference to the account item.
+        contraAccount:
+          type: object
+          description: The contra account for this vat account.
+          properties:
+            accountNumber:
+              type: integer
+              description: A unique identifier of the contra account.
+            self:
+              type: string
+              format: uri
+              description: A unique link reference to the contra account item.
+        vatType:
+          type: object
+          description: The vat type for this vat account.
+          properties:
+            vatTypeNumber:
+              type: integer
+              description: A unique identifier of the vat type.
+            name:
+              type: string
+              description: Name of the vat type.
+            self:
+              type: string
+              format: uri
+              description: A unique link reference to the vat type item.
+        barred:
+          type: boolean
+          description: If true this vat account has been barred from further use.
+        name:
+          type: string
+          maxLength: 40
+          description: The name of the vat account.
+        ratePercentage:
+          type: number
+          description: The tax rate for this vat account.
+          x-maxDecimal: 8
+        vatCode:
+          type: string
+          maxLength: 5
+          description: The alphanumerical code for the vat account.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the vat account item.
     #endregion
 
     #region Handlers
