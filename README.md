@@ -109,6 +109,8 @@ Class | Method | HTTP request | Description
 *PaymentTermApi* | [**getPaymentTerm**](docs/Api/PaymentTermApi.md#getpaymentterm) | **GET** /payment-terms/{id} | 
 *PaymentTermApi* | [**searchPaymentTerms**](docs/Api/PaymentTermApi.md#searchpaymentterms) | **GET** /payment-terms | 
 *PaymentTermApi* | [**updatePaymentTerm**](docs/Api/PaymentTermApi.md#updatepaymentterm) | **PUT** /payment-terms/{id} | 
+*VatAccountApi* | [**searchVatAccounts**](docs/Api/VatAccountApi.md#searchvataccounts) | **GET** /vat-accounts | 
+*VatAccountsApi* | [**getVatAccount**](docs/Api/VatAccountsApi.md#getvataccount) | **GET** /vat-accounts/{id} | 
 
 ## Models
 
@@ -171,12 +173,18 @@ Class | Method | HTTP request | Description
 - [SearchJournalsResponseAllOf](docs/Model/SearchJournalsResponseAllOf.md)
 - [SearchPaymentTermsResponse](docs/Model/SearchPaymentTermsResponse.md)
 - [SearchPaymentTermsResponseAllOf](docs/Model/SearchPaymentTermsResponseAllOf.md)
+- [SearchVatAccountsResponse](docs/Model/SearchVatAccountsResponse.md)
+- [SearchVatAccountsResponseAllOf](docs/Model/SearchVatAccountsResponseAllOf.md)
 - [SearchVouchersResponse](docs/Model/SearchVouchersResponse.md)
 - [SearchVouchersResponseAllOf](docs/Model/SearchVouchersResponseAllOf.md)
 - [SupplierHandler](docs/Model/SupplierHandler.md)
 - [SupplierInvoiceEntry](docs/Model/SupplierInvoiceEntry.md)
 - [SupplierPaymentEntry](docs/Model/SupplierPaymentEntry.md)
 - [User](docs/Model/User.md)
+- [VatAccount](docs/Model/VatAccount.md)
+- [VatAccountAccount](docs/Model/VatAccountAccount.md)
+- [VatAccountContraAccount](docs/Model/VatAccountContraAccount.md)
+- [VatAccountVatType](docs/Model/VatAccountVatType.md)
 - [VatCodeHandler](docs/Model/VatCodeHandler.md)
 - [VatZoneHandler](docs/Model/VatZoneHandler.md)
 - [Voucher](docs/Model/Voucher.md)
