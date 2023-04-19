@@ -196,6 +196,71 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
         500:
           $ref: '#/components/responses/ErrorResponse'
+
+  /accounts/{id}/accounting-years:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: searchAccountAccountingYears
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Account Accounting years Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchAccountingYearsResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /accounts/{id}/accounting-years/{accountingYear}/entries:
+    parameters:
+      - $ref: '#/components/parameters/id'
+      - $ref: '#/components/parameters/accountingYear'
+    get:
+      operationId: searchAccountAccountingYearEntries
+      tags:
+        - Accounts
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Account Accounting year Entries Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchAccountAccountingYearEntriesResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
   #endregion
 
   #region AccountingYears
@@ -1807,7 +1872,6 @@ components:
           $ref: '#/components/schemas/AccountHandler'
         toAccount:
           $ref: '#/components/schemas/AccountHandler'
-
     #endregion
 
     #region AccountingYears
@@ -1919,6 +1983,66 @@ components:
           format: uri
           description: A unique link reference to the period item.
 
+    SearchAccountAccountingYearEntriesResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/Entry'
+    Entry:
+      type: object
+      description: A specific entry in the accounting year.
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountHandler'
+        amount:
+          type: number
+          description: The total entry amount.
+        supplierInvoiceNumber:
+          type: string
+          description: A unique identifier of the supplier invoice.
+        amountInBaseCurrency:
+          type: number
+          description: The total entry amount in base currency.
+        currency:
+            type: string
+            pattern: "[a-zA-Z]{3}"
+            description: The ISO 4217 currency code of the entry.
+        date:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: Entry issue date. The date is formatted according to ISO-8601(YYYY-MM-DD).
+        entryNumber:
+          type: integer
+          description: The unique identifier of the entry line.
+        text:
+          type: string
+          maxLength: 255
+          description: A short description about the entry.
+        entryType:
+          enum:
+            - customerInvoice
+            - customerPayment
+            - supplierInvoice
+            - supplierPayment
+            - financeVoucher
+            - reminder
+            - openingEntry
+            - transferredOpeningEntry
+            - systemEntry
+            - manualDebtorInvoice
+          description: The type of entry.
+        voucherNumber:
+          type: integer
+          description: The identifier of the voucher this entry belongs to.
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the entry resource.
     #endregion
 
     #region Customer
