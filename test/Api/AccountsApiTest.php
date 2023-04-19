@@ -96,6 +96,30 @@ class AccountsApiTest extends TestCase
     }
 
     /**
+     * Test case for searchAccountAccountingYearEntries
+     *
+     * .
+     *
+     */
+    public function testSearchAccountAccountingYearEntries()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for searchAccountAccountingYears
+     *
+     * .
+     *
+     */
+    public function testSearchAccountAccountingYears()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for searchAccounts
      *
      * .

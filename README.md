@@ -89,6 +89,8 @@ Class | Method | HTTP request | Description
 *AccountingYearsApi* | [**searchAccountingYears**](docs/Api/AccountingYearsApi.md#searchaccountingyears) | **GET** /accounting-years | 
 *AccountsApi* | [**getAccount**](docs/Api/AccountsApi.md#getaccount) | **GET** /accounts/{id} | 
 *AccountsApi* | [**getDepartment**](docs/Api/AccountsApi.md#getdepartment) | **GET** /departments/{id} | 
+*AccountsApi* | [**searchAccountAccountingYearEntries**](docs/Api/AccountsApi.md#searchaccountaccountingyearentries) | **GET** /accounts/{id}/accounting-years/{accountingYear}/entries | 
+*AccountsApi* | [**searchAccountAccountingYears**](docs/Api/AccountsApi.md#searchaccountaccountingyears) | **GET** /accounts/{id}/accounting-years | 
 *AccountsApi* | [**searchAccounts**](docs/Api/AccountsApi.md#searchaccounts) | **GET** /accounts | 
 *AccountsApi* | [**searchDepartmentalDistributions**](docs/Api/AccountsApi.md#searchdepartmentaldistributions) | **GET** /departmental-distributions | 
 *AccountsApi* | [**searchDepartments**](docs/Api/AccountsApi.md#searchdepartments) | **GET** /departments | 
@@ -138,6 +140,7 @@ Class | Method | HTTP request | Description
 - [DepartmentalDistribution](docs/Model/DepartmentalDistribution.md)
 - [DepartmentalDistributionHandler](docs/Model/DepartmentalDistributionHandler.md)
 - [Distribution](docs/Model/Distribution.md)
+- [Entry](docs/Model/Entry.md)
 - [Error](docs/Model/Error.md)
 - [FinanceVoucherEntry](docs/Model/FinanceVoucherEntry.md)
 - [GetCompanySettingsResponse](docs/Model/GetCompanySettingsResponse.md)
@@ -155,6 +158,8 @@ Class | Method | HTTP request | Description
 - [PaymentTermHandler](docs/Model/PaymentTermHandler.md)
 - [Period](docs/Model/Period.md)
 - [Role](docs/Model/Role.md)
+- [SearchAccountAccountingYearEntriesResponse](docs/Model/SearchAccountAccountingYearEntriesResponse.md)
+- [SearchAccountAccountingYearEntriesResponseAllOf](docs/Model/SearchAccountAccountingYearEntriesResponseAllOf.md)
 - [SearchAccountingYearPeriodsResponse](docs/Model/SearchAccountingYearPeriodsResponse.md)
 - [SearchAccountingYearPeriodsResponseAllOf](docs/Model/SearchAccountingYearPeriodsResponseAllOf.md)
 - [SearchAccountingYearsResponse](docs/Model/SearchAccountingYearsResponse.md)

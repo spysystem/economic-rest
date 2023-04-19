@@ -117,6 +117,12 @@ class AccountsApi
         'getDepartment' => [
             'application/json',
         ],
+        'searchAccountAccountingYearEntries' => [
+            'application/json',
+        ],
+        'searchAccountAccountingYears' => [
+            'application/json',
+        ],
         'searchAccounts' => [
             'application/json',
         ],
@@ -945,6 +951,1004 @@ class AccountsApi
         $httpBody = '';
         $multipart = false;
 
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-AgreementGrantToken');
+        if ($apiKey !== null) {
+            $headers['X-AgreementGrantToken'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-AppSecretToken');
+        if ($apiKey !== null) {
+            $headers['X-AppSecretToken'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation searchAccountAccountingYearEntries
+     *
+     * @param  int $id id (required)
+     * @param  string $accounting_year accounting_year (required)
+     * @param  string $filter filter (optional)
+     * @param  string $sort sort (optional)
+     * @param  int $skip_pages skip_pages (optional)
+     * @param  int $page_size page_size (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountAccountingYearEntries'] to see the possible values for this operation
+     *
+     * @throws \EconomicRest\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \EconomicRest\Model\SearchAccountAccountingYearEntriesResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
+     */
+    public function searchAccountAccountingYearEntries($id, $accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountAccountingYearEntries'][0])
+    {
+        list($response) = $this->searchAccountAccountingYearEntriesWithHttpInfo($id, $accounting_year, $filter, $sort, $skip_pages, $page_size, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation searchAccountAccountingYearEntriesWithHttpInfo
+     *
+     * @param  int $id (required)
+     * @param  string $accounting_year (required)
+     * @param  string $filter (optional)
+     * @param  string $sort (optional)
+     * @param  int $skip_pages (optional)
+     * @param  int $page_size (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountAccountingYearEntries'] to see the possible values for this operation
+     *
+     * @throws \EconomicRest\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \EconomicRest\Model\SearchAccountAccountingYearEntriesResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchAccountAccountingYearEntriesWithHttpInfo($id, $accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountAccountingYearEntries'][0])
+    {
+        $request = $this->searchAccountAccountingYearEntriesRequest($id, $accounting_year, $filter, $sort, $skip_pages, $page_size, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\EconomicRest\Model\SearchAccountAccountingYearEntriesResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\SearchAccountAccountingYearEntriesResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\SearchAccountAccountingYearEntriesResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 405:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\EconomicRest\Model\SearchAccountAccountingYearEntriesResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\SearchAccountAccountingYearEntriesResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchAccountAccountingYearEntriesAsync
+     *
+     * @param  int $id (required)
+     * @param  string $accounting_year (required)
+     * @param  string $filter (optional)
+     * @param  string $sort (optional)
+     * @param  int $skip_pages (optional)
+     * @param  int $page_size (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountAccountingYearEntries'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchAccountAccountingYearEntriesAsync($id, $accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountAccountingYearEntries'][0])
+    {
+        return $this->searchAccountAccountingYearEntriesAsyncWithHttpInfo($id, $accounting_year, $filter, $sort, $skip_pages, $page_size, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchAccountAccountingYearEntriesAsyncWithHttpInfo
+     *
+     * @param  int $id (required)
+     * @param  string $accounting_year (required)
+     * @param  string $filter (optional)
+     * @param  string $sort (optional)
+     * @param  int $skip_pages (optional)
+     * @param  int $page_size (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountAccountingYearEntries'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchAccountAccountingYearEntriesAsyncWithHttpInfo($id, $accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountAccountingYearEntries'][0])
+    {
+        $returnType = '\EconomicRest\Model\SearchAccountAccountingYearEntriesResponse';
+        $request = $this->searchAccountAccountingYearEntriesRequest($id, $accounting_year, $filter, $sort, $skip_pages, $page_size, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchAccountAccountingYearEntries'
+     *
+     * @param  int $id (required)
+     * @param  string $accounting_year (required)
+     * @param  string $filter (optional)
+     * @param  string $sort (optional)
+     * @param  int $skip_pages (optional)
+     * @param  int $page_size (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountAccountingYearEntries'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function searchAccountAccountingYearEntriesRequest($id, $accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountAccountingYearEntries'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling searchAccountAccountingYearEntries'
+            );
+        }
+
+        // verify the required parameter 'accounting_year' is set
+        if ($accounting_year === null || (is_array($accounting_year) && count($accounting_year) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $accounting_year when calling searchAccountAccountingYearEntries'
+            );
+        }
+
+
+
+
+        if ($page_size !== null && $page_size > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling AccountsApi.searchAccountAccountingYearEntries, must be smaller than or equal to 1000.');
+        }
+        if ($page_size !== null && $page_size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling AccountsApi.searchAccountAccountingYearEntries, must be bigger than or equal to 1.');
+        }
+        
+
+        $resourcePath = '/accounts/{id}/accounting-years/{accountingYear}/entries';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip_pages,
+            'skipPages', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($accounting_year !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountingYear' . '}',
+                ObjectSerializer::toPathValue($accounting_year),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-AgreementGrantToken');
+        if ($apiKey !== null) {
+            $headers['X-AgreementGrantToken'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-AppSecretToken');
+        if ($apiKey !== null) {
+            $headers['X-AppSecretToken'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation searchAccountAccountingYears
+     *
+     * @param  int $id id (required)
+     * @param  string $filter filter (optional)
+     * @param  string $sort sort (optional)
+     * @param  int $skip_pages skip_pages (optional)
+     * @param  int $page_size page_size (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountAccountingYears'] to see the possible values for this operation
+     *
+     * @throws \EconomicRest\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \EconomicRest\Model\SearchAccountingYearsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
+     */
+    public function searchAccountAccountingYears($id, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountAccountingYears'][0])
+    {
+        list($response) = $this->searchAccountAccountingYearsWithHttpInfo($id, $filter, $sort, $skip_pages, $page_size, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation searchAccountAccountingYearsWithHttpInfo
+     *
+     * @param  int $id (required)
+     * @param  string $filter (optional)
+     * @param  string $sort (optional)
+     * @param  int $skip_pages (optional)
+     * @param  int $page_size (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountAccountingYears'] to see the possible values for this operation
+     *
+     * @throws \EconomicRest\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \EconomicRest\Model\SearchAccountingYearsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchAccountAccountingYearsWithHttpInfo($id, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountAccountingYears'][0])
+    {
+        $request = $this->searchAccountAccountingYearsRequest($id, $filter, $sort, $skip_pages, $page_size, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\EconomicRest\Model\SearchAccountingYearsResponse' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\SearchAccountingYearsResponse' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\SearchAccountingYearsResponse', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 405:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\EconomicRest\Model\SearchAccountingYearsResponse';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\SearchAccountingYearsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchAccountAccountingYearsAsync
+     *
+     * @param  int $id (required)
+     * @param  string $filter (optional)
+     * @param  string $sort (optional)
+     * @param  int $skip_pages (optional)
+     * @param  int $page_size (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountAccountingYears'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchAccountAccountingYearsAsync($id, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountAccountingYears'][0])
+    {
+        return $this->searchAccountAccountingYearsAsyncWithHttpInfo($id, $filter, $sort, $skip_pages, $page_size, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchAccountAccountingYearsAsyncWithHttpInfo
+     *
+     * @param  int $id (required)
+     * @param  string $filter (optional)
+     * @param  string $sort (optional)
+     * @param  int $skip_pages (optional)
+     * @param  int $page_size (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountAccountingYears'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchAccountAccountingYearsAsyncWithHttpInfo($id, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountAccountingYears'][0])
+    {
+        $returnType = '\EconomicRest\Model\SearchAccountingYearsResponse';
+        $request = $this->searchAccountAccountingYearsRequest($id, $filter, $sort, $skip_pages, $page_size, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchAccountAccountingYears'
+     *
+     * @param  int $id (required)
+     * @param  string $filter (optional)
+     * @param  string $sort (optional)
+     * @param  int $skip_pages (optional)
+     * @param  int $page_size (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountAccountingYears'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function searchAccountAccountingYearsRequest($id, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountAccountingYears'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling searchAccountAccountingYears'
+            );
+        }
+
+
+
+
+        if ($page_size !== null && $page_size > 1000) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling AccountsApi.searchAccountAccountingYears, must be smaller than or equal to 1000.');
+        }
+        if ($page_size !== null && $page_size < 1) {
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling AccountsApi.searchAccountAccountingYears, must be bigger than or equal to 1.');
+        }
+        
+
+        $resourcePath = '/accounts/{id}/accounting-years';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sort,
+            'sort', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $skip_pages,
+            'skipPages', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $page_size,
+            'pageSize', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params
