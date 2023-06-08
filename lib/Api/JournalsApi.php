@@ -594,14 +594,14 @@ class JournalsApi
      * @param  string $filter filter (optional)
      * @param  string $sort sort (optional)
      * @param  int $skip_pages skip_pages (optional)
-     * @param  int $page_size page_size (optional)
+     * @param  int $page_size page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchJournals'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \EconomicRest\Model\SearchJournalsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
-    public function searchJournals($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchJournals'][0])
+    public function searchJournals($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchJournals'][0])
     {
         list($response) = $this->searchJournalsWithHttpInfo($filter, $sort, $skip_pages, $page_size, $contentType);
         return $response;
@@ -613,14 +613,14 @@ class JournalsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchJournals'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \EconomicRest\Model\SearchJournalsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchJournalsWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchJournals'][0])
+    public function searchJournalsWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchJournals'][0])
     {
         $request = $this->searchJournalsRequest($filter, $sort, $skip_pages, $page_size, $contentType);
 
@@ -852,13 +852,13 @@ class JournalsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchJournals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchJournalsAsync($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchJournals'][0])
+    public function searchJournalsAsync($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchJournals'][0])
     {
         return $this->searchJournalsAsyncWithHttpInfo($filter, $sort, $skip_pages, $page_size, $contentType)
             ->then(
@@ -874,13 +874,13 @@ class JournalsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchJournals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchJournalsAsyncWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchJournals'][0])
+    public function searchJournalsAsyncWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchJournals'][0])
     {
         $returnType = '\EconomicRest\Model\SearchJournalsResponse';
         $request = $this->searchJournalsRequest($filter, $sort, $skip_pages, $page_size, $contentType);
@@ -927,13 +927,13 @@ class JournalsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchJournals'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchJournalsRequest($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchJournals'][0])
+    public function searchJournalsRequest($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchJournals'][0])
     {
 
 

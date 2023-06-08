@@ -173,7 +173,7 @@ $apiInstance = new EconomicRest\Api\PaymentTermApi(
     $config
 );
 $skip_pages = 56; // int
-$page_size = 56; // int
+$page_size = 500; // int
 
 try {
     $result = $apiInstance->searchPaymentTerms($skip_pages, $page_size);
@@ -188,7 +188,7 @@ try {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **skip_pages** | **int**|  | [optional] |
-| **page_size** | **int**|  | [optional] |
+| **page_size** | **int**|  | [optional] [default to 500] |
 
 ### Return type
 

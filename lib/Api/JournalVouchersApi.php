@@ -608,14 +608,14 @@ class JournalVouchersApi
      * @param  string $filter filter (optional)
      * @param  string $sort sort (optional)
      * @param  int $skip_pages skip_pages (optional)
-     * @param  int $page_size page_size (optional)
+     * @param  int $page_size page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVouchers'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \EconomicRest\Model\SearchVouchersResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
-    public function searchVouchers($journal_id, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchVouchers'][0])
+    public function searchVouchers($journal_id, $filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVouchers'][0])
     {
         list($response) = $this->searchVouchersWithHttpInfo($journal_id, $filter, $sort, $skip_pages, $page_size, $contentType);
         return $response;
@@ -628,14 +628,14 @@ class JournalVouchersApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVouchers'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \EconomicRest\Model\SearchVouchersResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchVouchersWithHttpInfo($journal_id, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchVouchers'][0])
+    public function searchVouchersWithHttpInfo($journal_id, $filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVouchers'][0])
     {
         $request = $this->searchVouchersRequest($journal_id, $filter, $sort, $skip_pages, $page_size, $contentType);
 
@@ -868,13 +868,13 @@ class JournalVouchersApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVouchers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchVouchersAsync($journal_id, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchVouchers'][0])
+    public function searchVouchersAsync($journal_id, $filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVouchers'][0])
     {
         return $this->searchVouchersAsyncWithHttpInfo($journal_id, $filter, $sort, $skip_pages, $page_size, $contentType)
             ->then(
@@ -891,13 +891,13 @@ class JournalVouchersApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVouchers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchVouchersAsyncWithHttpInfo($journal_id, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchVouchers'][0])
+    public function searchVouchersAsyncWithHttpInfo($journal_id, $filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVouchers'][0])
     {
         $returnType = '\EconomicRest\Model\SearchVouchersResponse';
         $request = $this->searchVouchersRequest($journal_id, $filter, $sort, $skip_pages, $page_size, $contentType);
@@ -945,13 +945,13 @@ class JournalVouchersApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVouchers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchVouchersRequest($journal_id, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchVouchers'][0])
+    public function searchVouchersRequest($journal_id, $filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVouchers'][0])
     {
 
         // verify the required parameter 'journal_id' is set

@@ -180,7 +180,7 @@ $accounting_year = 'accounting_year_example'; // string
 $filter = 'filter_example'; // string
 $sort = 'sort_example'; // string
 $skip_pages = 56; // int
-$page_size = 56; // int
+$page_size = 500; // int
 
 try {
     $result = $apiInstance->searchAccountAccountingYearEntries($id, $accounting_year, $filter, $sort, $skip_pages, $page_size);
@@ -199,7 +199,7 @@ try {
 | **filter** | **string**|  | [optional] |
 | **sort** | **string**|  | [optional] |
 | **skip_pages** | **int**|  | [optional] |
-| **page_size** | **int**|  | [optional] |
+| **page_size** | **int**|  | [optional] [default to 500] |
 
 ### Return type
 
@@ -254,7 +254,7 @@ $id = 56; // int
 $filter = 'filter_example'; // string
 $sort = 'sort_example'; // string
 $skip_pages = 56; // int
-$page_size = 56; // int
+$page_size = 500; // int
 
 try {
     $result = $apiInstance->searchAccountAccountingYears($id, $filter, $sort, $skip_pages, $page_size);
@@ -272,7 +272,7 @@ try {
 | **filter** | **string**|  | [optional] |
 | **sort** | **string**|  | [optional] |
 | **skip_pages** | **int**|  | [optional] |
-| **page_size** | **int**|  | [optional] |
+| **page_size** | **int**|  | [optional] [default to 500] |
 
 ### Return type
 
@@ -326,7 +326,7 @@ $apiInstance = new EconomicRest\Api\AccountsApi(
 $filter = 'filter_example'; // string
 $sort = 'sort_example'; // string
 $skip_pages = 56; // int
-$page_size = 56; // int
+$page_size = 500; // int
 
 try {
     $result = $apiInstance->searchAccounts($filter, $sort, $skip_pages, $page_size);
@@ -343,7 +343,7 @@ try {
 | **filter** | **string**|  | [optional] |
 | **sort** | **string**|  | [optional] |
 | **skip_pages** | **int**|  | [optional] |
-| **page_size** | **int**|  | [optional] |
+| **page_size** | **int**|  | [optional] [default to 500] |
 
 ### Return type
 
@@ -397,7 +397,7 @@ $apiInstance = new EconomicRest\Api\AccountsApi(
 $filter = 'filter_example'; // string
 $sort = 'sort_example'; // string
 $skip_pages = 56; // int
-$page_size = 56; // int
+$page_size = 500; // int
 
 try {
     $result = $apiInstance->searchDepartmentalDistributions($filter, $sort, $skip_pages, $page_size);
@@ -414,7 +414,7 @@ try {
 | **filter** | **string**|  | [optional] |
 | **sort** | **string**|  | [optional] |
 | **skip_pages** | **int**|  | [optional] |
-| **page_size** | **int**|  | [optional] |
+| **page_size** | **int**|  | [optional] [default to 500] |
 
 ### Return type
 
@@ -468,7 +468,7 @@ $apiInstance = new EconomicRest\Api\AccountsApi(
 $filter = 'filter_example'; // string
 $sort = 'sort_example'; // string
 $skip_pages = 56; // int
-$page_size = 56; // int
+$page_size = 500; // int
 
 try {
     $result = $apiInstance->searchDepartments($filter, $sort, $skip_pages, $page_size);
@@ -485,7 +485,7 @@ try {
 | **filter** | **string**|  | [optional] |
 | **sort** | **string**|  | [optional] |
 | **skip_pages** | **int**|  | [optional] |
-| **page_size** | **int**|  | [optional] |
+| **page_size** | **int**|  | [optional] [default to 500] |
 
 ### Return type
 

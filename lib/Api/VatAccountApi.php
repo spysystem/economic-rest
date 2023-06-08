@@ -166,14 +166,14 @@ class VatAccountApi
      * Operation searchVatAccounts
      *
      * @param  int $skip_pages skip_pages (optional)
-     * @param  int $page_size page_size (optional)
+     * @param  int $page_size page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVatAccounts'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \EconomicRest\Model\SearchVatAccountsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
-    public function searchVatAccounts($skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchVatAccounts'][0])
+    public function searchVatAccounts($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVatAccounts'][0])
     {
         list($response) = $this->searchVatAccountsWithHttpInfo($skip_pages, $page_size, $contentType);
         return $response;
@@ -183,14 +183,14 @@ class VatAccountApi
      * Operation searchVatAccountsWithHttpInfo
      *
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVatAccounts'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \EconomicRest\Model\SearchVatAccountsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchVatAccountsWithHttpInfo($skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchVatAccounts'][0])
+    public function searchVatAccountsWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVatAccounts'][0])
     {
         $request = $this->searchVatAccountsRequest($skip_pages, $page_size, $contentType);
 
@@ -420,13 +420,13 @@ class VatAccountApi
      * Operation searchVatAccountsAsync
      *
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVatAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchVatAccountsAsync($skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchVatAccounts'][0])
+    public function searchVatAccountsAsync($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVatAccounts'][0])
     {
         return $this->searchVatAccountsAsyncWithHttpInfo($skip_pages, $page_size, $contentType)
             ->then(
@@ -440,13 +440,13 @@ class VatAccountApi
      * Operation searchVatAccountsAsyncWithHttpInfo
      *
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVatAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchVatAccountsAsyncWithHttpInfo($skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchVatAccounts'][0])
+    public function searchVatAccountsAsyncWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVatAccounts'][0])
     {
         $returnType = '\EconomicRest\Model\SearchVatAccountsResponse';
         $request = $this->searchVatAccountsRequest($skip_pages, $page_size, $contentType);
@@ -491,13 +491,13 @@ class VatAccountApi
      * Create request for operation 'searchVatAccounts'
      *
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVatAccounts'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchVatAccountsRequest($skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchVatAccounts'][0])
+    public function searchVatAccountsRequest($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVatAccounts'][0])
     {
 
 

@@ -1038,14 +1038,14 @@ class AccountingYearsApi
      * @param  string $filter filter (optional)
      * @param  string $sort sort (optional)
      * @param  int $skip_pages skip_pages (optional)
-     * @param  int $page_size page_size (optional)
+     * @param  int $page_size page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountingYearPeriods'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \EconomicRest\Model\SearchAccountingYearPeriodsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
-    public function searchAccountingYearPeriods($accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountingYearPeriods'][0])
+    public function searchAccountingYearPeriods($accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchAccountingYearPeriods'][0])
     {
         list($response) = $this->searchAccountingYearPeriodsWithHttpInfo($accounting_year, $filter, $sort, $skip_pages, $page_size, $contentType);
         return $response;
@@ -1058,14 +1058,14 @@ class AccountingYearsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountingYearPeriods'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \EconomicRest\Model\SearchAccountingYearPeriodsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchAccountingYearPeriodsWithHttpInfo($accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountingYearPeriods'][0])
+    public function searchAccountingYearPeriodsWithHttpInfo($accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchAccountingYearPeriods'][0])
     {
         $request = $this->searchAccountingYearPeriodsRequest($accounting_year, $filter, $sort, $skip_pages, $page_size, $contentType);
 
@@ -1298,13 +1298,13 @@ class AccountingYearsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountingYearPeriods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAccountingYearPeriodsAsync($accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountingYearPeriods'][0])
+    public function searchAccountingYearPeriodsAsync($accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchAccountingYearPeriods'][0])
     {
         return $this->searchAccountingYearPeriodsAsyncWithHttpInfo($accounting_year, $filter, $sort, $skip_pages, $page_size, $contentType)
             ->then(
@@ -1321,13 +1321,13 @@ class AccountingYearsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountingYearPeriods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAccountingYearPeriodsAsyncWithHttpInfo($accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountingYearPeriods'][0])
+    public function searchAccountingYearPeriodsAsyncWithHttpInfo($accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchAccountingYearPeriods'][0])
     {
         $returnType = '\EconomicRest\Model\SearchAccountingYearPeriodsResponse';
         $request = $this->searchAccountingYearPeriodsRequest($accounting_year, $filter, $sort, $skip_pages, $page_size, $contentType);
@@ -1375,13 +1375,13 @@ class AccountingYearsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountingYearPeriods'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchAccountingYearPeriodsRequest($accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountingYearPeriods'][0])
+    public function searchAccountingYearPeriodsRequest($accounting_year, $filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchAccountingYearPeriods'][0])
     {
 
         // verify the required parameter 'accounting_year' is set
@@ -1526,14 +1526,14 @@ class AccountingYearsApi
      * @param  string $filter filter (optional)
      * @param  string $sort sort (optional)
      * @param  int $skip_pages skip_pages (optional)
-     * @param  int $page_size page_size (optional)
+     * @param  int $page_size page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountingYears'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \EconomicRest\Model\SearchAccountingYearsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
-    public function searchAccountingYears($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountingYears'][0])
+    public function searchAccountingYears($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchAccountingYears'][0])
     {
         list($response) = $this->searchAccountingYearsWithHttpInfo($filter, $sort, $skip_pages, $page_size, $contentType);
         return $response;
@@ -1545,14 +1545,14 @@ class AccountingYearsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountingYears'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \EconomicRest\Model\SearchAccountingYearsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchAccountingYearsWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountingYears'][0])
+    public function searchAccountingYearsWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchAccountingYears'][0])
     {
         $request = $this->searchAccountingYearsRequest($filter, $sort, $skip_pages, $page_size, $contentType);
 
@@ -1784,13 +1784,13 @@ class AccountingYearsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountingYears'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAccountingYearsAsync($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountingYears'][0])
+    public function searchAccountingYearsAsync($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchAccountingYears'][0])
     {
         return $this->searchAccountingYearsAsyncWithHttpInfo($filter, $sort, $skip_pages, $page_size, $contentType)
             ->then(
@@ -1806,13 +1806,13 @@ class AccountingYearsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountingYears'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchAccountingYearsAsyncWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountingYears'][0])
+    public function searchAccountingYearsAsyncWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchAccountingYears'][0])
     {
         $returnType = '\EconomicRest\Model\SearchAccountingYearsResponse';
         $request = $this->searchAccountingYearsRequest($filter, $sort, $skip_pages, $page_size, $contentType);
@@ -1859,13 +1859,13 @@ class AccountingYearsApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchAccountingYears'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchAccountingYearsRequest($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchAccountingYears'][0])
+    public function searchAccountingYearsRequest($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchAccountingYears'][0])
     {
 
 

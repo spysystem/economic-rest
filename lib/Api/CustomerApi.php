@@ -1867,14 +1867,14 @@ class CustomerApi
      * @param  string $filter filter (optional)
      * @param  string $sort sort (optional)
      * @param  int $skip_pages skip_pages (optional)
-     * @param  int $page_size page_size (optional)
+     * @param  int $page_size page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchCustomerGroups'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \EconomicRest\Model\SearchCustomerGroupsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
-    public function searchCustomerGroups($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchCustomerGroups'][0])
+    public function searchCustomerGroups($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchCustomerGroups'][0])
     {
         list($response) = $this->searchCustomerGroupsWithHttpInfo($filter, $sort, $skip_pages, $page_size, $contentType);
         return $response;
@@ -1886,14 +1886,14 @@ class CustomerApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchCustomerGroups'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \EconomicRest\Model\SearchCustomerGroupsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchCustomerGroupsWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchCustomerGroups'][0])
+    public function searchCustomerGroupsWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchCustomerGroups'][0])
     {
         $request = $this->searchCustomerGroupsRequest($filter, $sort, $skip_pages, $page_size, $contentType);
 
@@ -2125,13 +2125,13 @@ class CustomerApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchCustomerGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchCustomerGroupsAsync($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchCustomerGroups'][0])
+    public function searchCustomerGroupsAsync($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchCustomerGroups'][0])
     {
         return $this->searchCustomerGroupsAsyncWithHttpInfo($filter, $sort, $skip_pages, $page_size, $contentType)
             ->then(
@@ -2147,13 +2147,13 @@ class CustomerApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchCustomerGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchCustomerGroupsAsyncWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchCustomerGroups'][0])
+    public function searchCustomerGroupsAsyncWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchCustomerGroups'][0])
     {
         $returnType = '\EconomicRest\Model\SearchCustomerGroupsResponse';
         $request = $this->searchCustomerGroupsRequest($filter, $sort, $skip_pages, $page_size, $contentType);
@@ -2200,13 +2200,13 @@ class CustomerApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchCustomerGroups'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchCustomerGroupsRequest($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchCustomerGroups'][0])
+    public function searchCustomerGroupsRequest($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchCustomerGroups'][0])
     {
 
 
@@ -2336,14 +2336,14 @@ class CustomerApi
      * @param  string $filter filter (optional)
      * @param  string $sort sort (optional)
      * @param  int $skip_pages skip_pages (optional)
-     * @param  int $page_size page_size (optional)
+     * @param  int $page_size page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchCustomers'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \EconomicRest\Model\SearchCustomerResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
-    public function searchCustomers($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchCustomers'][0])
+    public function searchCustomers($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchCustomers'][0])
     {
         list($response) = $this->searchCustomersWithHttpInfo($filter, $sort, $skip_pages, $page_size, $contentType);
         return $response;
@@ -2355,14 +2355,14 @@ class CustomerApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchCustomers'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \EconomicRest\Model\SearchCustomerResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchCustomersWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchCustomers'][0])
+    public function searchCustomersWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchCustomers'][0])
     {
         $request = $this->searchCustomersRequest($filter, $sort, $skip_pages, $page_size, $contentType);
 
@@ -2594,13 +2594,13 @@ class CustomerApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchCustomersAsync($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchCustomers'][0])
+    public function searchCustomersAsync($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchCustomers'][0])
     {
         return $this->searchCustomersAsyncWithHttpInfo($filter, $sort, $skip_pages, $page_size, $contentType)
             ->then(
@@ -2616,13 +2616,13 @@ class CustomerApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchCustomersAsyncWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchCustomers'][0])
+    public function searchCustomersAsyncWithHttpInfo($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchCustomers'][0])
     {
         $returnType = '\EconomicRest\Model\SearchCustomerResponse';
         $request = $this->searchCustomersRequest($filter, $sort, $skip_pages, $page_size, $contentType);
@@ -2669,13 +2669,13 @@ class CustomerApi
      * @param  string $filter (optional)
      * @param  string $sort (optional)
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchCustomers'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchCustomersRequest($filter = null, $sort = null, $skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchCustomers'][0])
+    public function searchCustomersRequest($filter = null, $sort = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchCustomers'][0])
     {
 
 

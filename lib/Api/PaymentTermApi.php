@@ -1014,14 +1014,14 @@ class PaymentTermApi
      * Operation searchPaymentTerms
      *
      * @param  int $skip_pages skip_pages (optional)
-     * @param  int $page_size page_size (optional)
+     * @param  int $page_size page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchPaymentTerms'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \EconomicRest\Model\SearchPaymentTermsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
-    public function searchPaymentTerms($skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchPaymentTerms'][0])
+    public function searchPaymentTerms($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchPaymentTerms'][0])
     {
         list($response) = $this->searchPaymentTermsWithHttpInfo($skip_pages, $page_size, $contentType);
         return $response;
@@ -1031,14 +1031,14 @@ class PaymentTermApi
      * Operation searchPaymentTermsWithHttpInfo
      *
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchPaymentTerms'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \EconomicRest\Model\SearchPaymentTermsResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchPaymentTermsWithHttpInfo($skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchPaymentTerms'][0])
+    public function searchPaymentTermsWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchPaymentTerms'][0])
     {
         $request = $this->searchPaymentTermsRequest($skip_pages, $page_size, $contentType);
 
@@ -1268,13 +1268,13 @@ class PaymentTermApi
      * Operation searchPaymentTermsAsync
      *
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchPaymentTerms'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchPaymentTermsAsync($skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchPaymentTerms'][0])
+    public function searchPaymentTermsAsync($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchPaymentTerms'][0])
     {
         return $this->searchPaymentTermsAsyncWithHttpInfo($skip_pages, $page_size, $contentType)
             ->then(
@@ -1288,13 +1288,13 @@ class PaymentTermApi
      * Operation searchPaymentTermsAsyncWithHttpInfo
      *
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchPaymentTerms'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchPaymentTermsAsyncWithHttpInfo($skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchPaymentTerms'][0])
+    public function searchPaymentTermsAsyncWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchPaymentTerms'][0])
     {
         $returnType = '\EconomicRest\Model\SearchPaymentTermsResponse';
         $request = $this->searchPaymentTermsRequest($skip_pages, $page_size, $contentType);
@@ -1339,13 +1339,13 @@ class PaymentTermApi
      * Create request for operation 'searchPaymentTerms'
      *
      * @param  int $skip_pages (optional)
-     * @param  int $page_size (optional)
+     * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchPaymentTerms'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchPaymentTermsRequest($skip_pages = null, $page_size = null, string $contentType = self::contentTypes['searchPaymentTerms'][0])
+    public function searchPaymentTermsRequest($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchPaymentTerms'][0])
     {
 
 
