@@ -111,6 +111,8 @@ Class | Method | HTTP request | Description
 *PaymentTermApi* | [**getPaymentTerm**](docs/Api/PaymentTermApi.md#getpaymentterm) | **GET** /payment-terms/{id} | 
 *PaymentTermApi* | [**searchPaymentTerms**](docs/Api/PaymentTermApi.md#searchpaymentterms) | **GET** /payment-terms | 
 *PaymentTermApi* | [**updatePaymentTerm**](docs/Api/PaymentTermApi.md#updatepaymentterm) | **PUT** /payment-terms/{id} | 
+*SupplierApi* | [**getSupplier**](docs/Api/SupplierApi.md#getsupplier) | **GET** /suppliers/{id} | 
+*SupplierApi* | [**searchSuppliers**](docs/Api/SupplierApi.md#searchsuppliers) | **GET** /suppliers | 
 *VatAccountApi* | [**searchVatAccounts**](docs/Api/VatAccountApi.md#searchvataccounts) | **GET** /vat-accounts | 
 *VatAccountsApi* | [**getVatAccount**](docs/Api/VatAccountsApi.md#getvataccount) | **GET** /vat-accounts/{id} | 
 
@@ -178,13 +180,26 @@ Class | Method | HTTP request | Description
 - [SearchJournalsResponseAllOf](docs/Model/SearchJournalsResponseAllOf.md)
 - [SearchPaymentTermsResponse](docs/Model/SearchPaymentTermsResponse.md)
 - [SearchPaymentTermsResponseAllOf](docs/Model/SearchPaymentTermsResponseAllOf.md)
+- [SearchSuppliersResponse](docs/Model/SearchSuppliersResponse.md)
+- [SearchSuppliersResponseAllOf](docs/Model/SearchSuppliersResponseAllOf.md)
 - [SearchVatAccountsResponse](docs/Model/SearchVatAccountsResponse.md)
 - [SearchVatAccountsResponseAllOf](docs/Model/SearchVatAccountsResponseAllOf.md)
 - [SearchVouchersResponse](docs/Model/SearchVouchersResponse.md)
 - [SearchVouchersResponseAllOf](docs/Model/SearchVouchersResponseAllOf.md)
+- [Supplier](docs/Model/Supplier.md)
+- [SupplierAttention](docs/Model/SupplierAttention.md)
+- [SupplierCostAccount](docs/Model/SupplierCostAccount.md)
 - [SupplierHandler](docs/Model/SupplierHandler.md)
 - [SupplierInvoiceEntry](docs/Model/SupplierInvoiceEntry.md)
+- [SupplierLayout](docs/Model/SupplierLayout.md)
 - [SupplierPaymentEntry](docs/Model/SupplierPaymentEntry.md)
+- [SupplierPaymentTerms](docs/Model/SupplierPaymentTerms.md)
+- [SupplierRemittanceAdvice](docs/Model/SupplierRemittanceAdvice.md)
+- [SupplierRemittanceAdvicePaymentType](docs/Model/SupplierRemittanceAdvicePaymentType.md)
+- [SupplierSalesPerson](docs/Model/SupplierSalesPerson.md)
+- [SupplierSupplierContact](docs/Model/SupplierSupplierContact.md)
+- [SupplierSupplierGroup](docs/Model/SupplierSupplierGroup.md)
+- [SupplierVatZone](docs/Model/SupplierVatZone.md)
 - [User](docs/Model/User.md)
 - [VatAccount](docs/Model/VatAccount.md)
 - [VatAccountAccount](docs/Model/VatAccountAccount.md)
