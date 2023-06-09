@@ -321,6 +321,38 @@ paths:
         500:
           $ref: '#/components/responses/ErrorResponse'
 
+  /accounting-years/{accountingYear}/entries:
+    parameters:
+      - $ref: '#/components/parameters/accountingYear'
+    get:
+      operationId: searchAccountingYearEntries
+      tags:
+        - AccountingYears
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search Accounting Year Entries Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchAccountingYearEntriesResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
   /accounting-years/{accountingYear}/periods:
     parameters:
       - $ref: '#/components/parameters/accountingYear'
@@ -1993,6 +2025,16 @@ components:
           type: string
           format: uri
           description: A unique link reference to the accounting year item.
+
+    SearchAccountingYearEntriesResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/Entry'
 
     SearchAccountingYearPeriodsResponse:
       allOf:
