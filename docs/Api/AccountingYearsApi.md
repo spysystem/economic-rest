@@ -6,6 +6,7 @@ All URIs are relative to https://restapi.e-conomic.com, except if the operation 
 | ------------- | ------------- | ------------- |
 | [**getAccountingYear()**](AccountingYearsApi.md#getAccountingYear) | **GET** /accounting-years/{id} |  |
 | [**getAccountingYearPeriod()**](AccountingYearsApi.md#getAccountingYearPeriod) | **GET** /accounting-years/{yearId}/periods/{id} |  |
+| [**searchAccountingYearEntries()**](AccountingYearsApi.md#searchAccountingYearEntries) | **GET** /accounting-years/{accountingYear}/entries |  |
 | [**searchAccountingYearPeriods()**](AccountingYearsApi.md#searchAccountingYearPeriods) | **GET** /accounting-years/{accountingYear}/periods |  |
 | [**searchAccountingYears()**](AccountingYearsApi.md#searchAccountingYears) | **GET** /accounting-years |  |
 
@@ -128,6 +129,79 @@ try {
 ### Return type
 
 [**\EconomicRest\Model\Period**](../Model/Period.md)
+
+### Authorization
+
+[X-AgreementGrantToken](../../README.md#X-AgreementGrantToken), [X-AppSecretToken](../../README.md#X-AppSecretToken)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `searchAccountingYearEntries()`
+
+```php
+searchAccountingYearEntries($accounting_year, $filter, $sort, $skip_pages, $page_size): \EconomicRest\Model\SearchAccountingYearEntriesResponse
+```
+
+
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: X-AgreementGrantToken
+$config = EconomicRest\Configuration::getDefaultConfiguration()->setApiKey('X-AgreementGrantToken', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = EconomicRest\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-AgreementGrantToken', 'Bearer');
+
+// Configure API key authorization: X-AppSecretToken
+$config = EconomicRest\Configuration::getDefaultConfiguration()->setApiKey('X-AppSecretToken', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = EconomicRest\Configuration::getDefaultConfiguration()->setApiKeyPrefix('X-AppSecretToken', 'Bearer');
+
+
+$apiInstance = new EconomicRest\Api\AccountingYearsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$accounting_year = 'accounting_year_example'; // string
+$filter = 'filter_example'; // string
+$sort = 'sort_example'; // string
+$skip_pages = 56; // int
+$page_size = 500; // int
+
+try {
+    $result = $apiInstance->searchAccountingYearEntries($accounting_year, $filter, $sort, $skip_pages, $page_size);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountingYearsApi->searchAccountingYearEntries: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **accounting_year** | **string**|  | |
+| **filter** | **string**|  | [optional] |
+| **sort** | **string**|  | [optional] |
+| **skip_pages** | **int**|  | [optional] |
+| **page_size** | **int**|  | [optional] [default to 500] |
+
+### Return type
+
+[**\EconomicRest\Model\SearchAccountingYearEntriesResponse**](../Model/SearchAccountingYearEntriesResponse.md)
 
 ### Authorization
 

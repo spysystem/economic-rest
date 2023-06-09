@@ -1,6 +1,6 @@
 <?php
 /**
- * SearchAccountAccountingYearEntriesResponseAllOfModelAttributes
+ * SearchAccountingYearEntriesResponseAllOfModelFields
  *
  * PHP version 7.2
  *
@@ -29,14 +29,14 @@
 namespace EconomicRest\Model;
 
 /**
- * SearchAccountAccountingYearEntriesResponseAllOfModelAttributes Class Doc Comment
+ * SearchAccountingYearEntriesResponseAllOfModelFields Class Doc Comment
  *
  * @category Class
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class SearchAccountAccountingYearEntriesResponseAllOfModelAttributes
+class SearchAccountingYearEntriesResponseAllOfModelFields
 {
     public string $strCollection = 'collection';
 }

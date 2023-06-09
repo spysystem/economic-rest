@@ -1,6 +1,6 @@
 <?php
 /**
- * SearchAccountAccountingYearEntriesResponseAllOf
+ * SearchAccountingYearEntriesResponseAllOf
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \EconomicRest\ObjectSerializer;
 
 /**
- * SearchAccountAccountingYearEntriesResponseAllOf Class Doc Comment
+ * SearchAccountingYearEntriesResponseAllOf Class Doc Comment
  *
  * @category Class
  * @package  EconomicRest
@@ -40,28 +40,28 @@ use \EconomicRest\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SearchAccountAccountingYearEntriesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
+class SearchAccountingYearEntriesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
       * Return an object with the Model Fields
       *
-      * @return SearchAccountAccountingYearEntriesResponseAllOfModelFields
+      * @return SearchAccountingYearEntriesResponseAllOfModelFields
       */
-    public static function GetModelFields(): SearchAccountAccountingYearEntriesResponseAllOfModelFields
+    public static function GetModelFields(): SearchAccountingYearEntriesResponseAllOfModelFields
     {
-        return new SearchAccountAccountingYearEntriesResponseAllOfModelFields();
+        return new SearchAccountingYearEntriesResponseAllOfModelFields();
     }
 
     /**
       * Return an object with the Model Attributes
       *
-      * @return SearchAccountAccountingYearEntriesResponseAllOfModelAttributes
+      * @return SearchAccountingYearEntriesResponseAllOfModelAttributes
       */
-    public static function GetModelAttributes(): SearchAccountAccountingYearEntriesResponseAllOfModelAttributes
+    public static function GetModelAttributes(): SearchAccountingYearEntriesResponseAllOfModelAttributes
     {
-        return new SearchAccountAccountingYearEntriesResponseAllOfModelAttributes();
+        return new SearchAccountingYearEntriesResponseAllOfModelAttributes();
     }
 
     /**
@@ -69,7 +69,7 @@ class SearchAccountAccountingYearEntriesResponseAllOf implements ModelInterface,
       *
       * @var string
       */
-    protected static $openAPIModelName = 'SearchAccountAccountingYearEntriesResponse_allOf';
+    protected static $openAPIModelName = 'SearchAccountingYearEntriesResponse_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

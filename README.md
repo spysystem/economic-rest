@@ -85,6 +85,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AccountingYearsApi* | [**getAccountingYear**](docs/Api/AccountingYearsApi.md#getaccountingyear) | **GET** /accounting-years/{id} | 
 *AccountingYearsApi* | [**getAccountingYearPeriod**](docs/Api/AccountingYearsApi.md#getaccountingyearperiod) | **GET** /accounting-years/{yearId}/periods/{id} | 
+*AccountingYearsApi* | [**searchAccountingYearEntries**](docs/Api/AccountingYearsApi.md#searchaccountingyearentries) | **GET** /accounting-years/{accountingYear}/entries | 
 *AccountingYearsApi* | [**searchAccountingYearPeriods**](docs/Api/AccountingYearsApi.md#searchaccountingyearperiods) | **GET** /accounting-years/{accountingYear}/periods | 
 *AccountingYearsApi* | [**searchAccountingYears**](docs/Api/AccountingYearsApi.md#searchaccountingyears) | **GET** /accounting-years | 
 *AccountsApi* | [**getAccount**](docs/Api/AccountsApi.md#getaccount) | **GET** /accounts/{id} | 
@@ -161,7 +162,8 @@ Class | Method | HTTP request | Description
 - [Period](docs/Model/Period.md)
 - [Role](docs/Model/Role.md)
 - [SearchAccountAccountingYearEntriesResponse](docs/Model/SearchAccountAccountingYearEntriesResponse.md)
-- [SearchAccountAccountingYearEntriesResponseAllOf](docs/Model/SearchAccountAccountingYearEntriesResponseAllOf.md)
+- [SearchAccountingYearEntriesResponse](docs/Model/SearchAccountingYearEntriesResponse.md)
+- [SearchAccountingYearEntriesResponseAllOf](docs/Model/SearchAccountingYearEntriesResponseAllOf.md)
 - [SearchAccountingYearPeriodsResponse](docs/Model/SearchAccountingYearPeriodsResponse.md)
 - [SearchAccountingYearPeriodsResponseAllOf](docs/Model/SearchAccountingYearPeriodsResponseAllOf.md)
 - [SearchAccountingYearsResponse](docs/Model/SearchAccountingYearsResponse.md)

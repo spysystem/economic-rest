@@ -1,6 +1,6 @@
 <?php
 /**
- * SearchAccountAccountingYearEntriesResponseAllOfTest
+ * SearchAccountingYearEntriesResponseAllOfTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace EconomicRest\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * SearchAccountAccountingYearEntriesResponseAllOfTest Class Doc Comment
+ * SearchAccountingYearEntriesResponseAllOfTest Class Doc Comment
  *
  * @category    Class
- * @description SearchAccountAccountingYearEntriesResponseAllOf
+ * @description SearchAccountingYearEntriesResponseAllOf
  * @package     EconomicRest
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class SearchAccountAccountingYearEntriesResponseAllOfTest extends TestCase
+class SearchAccountingYearEntriesResponseAllOfTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class SearchAccountAccountingYearEntriesResponseAllOfTest extends TestCase
     }
 
     /**
-     * Test "SearchAccountAccountingYearEntriesResponseAllOf"
+     * Test "SearchAccountingYearEntriesResponseAllOf"
      */
-    public function testSearchAccountAccountingYearEntriesResponseAllOf()
+    public function testSearchAccountingYearEntriesResponseAllOf()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
