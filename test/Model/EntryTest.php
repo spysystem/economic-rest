@@ -134,6 +134,42 @@ class EntryTest extends TestCase
     }
 
     /**
+     * Test attribute "due_date"
+     */
+    public function testPropertyDueDate()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "departmental_distribution"
+     */
+    public function testPropertyDepartmentalDistribution()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "project"
+     */
+    public function testPropertyProject()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "cost_type"
+     */
+    public function testPropertyCostType()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "entry_number"
      */
     public function testPropertyEntryNumber()
@@ -161,9 +197,117 @@ class EntryTest extends TestCase
     }
 
     /**
+     * Test attribute "vat_account"
+     */
+    public function testPropertyVatAccount()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "customer"
+     */
+    public function testPropertyCustomer()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "supplier"
+     */
+    public function testPropertySupplier()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "unit1"
+     */
+    public function testPropertyUnit1()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "unit2"
+     */
+    public function testPropertyUnit2()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "quantity1"
+     */
+    public function testPropertyQuantity1()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "quantity2"
+     */
+    public function testPropertyQuantity2()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "voucher_number"
      */
     public function testPropertyVoucherNumber()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "booked_invoice"
+     */
+    public function testPropertyBookedInvoice()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "invoice_number"
+     */
+    public function testPropertyInvoiceNumber()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "remainder"
+     */
+    public function testPropertyRemainder()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "remainder_in_base_currency"
+     */
+    public function testPropertyRemainderInBaseCurrency()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "payment_details"
+     */
+    public function testPropertyPaymentDetails()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

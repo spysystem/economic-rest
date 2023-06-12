@@ -84,10 +84,26 @@ class Entry implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount_in_base_currency' => 'float',
         'currency' => 'string',
         'date' => 'string',
+        'due_date' => 'string',
+        'departmental_distribution' => '\EconomicRest\Model\DepartmentalDistributionHandler',
+        'project' => '\EconomicRest\Model\ProjectHandler',
+        'cost_type' => '\EconomicRest\Model\CostTypeHandler',
         'entry_number' => 'int',
         'text' => 'string',
         'entry_type' => 'string',
+        'vat_account' => '\EconomicRest\Model\VatAccountHandler',
+        'customer' => '\EconomicRest\Model\CustomerHandler',
+        'supplier' => '\EconomicRest\Model\SupplierHandler',
+        'unit1' => '\EconomicRest\Model\UnitHandler',
+        'unit2' => '\EconomicRest\Model\UnitHandler',
+        'quantity1' => 'float',
+        'quantity2' => 'float',
         'voucher_number' => 'int',
+        'booked_invoice' => '\EconomicRest\Model\BookedInvoiceHandler',
+        'invoice_number' => 'string',
+        'remainder' => 'float',
+        'remainder_in_base_currency' => 'float',
+        'payment_details' => '\EconomicRest\Model\PaymentDetailsHandler',
         'self' => 'string'
     ];
 
@@ -105,10 +121,26 @@ class Entry implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount_in_base_currency' => null,
         'currency' => null,
         'date' => 'full-date',
+        'due_date' => 'full-date',
+        'departmental_distribution' => null,
+        'project' => null,
+        'cost_type' => null,
         'entry_number' => null,
         'text' => null,
         'entry_type' => null,
+        'vat_account' => null,
+        'customer' => null,
+        'supplier' => null,
+        'unit1' => null,
+        'unit2' => null,
+        'quantity1' => null,
+        'quantity2' => null,
         'voucher_number' => null,
+        'booked_invoice' => null,
+        'invoice_number' => null,
+        'remainder' => null,
+        'remainder_in_base_currency' => null,
+        'payment_details' => null,
         'self' => 'uri'
     ];
 
@@ -124,10 +156,26 @@ class Entry implements ModelInterface, ArrayAccess, \JsonSerializable
 		'amount_in_base_currency' => false,
 		'currency' => false,
 		'date' => false,
+		'due_date' => false,
+		'departmental_distribution' => false,
+		'project' => false,
+		'cost_type' => false,
 		'entry_number' => false,
 		'text' => false,
 		'entry_type' => false,
+		'vat_account' => false,
+		'customer' => false,
+		'supplier' => false,
+		'unit1' => false,
+		'unit2' => false,
+		'quantity1' => false,
+		'quantity2' => false,
 		'voucher_number' => false,
+		'booked_invoice' => false,
+		'invoice_number' => false,
+		'remainder' => false,
+		'remainder_in_base_currency' => false,
+		'payment_details' => false,
 		'self' => false
     ];
 
@@ -223,10 +271,26 @@ class Entry implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount_in_base_currency' => 'amountInBaseCurrency',
         'currency' => 'currency',
         'date' => 'date',
+        'due_date' => 'dueDate',
+        'departmental_distribution' => 'departmentalDistribution',
+        'project' => 'project',
+        'cost_type' => 'costType',
         'entry_number' => 'entryNumber',
         'text' => 'text',
         'entry_type' => 'entryType',
+        'vat_account' => 'vatAccount',
+        'customer' => 'customer',
+        'supplier' => 'supplier',
+        'unit1' => 'unit1',
+        'unit2' => 'unit2',
+        'quantity1' => 'quantity1',
+        'quantity2' => 'quantity2',
         'voucher_number' => 'voucherNumber',
+        'booked_invoice' => 'bookedInvoice',
+        'invoice_number' => 'invoiceNumber',
+        'remainder' => 'remainder',
+        'remainder_in_base_currency' => 'remainderInBaseCurrency',
+        'payment_details' => 'paymentDetails',
         'self' => 'self'
     ];
 
@@ -242,10 +306,26 @@ class Entry implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount_in_base_currency' => 'setAmountInBaseCurrency',
         'currency' => 'setCurrency',
         'date' => 'setDate',
+        'due_date' => 'setDueDate',
+        'departmental_distribution' => 'setDepartmentalDistribution',
+        'project' => 'setProject',
+        'cost_type' => 'setCostType',
         'entry_number' => 'setEntryNumber',
         'text' => 'setText',
         'entry_type' => 'setEntryType',
+        'vat_account' => 'setVatAccount',
+        'customer' => 'setCustomer',
+        'supplier' => 'setSupplier',
+        'unit1' => 'setUnit1',
+        'unit2' => 'setUnit2',
+        'quantity1' => 'setQuantity1',
+        'quantity2' => 'setQuantity2',
         'voucher_number' => 'setVoucherNumber',
+        'booked_invoice' => 'setBookedInvoice',
+        'invoice_number' => 'setInvoiceNumber',
+        'remainder' => 'setRemainder',
+        'remainder_in_base_currency' => 'setRemainderInBaseCurrency',
+        'payment_details' => 'setPaymentDetails',
         'self' => 'setSelf'
     ];
 
@@ -261,10 +341,26 @@ class Entry implements ModelInterface, ArrayAccess, \JsonSerializable
         'amount_in_base_currency' => 'getAmountInBaseCurrency',
         'currency' => 'getCurrency',
         'date' => 'getDate',
+        'due_date' => 'getDueDate',
+        'departmental_distribution' => 'getDepartmentalDistribution',
+        'project' => 'getProject',
+        'cost_type' => 'getCostType',
         'entry_number' => 'getEntryNumber',
         'text' => 'getText',
         'entry_type' => 'getEntryType',
+        'vat_account' => 'getVatAccount',
+        'customer' => 'getCustomer',
+        'supplier' => 'getSupplier',
+        'unit1' => 'getUnit1',
+        'unit2' => 'getUnit2',
+        'quantity1' => 'getQuantity1',
+        'quantity2' => 'getQuantity2',
         'voucher_number' => 'getVoucherNumber',
+        'booked_invoice' => 'getBookedInvoice',
+        'invoice_number' => 'getInvoiceNumber',
+        'remainder' => 'getRemainder',
+        'remainder_in_base_currency' => 'getRemainderInBaseCurrency',
+        'payment_details' => 'getPaymentDetails',
         'self' => 'getSelf'
     ];
 
@@ -362,10 +458,26 @@ class Entry implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('amount_in_base_currency', $data ?? [], null);
         $this->setIfExists('currency', $data ?? [], null);
         $this->setIfExists('date', $data ?? [], null);
+        $this->setIfExists('due_date', $data ?? [], null);
+        $this->setIfExists('departmental_distribution', $data ?? [], null);
+        $this->setIfExists('project', $data ?? [], null);
+        $this->setIfExists('cost_type', $data ?? [], null);
         $this->setIfExists('entry_number', $data ?? [], null);
         $this->setIfExists('text', $data ?? [], null);
         $this->setIfExists('entry_type', $data ?? [], null);
+        $this->setIfExists('vat_account', $data ?? [], null);
+        $this->setIfExists('customer', $data ?? [], null);
+        $this->setIfExists('supplier', $data ?? [], null);
+        $this->setIfExists('unit1', $data ?? [], null);
+        $this->setIfExists('unit2', $data ?? [], null);
+        $this->setIfExists('quantity1', $data ?? [], null);
+        $this->setIfExists('quantity2', $data ?? [], null);
         $this->setIfExists('voucher_number', $data ?? [], null);
+        $this->setIfExists('booked_invoice', $data ?? [], null);
+        $this->setIfExists('invoice_number', $data ?? [], null);
+        $this->setIfExists('remainder', $data ?? [], null);
+        $this->setIfExists('remainder_in_base_currency', $data ?? [], null);
+        $this->setIfExists('payment_details', $data ?? [], null);
         $this->setIfExists('self', $data ?? [], null);
     }
 
@@ -402,6 +514,10 @@ class Entry implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['date']) && !preg_match("/\\d{4}-\\d{2}-\\d{2}/", $this->container['date'])) {
             $invalidProperties[] = "invalid value for 'date', must be conform to the pattern /\\d{4}-\\d{2}-\\d{2}/.";
+        }
+
+        if (!is_null($this->container['due_date']) && !preg_match("/\\d{4}-\\d{2}-\\d{2}/", $this->container['due_date'])) {
+            $invalidProperties[] = "invalid value for 'due_date', must be conform to the pattern /\\d{4}-\\d{2}-\\d{2}/.";
         }
 
         if (!is_null($this->container['text']) && (mb_strlen($this->container['text']) > 255)) {
@@ -605,6 +721,119 @@ class Entry implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets due_date
+     *
+     * @return string|null
+     */
+    public function getDueDate()
+    {
+        return $this->container['due_date'];
+    }
+
+    /**
+     * Sets due_date
+     *
+     * @param string|null $due_date The date the invoice is due for payment. Format according to ISO-8601 (YYYY-MM-DD).
+     *
+     * @return self
+     */
+    public function setDueDate($due_date)
+    {
+        if (is_null($due_date)) {
+            throw new \InvalidArgumentException('non-nullable due_date cannot be null');
+        }
+
+        if ((!preg_match("/\\d{4}-\\d{2}-\\d{2}/", $due_date))) {
+            throw new \InvalidArgumentException("invalid value for \$due_date when calling Entry., must conform to the pattern /\\d{4}-\\d{2}-\\d{2}/.");
+        }
+
+        $this->container['due_date'] = $due_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets departmental_distribution
+     *
+     * @return \EconomicRest\Model\DepartmentalDistributionHandler|null
+     */
+    public function getDepartmentalDistribution()
+    {
+        return $this->container['departmental_distribution'];
+    }
+
+    /**
+     * Sets departmental_distribution
+     *
+     * @param \EconomicRest\Model\DepartmentalDistributionHandler|null $departmental_distribution departmental_distribution
+     *
+     * @return self
+     */
+    public function setDepartmentalDistribution($departmental_distribution)
+    {
+        if (is_null($departmental_distribution)) {
+            throw new \InvalidArgumentException('non-nullable departmental_distribution cannot be null');
+        }
+        $this->container['departmental_distribution'] = $departmental_distribution;
+
+        return $this;
+    }
+
+    /**
+     * Gets project
+     *
+     * @return \EconomicRest\Model\ProjectHandler|null
+     */
+    public function getProject()
+    {
+        return $this->container['project'];
+    }
+
+    /**
+     * Sets project
+     *
+     * @param \EconomicRest\Model\ProjectHandler|null $project project
+     *
+     * @return self
+     */
+    public function setProject($project)
+    {
+        if (is_null($project)) {
+            throw new \InvalidArgumentException('non-nullable project cannot be null');
+        }
+        $this->container['project'] = $project;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_type
+     *
+     * @return \EconomicRest\Model\CostTypeHandler|null
+     */
+    public function getCostType()
+    {
+        return $this->container['cost_type'];
+    }
+
+    /**
+     * Sets cost_type
+     *
+     * @param \EconomicRest\Model\CostTypeHandler|null $cost_type cost_type
+     *
+     * @return self
+     */
+    public function setCostType($cost_type)
+    {
+        if (is_null($cost_type)) {
+            throw new \InvalidArgumentException('non-nullable cost_type cannot be null');
+        }
+        $this->container['cost_type'] = $cost_type;
+
+        return $this;
+    }
+
+    /**
      * Gets entry_number
      *
      * @return int|null
@@ -700,6 +929,195 @@ class Entry implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets vat_account
+     *
+     * @return \EconomicRest\Model\VatAccountHandler|null
+     */
+    public function getVatAccount()
+    {
+        return $this->container['vat_account'];
+    }
+
+    /**
+     * Sets vat_account
+     *
+     * @param \EconomicRest\Model\VatAccountHandler|null $vat_account vat_account
+     *
+     * @return self
+     */
+    public function setVatAccount($vat_account)
+    {
+        if (is_null($vat_account)) {
+            throw new \InvalidArgumentException('non-nullable vat_account cannot be null');
+        }
+        $this->container['vat_account'] = $vat_account;
+
+        return $this;
+    }
+
+    /**
+     * Gets customer
+     *
+     * @return \EconomicRest\Model\CustomerHandler|null
+     */
+    public function getCustomer()
+    {
+        return $this->container['customer'];
+    }
+
+    /**
+     * Sets customer
+     *
+     * @param \EconomicRest\Model\CustomerHandler|null $customer customer
+     *
+     * @return self
+     */
+    public function setCustomer($customer)
+    {
+        if (is_null($customer)) {
+            throw new \InvalidArgumentException('non-nullable customer cannot be null');
+        }
+        $this->container['customer'] = $customer;
+
+        return $this;
+    }
+
+    /**
+     * Gets supplier
+     *
+     * @return \EconomicRest\Model\SupplierHandler|null
+     */
+    public function getSupplier()
+    {
+        return $this->container['supplier'];
+    }
+
+    /**
+     * Sets supplier
+     *
+     * @param \EconomicRest\Model\SupplierHandler|null $supplier supplier
+     *
+     * @return self
+     */
+    public function setSupplier($supplier)
+    {
+        if (is_null($supplier)) {
+            throw new \InvalidArgumentException('non-nullable supplier cannot be null');
+        }
+        $this->container['supplier'] = $supplier;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit1
+     *
+     * @return \EconomicRest\Model\UnitHandler|null
+     */
+    public function getUnit1()
+    {
+        return $this->container['unit1'];
+    }
+
+    /**
+     * Sets unit1
+     *
+     * @param \EconomicRest\Model\UnitHandler|null $unit1 unit1
+     *
+     * @return self
+     */
+    public function setUnit1($unit1)
+    {
+        if (is_null($unit1)) {
+            throw new \InvalidArgumentException('non-nullable unit1 cannot be null');
+        }
+        $this->container['unit1'] = $unit1;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit2
+     *
+     * @return \EconomicRest\Model\UnitHandler|null
+     */
+    public function getUnit2()
+    {
+        return $this->container['unit2'];
+    }
+
+    /**
+     * Sets unit2
+     *
+     * @param \EconomicRest\Model\UnitHandler|null $unit2 unit2
+     *
+     * @return self
+     */
+    public function setUnit2($unit2)
+    {
+        if (is_null($unit2)) {
+            throw new \InvalidArgumentException('non-nullable unit2 cannot be null');
+        }
+        $this->container['unit2'] = $unit2;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity1
+     *
+     * @return float|null
+     */
+    public function getQuantity1()
+    {
+        return $this->container['quantity1'];
+    }
+
+    /**
+     * Sets quantity1
+     *
+     * @param float|null $quantity1 Requires dimension module.
+     *
+     * @return self
+     */
+    public function setQuantity1($quantity1)
+    {
+        if (is_null($quantity1)) {
+            throw new \InvalidArgumentException('non-nullable quantity1 cannot be null');
+        }
+        $this->container['quantity1'] = $quantity1;
+
+        return $this;
+    }
+
+    /**
+     * Gets quantity2
+     *
+     * @return float|null
+     */
+    public function getQuantity2()
+    {
+        return $this->container['quantity2'];
+    }
+
+    /**
+     * Sets quantity2
+     *
+     * @param float|null $quantity2 Requires dimension module.
+     *
+     * @return self
+     */
+    public function setQuantity2($quantity2)
+    {
+        if (is_null($quantity2)) {
+            throw new \InvalidArgumentException('non-nullable quantity2 cannot be null');
+        }
+        $this->container['quantity2'] = $quantity2;
+
+        return $this;
+    }
+
+    /**
      * Gets voucher_number
      *
      * @return int|null
@@ -722,6 +1140,141 @@ class Entry implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable voucher_number cannot be null');
         }
         $this->container['voucher_number'] = $voucher_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets booked_invoice
+     *
+     * @return \EconomicRest\Model\BookedInvoiceHandler|null
+     */
+    public function getBookedInvoice()
+    {
+        return $this->container['booked_invoice'];
+    }
+
+    /**
+     * Sets booked_invoice
+     *
+     * @param \EconomicRest\Model\BookedInvoiceHandler|null $booked_invoice booked_invoice
+     *
+     * @return self
+     */
+    public function setBookedInvoice($booked_invoice)
+    {
+        if (is_null($booked_invoice)) {
+            throw new \InvalidArgumentException('non-nullable booked_invoice cannot be null');
+        }
+        $this->container['booked_invoice'] = $booked_invoice;
+
+        return $this;
+    }
+
+    /**
+     * Gets invoice_number
+     *
+     * @return string|null
+     */
+    public function getInvoiceNumber()
+    {
+        return $this->container['invoice_number'];
+    }
+
+    /**
+     * Sets invoice_number
+     *
+     * @param string|null $invoice_number Unique identifier for reminders and invoices.
+     *
+     * @return self
+     */
+    public function setInvoiceNumber($invoice_number)
+    {
+        if (is_null($invoice_number)) {
+            throw new \InvalidArgumentException('non-nullable invoice_number cannot be null');
+        }
+        $this->container['invoice_number'] = $invoice_number;
+
+        return $this;
+    }
+
+    /**
+     * Gets remainder
+     *
+     * @return float|null
+     */
+    public function getRemainder()
+    {
+        return $this->container['remainder'];
+    }
+
+    /**
+     * Sets remainder
+     *
+     * @param float|null $remainder The remainder on the entry.
+     *
+     * @return self
+     */
+    public function setRemainder($remainder)
+    {
+        if (is_null($remainder)) {
+            throw new \InvalidArgumentException('non-nullable remainder cannot be null');
+        }
+        $this->container['remainder'] = $remainder;
+
+        return $this;
+    }
+
+    /**
+     * Gets remainder_in_base_currency
+     *
+     * @return float|null
+     */
+    public function getRemainderInBaseCurrency()
+    {
+        return $this->container['remainder_in_base_currency'];
+    }
+
+    /**
+     * Sets remainder_in_base_currency
+     *
+     * @param float|null $remainder_in_base_currency The remainder in base currency on the entry.
+     *
+     * @return self
+     */
+    public function setRemainderInBaseCurrency($remainder_in_base_currency)
+    {
+        if (is_null($remainder_in_base_currency)) {
+            throw new \InvalidArgumentException('non-nullable remainder_in_base_currency cannot be null');
+        }
+        $this->container['remainder_in_base_currency'] = $remainder_in_base_currency;
+
+        return $this;
+    }
+
+    /**
+     * Gets payment_details
+     *
+     * @return \EconomicRest\Model\PaymentDetailsHandler|null
+     */
+    public function getPaymentDetails()
+    {
+        return $this->container['payment_details'];
+    }
+
+    /**
+     * Sets payment_details
+     *
+     * @param \EconomicRest\Model\PaymentDetailsHandler|null $payment_details payment_details
+     *
+     * @return self
+     */
+    public function setPaymentDetails($payment_details)
+    {
+        if (is_null($payment_details)) {
+            throw new \InvalidArgumentException('non-nullable payment_details cannot be null');
+        }
+        $this->container['payment_details'] = $payment_details;
 
         return $this;
     }

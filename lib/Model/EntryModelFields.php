@@ -45,10 +45,26 @@ class EntryModelFields
     public string $strAmountInBaseCurrency = 'amountInBaseCurrency';
     public string $strCurrency = 'currency';
     public string $strDate = 'date';
+    public string $strDueDate = 'dueDate';
+    public string $strDepartmentalDistribution = 'departmentalDistribution';
+    public string $strProject = 'project';
+    public string $strCostType = 'costType';
     public string $strEntryNumber = 'entryNumber';
     public string $strText = 'text';
     public string $strEntryType = 'entryType';
+    public string $strVatAccount = 'vatAccount';
+    public string $strCustomer = 'customer';
+    public string $strSupplier = 'supplier';
+    public string $strUnit1 = 'unit1';
+    public string $strUnit2 = 'unit2';
+    public string $strQuantity1 = 'quantity1';
+    public string $strQuantity2 = 'quantity2';
     public string $strVoucherNumber = 'voucherNumber';
+    public string $strBookedInvoice = 'bookedInvoice';
+    public string $strInvoiceNumber = 'invoiceNumber';
+    public string $strRemainder = 'remainder';
+    public string $strRemainderInBaseCurrency = 'remainderInBaseCurrency';
+    public string $strPaymentDetails = 'paymentDetails';
     public string $strSelf = 'self';
 }
 
