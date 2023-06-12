@@ -2108,14 +2108,26 @@ components:
           type: number
           description: The total entry amount in base currency.
         currency:
-            type: string
-            pattern: "[a-zA-Z]{3}"
-            description: The ISO 4217 currency code of the entry.
+          type: string
+          pattern: "[a-zA-Z]{3}"
+          description: The ISO 4217 currency code of the entry.
         date:
           type: string
           format: full-date
           pattern: "\\d{4}-\\d{2}-\\d{2}"
           description: Entry issue date. The date is formatted according to ISO-8601(YYYY-MM-DD).
+        dueDate:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: The date the invoice is due for payment. Format according to
+            ISO-8601 (YYYY-MM-DD).
+        departmentalDistribution:
+          $ref: '#/components/schemas/DepartmentalDistributionHandler'
+        project:
+          $ref: '#/components/schemas/ProjectHandler'
+        costType:
+          $ref: '#/components/schemas/CostTypeHandler'
         entryNumber:
           type: integer
           description: The unique identifier of the entry line.
@@ -2136,9 +2148,38 @@ components:
             - systemEntry
             - manualDebtorInvoice
           description: The type of entry.
+        vatAccount:
+          $ref: '#/components/schemas/VatAccountHandler'
+        customer:
+          $ref: '#/components/schemas/CustomerHandler'
+        supplier:
+          $ref: '#/components/schemas/SupplierHandler'
+        unit1:
+          $ref: '#/components/schemas/UnitHandler'
+        unit2:
+          $ref: '#/components/schemas/UnitHandler'
+        quantity1:
+          type: number
+          description: Requires dimension module.
+        quantity2:
+          type: number
+          description: Requires dimension module.
         voucherNumber:
           type: integer
           description: The identifier of the voucher this entry belongs to.
+        bookedInvoice:
+          $ref: '#/components/schemas/BookedInvoiceHandler'
+        invoiceNumber:
+          type: string
+          description: Unique identifier for reminders and invoices.
+        remainder:
+          type: number
+          description: The remainder on the entry.
+        remainderInBaseCurrency:
+          type: number
+          description: The remainder in base currency on the entry.
+        paymentDetails:
+          $ref: '#/components/schemas/PaymentDetailsHandler'
         self:
           type: string
           format: uri
@@ -2779,6 +2820,18 @@ components:
           format: uri
           description: A unique link reference to the cost type.
 
+    VatAccountHandler:
+      type: object
+      description: The account for VAT.
+      properties:
+        vatCode:
+          type: string
+          description: The unique identifier of the vat account.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the vatAccount item.
+
     CurrencyHandler:
       type: object
       description: A currency handler.
@@ -2810,6 +2863,19 @@ components:
           format: uri
           description: A unique reference to the departmental distribution
             resource.
+
+    ProjectHandler:
+      type: object
+      description: A reference to any project this entry might be related to.
+        This requires the projects module to be enabled.
+      properties:
+        projectNumber:
+          type: integer
+          description: A unique identifier of the project.
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the project resource.
 
     VoucherHandler:
       type: object
@@ -2851,4 +2917,100 @@ components:
           type: string
           format: uri
           description: A unique self reference of the supplier.
+
+    UnitHandler:
+      type: object
+      description: The first unit of measure applied to the entry. Requires dimension
+        module.
+      properties:
+        unitNumber:
+          type: integer
+          description: The unique identifier of the unit.
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the unit resource.
+
+    BookedInvoiceHandler:
+      type: object
+      description: A refernce to any booked Invoice this entry might be related
+        to.
+      properties:
+        bookedInvoiceNumber:
+          type: integer
+          description: A unique identifier of the booked invoice.
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the booked invoice resource.
+
+    PaymentDetailsHandler:
+      type: object
+      description: Payment details associated with the supplier invoice. Each
+        payment detail contains two keys that are required. For the +71 type,
+        fiSupplierNo and ocrLine is expected. For the +73 type, fiSupplierNo and
+        message is expected. For the +04 type, giroAccount and ocrLine is expected.
+        For the bank transfer type, accountNo and message is expected. For the
+        IBAN type, ibanSwift and message is expected. For the +75 type, fiSupplierNo
+        and ocrLineMessage is expected. Please refer to the schema for validation
+        rules details.
+      properties:
+        paymentType:
+          $ref: '#/components/schemas/PaymentTypeHandler'
+
+    PaymentTypeHandler:
+      type: object
+      description: A specific payment type on the entry.
+      oneOf:
+        - properties:
+            fiSupplierNo:
+              type: string
+            ocrLine:
+              type: string
+              minLength: 15
+              maxLength: 15
+        - properties:
+            fiSupplierNo:
+              type: string
+            message:
+              type: string
+              minLength: 5
+              maxLength: 100
+        - properties:
+            giroAccount:
+              type: string
+            ocrLine:
+              type: string
+              minLength: 16
+              maxLength: 16
+        - properties:
+            accountNo:
+              type: string
+            message:
+              type: string
+              minLength: 5
+              maxLength: 100
+        - properties:
+            ibanSwift:
+              type: string
+            message:
+              type: string
+              minLength: 5
+              maxLength: 100
+        - properties:
+            fiSupplierNo:
+              type: string
+            ocrLineMessage:
+              type: string
+              minLength: 16
+              maxLength: 157
+      properties:
+        paymentTypeNumber:
+          type: integer
+          description: The payment type number is a positive unique numerical
+            identifier.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the payment type item.
     #endregion
