@@ -980,7 +980,7 @@ paths:
         - Supplier
       responses:
         200:
-          description: Search Suppliers Response
+          description: Get Suppliers Response
           content:
             application/json:
               schema:
