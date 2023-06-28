@@ -7,6 +7,7 @@ docs/Api/AccountingYearsApi.md
 docs/Api/AccountsApi.md
 docs/Api/CompanyApi.md
 docs/Api/CustomerApi.md
+docs/Api/EntriesApi.md
 docs/Api/JournalEntriesApi.md
 docs/Api/JournalVouchersApi.md
 docs/Api/JournalsApi.md
@@ -131,6 +132,7 @@ lib/Api/AccountingYearsApi.php
 lib/Api/AccountsApi.php
 lib/Api/CompanyApi.php
 lib/Api/CustomerApi.php
+lib/Api/EntriesApi.php
 lib/Api/JournalEntriesApi.php
 lib/Api/JournalVouchersApi.php
 lib/Api/JournalsApi.php
@@ -484,6 +486,7 @@ test/Api/AccountingYearsApiTest.php
 test/Api/AccountsApiTest.php
 test/Api/CompanyApiTest.php
 test/Api/CustomerApiTest.php
+test/Api/EntriesApiTest.php
 test/Api/JournalEntriesApiTest.php
 test/Api/JournalVouchersApiTest.php
 test/Api/JournalsApiTest.php

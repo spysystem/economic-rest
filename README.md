@@ -104,6 +104,7 @@ Class | Method | HTTP request | Description
 *CustomerApi* | [**searchCustomers**](docs/Api/CustomerApi.md#searchcustomers) | **GET** /customers | 
 *CustomerApi* | [**updateCustomer**](docs/Api/CustomerApi.md#updatecustomer) | **PUT** /customers/{id} | 
 *CustomerApi* | [**updateCustomerGroup**](docs/Api/CustomerApi.md#updatecustomergroup) | **PUT** /customer-groups/{id} | 
+*EntriesApi* | [**getEntry**](docs/Api/EntriesApi.md#getentry) | **GET** /entries/{id} | 
 *JournalEntriesApi* | [**searchEntries**](docs/Api/JournalEntriesApi.md#searchentries) | **GET** /journals/{id}/entries | 
 *JournalVouchersApi* | [**createVoucher**](docs/Api/JournalVouchersApi.md#createvoucher) | **POST** /journals/{journalId}/vouchers | 
 *JournalVouchersApi* | [**searchVouchers**](docs/Api/JournalVouchersApi.md#searchvouchers) | **GET** /journals/{journalId}/vouchers | 
