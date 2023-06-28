@@ -1,6 +1,6 @@
 <?php
 /**
- * VoucherHandlerTest
+ * SearchJournalEntriesResponseAllOfTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace EconomicRest\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * VoucherHandlerTest Class Doc Comment
+ * SearchJournalEntriesResponseAllOfTest Class Doc Comment
  *
  * @category    Class
- * @description Voucher handler
+ * @description SearchJournalEntriesResponseAllOf
  * @package     EconomicRest
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class VoucherHandlerTest extends TestCase
+class SearchJournalEntriesResponseAllOfTest extends TestCase
 {
 
     /**
@@ -71,36 +71,18 @@ class VoucherHandlerTest extends TestCase
     }
 
     /**
-     * Test "VoucherHandler"
+     * Test "SearchJournalEntriesResponseAllOf"
      */
-    public function testVoucherHandler()
+    public function testSearchJournalEntriesResponseAllOf()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "voucher_number"
+     * Test attribute "collection"
      */
-    public function testPropertyVoucherNumber()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "accounting_year"
-     */
-    public function testPropertyAccountingYear()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "self"
-     */
-    public function testPropertySelf()
+    public function testPropertyCollection()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

@@ -1,6 +1,6 @@
 <?php
 /**
- * VoucherHandlerModelFields
+ * JournalEntryTemplateHandlerModelFields
  *
  * PHP version 7.2
  *
@@ -29,18 +29,19 @@
 namespace EconomicRest\Model;
 
 /**
- * VoucherHandlerModelFields Class Doc Comment
+ * JournalEntryTemplateHandlerModelFields Class Doc Comment
  *
  * @category Class
- * @description Voucher handler
+ * @description Templates allowing easy entry creation, its existance depends on the type of the entry.
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class VoucherHandlerModelFields
+class JournalEntryTemplateHandlerModelFields
 {
-    public string $strVoucherNumber = 'voucherNumber';
-    public string $strAccountingYear = 'accountingYear';
-    public string $strSelf = 'self';
+    public string $strCustomerPayment = 'customerPayment';
+    public string $strAccount = 'account';
+    public string $strContraAccount = 'contraAccount';
+    public string $strAccountAndContraAccount = 'accountAndContraAccount';
 }
 

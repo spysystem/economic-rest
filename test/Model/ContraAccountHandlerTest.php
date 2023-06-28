@@ -1,6 +1,6 @@
 <?php
 /**
- * VoucherHandlerTest
+ * ContraAccountHandlerTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace EconomicRest\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * VoucherHandlerTest Class Doc Comment
+ * ContraAccountHandlerTest Class Doc Comment
  *
  * @category    Class
- * @description Voucher handler
+ * @description ContraAccountHandler
  * @package     EconomicRest
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class VoucherHandlerTest extends TestCase
+class ContraAccountHandlerTest extends TestCase
 {
 
     /**
@@ -71,27 +71,18 @@ class VoucherHandlerTest extends TestCase
     }
 
     /**
-     * Test "VoucherHandler"
+     * Test "ContraAccountHandler"
      */
-    public function testVoucherHandler()
+    public function testContraAccountHandler()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "voucher_number"
+     * Test attribute "account_number"
      */
-    public function testPropertyVoucherNumber()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "accounting_year"
-     */
-    public function testPropertyAccountingYear()
+    public function testPropertyAccountNumber()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

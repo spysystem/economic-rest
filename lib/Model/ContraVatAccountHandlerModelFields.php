@@ -1,6 +1,6 @@
 <?php
 /**
- * VoucherHandlerModelFields
+ * ContraVatAccountHandlerModelFields
  *
  * PHP version 7.2
  *
@@ -29,18 +29,17 @@
 namespace EconomicRest\Model;
 
 /**
- * VoucherHandlerModelFields Class Doc Comment
+ * ContraVatAccountHandlerModelFields Class Doc Comment
  *
  * @category Class
- * @description Voucher handler
+ * @description The account for VAT.
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class VoucherHandlerModelFields
+class ContraVatAccountHandlerModelFields
 {
-    public string $strVoucherNumber = 'voucherNumber';
-    public string $strAccountingYear = 'accountingYear';
+    public string $strVatCode = 'vatCode';
     public string $strSelf = 'self';
 }
 

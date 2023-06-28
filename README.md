@@ -104,6 +104,7 @@ Class | Method | HTTP request | Description
 *CustomerApi* | [**searchCustomers**](docs/Api/CustomerApi.md#searchcustomers) | **GET** /customers | 
 *CustomerApi* | [**updateCustomer**](docs/Api/CustomerApi.md#updatecustomer) | **PUT** /customers/{id} | 
 *CustomerApi* | [**updateCustomerGroup**](docs/Api/CustomerApi.md#updatecustomergroup) | **PUT** /customer-groups/{id} | 
+*JournalEntriesApi* | [**searchEntries**](docs/Api/JournalEntriesApi.md#searchentries) | **GET** /journals/{id}/entries | 
 *JournalVouchersApi* | [**createVoucher**](docs/Api/JournalVouchersApi.md#createvoucher) | **POST** /journals/{journalId}/vouchers | 
 *JournalVouchersApi* | [**searchVouchers**](docs/Api/JournalVouchersApi.md#searchvouchers) | **GET** /journals/{journalId}/vouchers | 
 *JournalsApi* | [**getJournal**](docs/Api/JournalsApi.md#getjournal) | **GET** /journals/{id} | 
@@ -130,6 +131,8 @@ Class | Method | HTTP request | Description
 - [BookedInvoiceHandler](docs/Model/BookedInvoiceHandler.md)
 - [Company](docs/Model/Company.md)
 - [CompanySettings](docs/Model/CompanySettings.md)
+- [ContraAccountHandler](docs/Model/ContraAccountHandler.md)
+- [ContraVatAccountHandler](docs/Model/ContraVatAccountHandler.md)
 - [CostTypeHandler](docs/Model/CostTypeHandler.md)
 - [CurrencyHandler](docs/Model/CurrencyHandler.md)
 - [Customer](docs/Model/Customer.md)
@@ -144,12 +147,15 @@ Class | Method | HTTP request | Description
 - [DepartmentalDistribution](docs/Model/DepartmentalDistribution.md)
 - [DepartmentalDistributionHandler](docs/Model/DepartmentalDistributionHandler.md)
 - [Distribution](docs/Model/Distribution.md)
+- [EmployeeHandler](docs/Model/EmployeeHandler.md)
 - [Entry](docs/Model/Entry.md)
 - [Error](docs/Model/Error.md)
 - [FinanceVoucherEntry](docs/Model/FinanceVoucherEntry.md)
 - [GetCompanySettingsResponse](docs/Model/GetCompanySettingsResponse.md)
 - [Journal](docs/Model/Journal.md)
 - [JournalContraAccounts](docs/Model/JournalContraAccounts.md)
+- [JournalEntry](docs/Model/JournalEntry.md)
+- [JournalEntryTemplateHandler](docs/Model/JournalEntryTemplateHandler.md)
 - [JournalHandler](docs/Model/JournalHandler.md)
 - [JournalSettings](docs/Model/JournalSettings.md)
 - [JournalTemplates](docs/Model/JournalTemplates.md)
@@ -188,6 +194,8 @@ Class | Method | HTTP request | Description
 - [SearchDepartmentalDistributionsResponseAllOf](docs/Model/SearchDepartmentalDistributionsResponseAllOf.md)
 - [SearchDepartmentsResponse](docs/Model/SearchDepartmentsResponse.md)
 - [SearchDepartmentsResponseAllOf](docs/Model/SearchDepartmentsResponseAllOf.md)
+- [SearchJournalEntriesResponse](docs/Model/SearchJournalEntriesResponse.md)
+- [SearchJournalEntriesResponseAllOf](docs/Model/SearchJournalEntriesResponseAllOf.md)
 - [SearchJournalsResponse](docs/Model/SearchJournalsResponse.md)
 - [SearchJournalsResponseAllOf](docs/Model/SearchJournalsResponseAllOf.md)
 - [SearchPaymentTermsResponse](docs/Model/SearchPaymentTermsResponse.md)

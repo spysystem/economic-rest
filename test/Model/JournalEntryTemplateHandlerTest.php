@@ -1,6 +1,6 @@
 <?php
 /**
- * VoucherHandlerTest
+ * JournalEntryTemplateHandlerTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace EconomicRest\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * VoucherHandlerTest Class Doc Comment
+ * JournalEntryTemplateHandlerTest Class Doc Comment
  *
  * @category    Class
- * @description Voucher handler
+ * @description Templates allowing easy entry creation, its existance depends on the type of the entry.
  * @package     EconomicRest
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class VoucherHandlerTest extends TestCase
+class JournalEntryTemplateHandlerTest extends TestCase
 {
 
     /**
@@ -71,36 +71,45 @@ class VoucherHandlerTest extends TestCase
     }
 
     /**
-     * Test "VoucherHandler"
+     * Test "JournalEntryTemplateHandler"
      */
-    public function testVoucherHandler()
+    public function testJournalEntryTemplateHandler()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "voucher_number"
+     * Test attribute "customer_payment"
      */
-    public function testPropertyVoucherNumber()
+    public function testPropertyCustomerPayment()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "accounting_year"
+     * Test attribute "account"
      */
-    public function testPropertyAccountingYear()
+    public function testPropertyAccount()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "self"
+     * Test attribute "contra_account"
      */
-    public function testPropertySelf()
+    public function testPropertyContraAccount()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "account_and_contra_account"
+     */
+    public function testPropertyAccountAndContraAccount()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

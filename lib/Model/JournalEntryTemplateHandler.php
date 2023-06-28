@@ -1,6 +1,6 @@
 <?php
 /**
- * VoucherHandler
+ * JournalEntryTemplateHandler
  *
  * PHP version 7.4
  *
@@ -32,37 +32,37 @@ use \ArrayAccess;
 use \EconomicRest\ObjectSerializer;
 
 /**
- * VoucherHandler Class Doc Comment
+ * JournalEntryTemplateHandler Class Doc Comment
  *
  * @category Class
- * @description Voucher handler
+ * @description Templates allowing easy entry creation, its existance depends on the type of the entry.
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
+class JournalEntryTemplateHandler implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
       * Return an object with the Model Fields
       *
-      * @return VoucherHandlerModelFields
+      * @return JournalEntryTemplateHandlerModelFields
       */
-    public static function GetModelFields(): VoucherHandlerModelFields
+    public static function GetModelFields(): JournalEntryTemplateHandlerModelFields
     {
-        return new VoucherHandlerModelFields();
+        return new JournalEntryTemplateHandlerModelFields();
     }
 
     /**
       * Return an object with the Model Attributes
       *
-      * @return VoucherHandlerModelAttributes
+      * @return JournalEntryTemplateHandlerModelAttributes
       */
-    public static function GetModelAttributes(): VoucherHandlerModelAttributes
+    public static function GetModelAttributes(): JournalEntryTemplateHandlerModelAttributes
     {
-        return new VoucherHandlerModelAttributes();
+        return new JournalEntryTemplateHandlerModelAttributes();
     }
 
     /**
@@ -70,7 +70,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'VoucherHandler';
+    protected static $openAPIModelName = 'JournalEntryTemplateHandler';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -78,9 +78,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'voucher_number' => 'float',
-        'accounting_year' => '\EconomicRest\Model\AccountingYearHandler',
-        'self' => 'string'
+        'customer_payment' => 'string',
+        'account' => 'string',
+        'contra_account' => 'string',
+        'account_and_contra_account' => 'string'
     ];
 
     /**
@@ -91,9 +92,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'voucher_number' => null,
-        'accounting_year' => null,
-        'self' => 'uri'
+        'customer_payment' => 'uri',
+        'account' => 'uri',
+        'contra_account' => 'uri',
+        'account_and_contra_account' => 'uri'
     ];
 
     /**
@@ -102,9 +104,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'voucher_number' => false,
-		'accounting_year' => false,
-		'self' => false
+        'customer_payment' => false,
+		'account' => false,
+		'contra_account' => false,
+		'account_and_contra_account' => false
     ];
 
     /**
@@ -193,9 +196,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'voucher_number' => 'voucherNumber',
-        'accounting_year' => 'accountingYear',
-        'self' => 'self'
+        'customer_payment' => 'customerPayment',
+        'account' => 'account',
+        'contra_account' => 'contraAccount',
+        'account_and_contra_account' => 'accountAndContraAccount'
     ];
 
     /**
@@ -204,9 +208,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'voucher_number' => 'setVoucherNumber',
-        'accounting_year' => 'setAccountingYear',
-        'self' => 'setSelf'
+        'customer_payment' => 'setCustomerPayment',
+        'account' => 'setAccount',
+        'contra_account' => 'setContraAccount',
+        'account_and_contra_account' => 'setAccountAndContraAccount'
     ];
 
     /**
@@ -215,9 +220,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'voucher_number' => 'getVoucherNumber',
-        'accounting_year' => 'getAccountingYear',
-        'self' => 'getSelf'
+        'customer_payment' => 'getCustomerPayment',
+        'account' => 'getAccount',
+        'contra_account' => 'getContraAccount',
+        'account_and_contra_account' => 'getAccountAndContraAccount'
     ];
 
     /**
@@ -277,9 +283,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('voucher_number', $data ?? [], null);
-        $this->setIfExists('accounting_year', $data ?? [], null);
-        $this->setIfExists('self', $data ?? [], null);
+        $this->setIfExists('customer_payment', $data ?? [], null);
+        $this->setIfExists('account', $data ?? [], null);
+        $this->setIfExists('contra_account', $data ?? [], null);
+        $this->setIfExists('account_and_contra_account', $data ?? [], null);
     }
 
     /**
@@ -309,10 +316,6 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['voucher_number']) && ($this->container['voucher_number'] < 1)) {
-            $invalidProperties[] = "invalid value for 'voucher_number', must be bigger than or equal to 1.";
-        }
-
         return $invalidProperties;
     }
 
@@ -329,87 +332,109 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets voucher_number
-     *
-     * @return float|null
-     */
-    public function getVoucherNumber()
-    {
-        return $this->container['voucher_number'];
-    }
-
-    /**
-     * Sets voucher_number
-     *
-     * @param float|null $voucher_number Journal voucher number that must be at least 1.
-     *
-     * @return self
-     */
-    public function setVoucherNumber($voucher_number)
-    {
-        if (is_null($voucher_number)) {
-            throw new \InvalidArgumentException('non-nullable voucher_number cannot be null');
-        }
-
-        if (($voucher_number < 1)) {
-            throw new \InvalidArgumentException('invalid value for $voucher_number when calling VoucherHandler., must be bigger than or equal to 1.');
-        }
-
-        $this->container['voucher_number'] = $voucher_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets accounting_year
-     *
-     * @return \EconomicRest\Model\AccountingYearHandler|null
-     */
-    public function getAccountingYear()
-    {
-        return $this->container['accounting_year'];
-    }
-
-    /**
-     * Sets accounting_year
-     *
-     * @param \EconomicRest\Model\AccountingYearHandler|null $accounting_year accounting_year
-     *
-     * @return self
-     */
-    public function setAccountingYear($accounting_year)
-    {
-        if (is_null($accounting_year)) {
-            throw new \InvalidArgumentException('non-nullable accounting_year cannot be null');
-        }
-        $this->container['accounting_year'] = $accounting_year;
-
-        return $this;
-    }
-
-    /**
-     * Gets self
+     * Gets customer_payment
      *
      * @return string|null
      */
-    public function getSelf()
+    public function getCustomerPayment()
     {
-        return $this->container['self'];
+        return $this->container['customer_payment'];
     }
 
     /**
-     * Sets self
+     * Sets customer_payment
      *
-     * @param string|null $self A unique link reference to the voucher item.
+     * @param string|null $customer_payment The unique reference to the finance voucher template
      *
      * @return self
      */
-    public function setSelf($self)
+    public function setCustomerPayment($customer_payment)
     {
-        if (is_null($self)) {
-            throw new \InvalidArgumentException('non-nullable self cannot be null');
+        if (is_null($customer_payment)) {
+            throw new \InvalidArgumentException('non-nullable customer_payment cannot be null');
         }
-        $this->container['self'] = $self;
+        $this->container['customer_payment'] = $customer_payment;
+
+        return $this;
+    }
+
+    /**
+     * Gets account
+     *
+     * @return string|null
+     */
+    public function getAccount()
+    {
+        return $this->container['account'];
+    }
+
+    /**
+     * Sets account
+     *
+     * @param string|null $account The unique reference to the finance voucher template using account
+     *
+     * @return self
+     */
+    public function setAccount($account)
+    {
+        if (is_null($account)) {
+            throw new \InvalidArgumentException('non-nullable account cannot be null');
+        }
+        $this->container['account'] = $account;
+
+        return $this;
+    }
+
+    /**
+     * Gets contra_account
+     *
+     * @return string|null
+     */
+    public function getContraAccount()
+    {
+        return $this->container['contra_account'];
+    }
+
+    /**
+     * Sets contra_account
+     *
+     * @param string|null $contra_account The unique reference to the finance voucher template using contra account
+     *
+     * @return self
+     */
+    public function setContraAccount($contra_account)
+    {
+        if (is_null($contra_account)) {
+            throw new \InvalidArgumentException('non-nullable contra_account cannot be null');
+        }
+        $this->container['contra_account'] = $contra_account;
+
+        return $this;
+    }
+
+    /**
+     * Gets account_and_contra_account
+     *
+     * @return string|null
+     */
+    public function getAccountAndContraAccount()
+    {
+        return $this->container['account_and_contra_account'];
+    }
+
+    /**
+     * Sets account_and_contra_account
+     *
+     * @param string|null $account_and_contra_account The unique reference to the finance voucher template using account and contra account
+     *
+     * @return self
+     */
+    public function setAccountAndContraAccount($account_and_contra_account)
+    {
+        if (is_null($account_and_contra_account)) {
+            throw new \InvalidArgumentException('non-nullable account_and_contra_account cannot be null');
+        }
+        $this->container['account_and_contra_account'] = $account_and_contra_account;
 
         return $this;
     }

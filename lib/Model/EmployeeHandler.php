@@ -1,6 +1,6 @@
 <?php
 /**
- * VoucherHandler
+ * EmployeeHandler
  *
  * PHP version 7.4
  *
@@ -32,37 +32,37 @@ use \ArrayAccess;
 use \EconomicRest\ObjectSerializer;
 
 /**
- * VoucherHandler Class Doc Comment
+ * EmployeeHandler Class Doc Comment
  *
  * @category Class
- * @description Voucher handler
+ * @description Employee that this entry is related to. Requires Project module
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
+class EmployeeHandler implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
       * Return an object with the Model Fields
       *
-      * @return VoucherHandlerModelFields
+      * @return EmployeeHandlerModelFields
       */
-    public static function GetModelFields(): VoucherHandlerModelFields
+    public static function GetModelFields(): EmployeeHandlerModelFields
     {
-        return new VoucherHandlerModelFields();
+        return new EmployeeHandlerModelFields();
     }
 
     /**
       * Return an object with the Model Attributes
       *
-      * @return VoucherHandlerModelAttributes
+      * @return EmployeeHandlerModelAttributes
       */
-    public static function GetModelAttributes(): VoucherHandlerModelAttributes
+    public static function GetModelAttributes(): EmployeeHandlerModelAttributes
     {
-        return new VoucherHandlerModelAttributes();
+        return new EmployeeHandlerModelAttributes();
     }
 
     /**
@@ -70,7 +70,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'VoucherHandler';
+    protected static $openAPIModelName = 'EmployeeHandler';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -78,8 +78,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'voucher_number' => 'float',
-        'accounting_year' => '\EconomicRest\Model\AccountingYearHandler',
+        'employee_number' => 'int',
         'self' => 'string'
     ];
 
@@ -91,8 +90,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'voucher_number' => null,
-        'accounting_year' => null,
+        'employee_number' => null,
         'self' => 'uri'
     ];
 
@@ -102,8 +100,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'voucher_number' => false,
-		'accounting_year' => false,
+        'employee_number' => false,
 		'self' => false
     ];
 
@@ -193,8 +190,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'voucher_number' => 'voucherNumber',
-        'accounting_year' => 'accountingYear',
+        'employee_number' => 'employeeNumber',
         'self' => 'self'
     ];
 
@@ -204,8 +200,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'voucher_number' => 'setVoucherNumber',
-        'accounting_year' => 'setAccountingYear',
+        'employee_number' => 'setEmployeeNumber',
         'self' => 'setSelf'
     ];
 
@@ -215,8 +210,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'voucher_number' => 'getVoucherNumber',
-        'accounting_year' => 'getAccountingYear',
+        'employee_number' => 'getEmployeeNumber',
         'self' => 'getSelf'
     ];
 
@@ -277,8 +271,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('voucher_number', $data ?? [], null);
-        $this->setIfExists('accounting_year', $data ?? [], null);
+        $this->setIfExists('employee_number', $data ?? [], null);
         $this->setIfExists('self', $data ?? [], null);
     }
 
@@ -309,8 +302,8 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['voucher_number']) && ($this->container['voucher_number'] < 1)) {
-            $invalidProperties[] = "invalid value for 'voucher_number', must be bigger than or equal to 1.";
+        if (!is_null($this->container['employee_number']) && ($this->container['employee_number'] < 1)) {
+            $invalidProperties[] = "invalid value for 'employee_number', must be bigger than or equal to 1.";
         }
 
         return $invalidProperties;
@@ -329,60 +322,33 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets voucher_number
+     * Gets employee_number
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getVoucherNumber()
+    public function getEmployeeNumber()
     {
-        return $this->container['voucher_number'];
+        return $this->container['employee_number'];
     }
 
     /**
-     * Sets voucher_number
+     * Sets employee_number
      *
-     * @param float|null $voucher_number Journal voucher number that must be at least 1.
+     * @param int|null $employee_number A unique numerical identifier with a maximum of 9 digits.
      *
      * @return self
      */
-    public function setVoucherNumber($voucher_number)
+    public function setEmployeeNumber($employee_number)
     {
-        if (is_null($voucher_number)) {
-            throw new \InvalidArgumentException('non-nullable voucher_number cannot be null');
+        if (is_null($employee_number)) {
+            throw new \InvalidArgumentException('non-nullable employee_number cannot be null');
         }
 
-        if (($voucher_number < 1)) {
-            throw new \InvalidArgumentException('invalid value for $voucher_number when calling VoucherHandler., must be bigger than or equal to 1.');
+        if (($employee_number < 1)) {
+            throw new \InvalidArgumentException('invalid value for $employee_number when calling EmployeeHandler., must be bigger than or equal to 1.');
         }
 
-        $this->container['voucher_number'] = $voucher_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets accounting_year
-     *
-     * @return \EconomicRest\Model\AccountingYearHandler|null
-     */
-    public function getAccountingYear()
-    {
-        return $this->container['accounting_year'];
-    }
-
-    /**
-     * Sets accounting_year
-     *
-     * @param \EconomicRest\Model\AccountingYearHandler|null $accounting_year accounting_year
-     *
-     * @return self
-     */
-    public function setAccountingYear($accounting_year)
-    {
-        if (is_null($accounting_year)) {
-            throw new \InvalidArgumentException('non-nullable accounting_year cannot be null');
-        }
-        $this->container['accounting_year'] = $accounting_year;
+        $this->container['employee_number'] = $employee_number;
 
         return $this;
     }
@@ -400,7 +366,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets self
      *
-     * @param string|null $self A unique link reference to the voucher item.
+     * @param string|null $self A unique link reference to the employee item.
      *
      * @return self
      */
