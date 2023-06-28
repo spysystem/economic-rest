@@ -18,6 +18,8 @@ tags:
   - name: PaymentTerm
   - name: Supplier
   - name: VatAccounts
+  - name: Entries
+  - name: VATZones
 
 security:
   - X-AppSecretToken: []
@@ -708,6 +710,41 @@ paths:
 
   #endregion
 
+  #region JournalEntries
+
+  /journals/{id}/entries:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: searchEntries
+      tags:
+        - JournalEntries
+      parameters:
+        - $ref: '#/components/parameters/filterParameter'
+        - $ref: '#/components/parameters/sortParameter'
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: search Vouchers Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchJournalEntriesResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+  #endregion
+
   #region JournalVouchers
 
   /journals/{journalId}/vouchers:
@@ -949,6 +986,7 @@ paths:
       tags:
         - Supplier
       parameters:
+        - $ref: '#/components/parameters/filterParameter'
         - $ref: '#/components/parameters/skipPagesParameter'
         - $ref: '#/components/parameters/pageSizeParameter'
       responses:
@@ -958,6 +996,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchSuppliersResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+    post:
+      operationId: createSuppliers
+      tags:
+        - Supplier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+      responses:
+        200:
+          description: Create Suppliers Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
         400:
           $ref: '#/components/responses/ErrorResponse'
         401:
@@ -997,6 +1063,122 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
         500:
           $ref: '#/components/responses/ErrorResponse'
+    put:
+      operationId: updateSupplier
+      tags:
+        - Supplier
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+      responses:
+        200:
+          description: Update Suppliers Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  #endregion
+
+  #region entries
+  /entries/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getEntry
+      tags:
+        - Entries
+      responses:
+        200:
+          description: Get Entry
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Entry'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+  #endregion
+
+  #region Vat-zones
+  /vat-zones:
+    get:
+      operationId: searchVATZones
+      tags:
+        - VATZones
+      parameters:
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search VAT Zones Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchVATZonesResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /vat-zones/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getVATZone
+      tags:
+        - VATZones
+      responses:
+        200:
+          description: get VAT Zone
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VATZone'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
   #endregion
 
 components:
@@ -1463,6 +1645,123 @@ components:
           $ref: '#/components/schemas/AccountHandler'
         financeVouchers:
           $ref: '#/components/schemas/AccountHandler'
+    #endregion
+    
+    #region JournalEntries
+    SearchJournalEntriesResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/JournalEntry'
+
+    JournalEntry:
+      type: object
+      description: A specific journal entry.
+      properties:
+        account:
+          $ref: '#/components/schemas/AccountHandler'
+        templates:
+          $ref: '#/components/schemas/JournalEntryTemplateHandler'
+        journal:
+          $ref: '#/components/schemas/JournalHandler'
+        customer:
+          $ref: '#/components/schemas/CustomerHandler'
+        customerInvoice:
+          type: integer
+          minimum: 1
+          description: Customer invoice number.
+        supplier:
+          $ref: '#/components/schemas/SupplierHandler'
+        supplierInvoiceNumber:
+          type: string
+          maxLength: 30
+          description: The unique identifier of the supplier invoice gotten from the
+            supplier.
+        paymentDetails:
+          $ref: '#/components/schemas/PaymentDetailsHandler'
+        dueDate:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: The date the entry is due for payment. Format according to
+            ISO-8601 (YYYY-MM-DD).
+        text:
+          type: string
+          description: Text on the entry
+        amount:
+          type: number
+        contraAccount:
+          $ref: '#/components/schemas/ContraAccountHandler'
+        contraVatAccount:
+          $ref: '#/components/schemas/contraVatAccountHandler'
+        contraVatAmount:
+          type: number
+          description: The amount of VAT on the entry on the contra account.
+        contraVatAmountInBaseCurrency:
+          type: number
+          description: The amount of VAT on the entry on the contra account in base
+            currency.
+        costType:
+          $ref: '#/components/schemas/CostTypeHandler'
+        currency:
+          $ref: '#/components/schemas/CurrencyHandler'
+        date:
+          type: string
+          format: full-date
+          pattern: "\\d{4}-\\d{2}-\\d{2}"
+          description: Entry date. Format according to ISO-8601 (YYYY-MM-DD).
+        departmentalDistribution:
+          $ref: '#/components/schemas/DepartmentalDistributionHandler'
+        employee:
+          $ref: '#/components/schemas/EmployeeHandler'
+        exchangeRate:
+          type: number
+          description: The exchange rate between the base currency and the invoice
+            currency.
+        entryType:
+          enum:
+            - financeVoucher
+            - supplierInvoice
+            - supplierPayment
+            - customerPayment
+            - manualCustomerInvoice
+          description: Entry type of the entry.
+        voucher:
+          $ref: '#/components/schemas/VoucherHandler'
+        project:
+          $ref: '#/components/schemas/ProjectHandler'
+        amountDefaultCurrency:
+          type: number
+          description: The amount of VAT on the entry on the contra account in base
+            currency.
+        remainder:
+          type: number
+          description: Remaining amount to be paid.
+        remainderInDefaultCurrency:
+          type: number
+          description: Remaining amount to be paid in default currency.
+        journalEntryNumber:
+          type: integer
+          description: Unique journal number
+        quantity1:
+          type: number
+          description: Requires dimension module.
+        quantity2:
+          type: number
+          description: Requires dimension module.
+        unit1:
+          $ref: '#/components/schemas/UnitHandler'
+        unit2:
+          $ref: '#/components/schemas/UnitHandler'
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the entry.
+
     #endregion
 
     #region JournalVouchers
@@ -2696,17 +2995,7 @@ components:
           maximum: 999999999
           minimum: 1
         vatZone:
-          type: object
-          description: Indicates whether the supplier is located domestically, in Europe
-            or elsewhere abroad
-          properties:
-            vatZoneNumber:
-              type: integer
-              description: Unique identifier of the vat zone.
-            self:
-              type: string
-              format: uri
-              description: A unique reference to the vat zone.
+          $ref: '#/components/schemas/VatZoneHandler'
         zip:
           type: string
           maxLength: 10
@@ -2715,6 +3004,39 @@ components:
           type: string
           description: A unique self reference of the supplier.
 
+    #endregion
+
+    #region VATZones
+    SearchVATZonesResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/VATZone'
+    VATZone:
+      type: object
+      description: A schema for retrieval of a single vat zone.
+      properties:
+        vatZoneNumber:
+          type: integer
+          description: A unique identifier of the vat zone.
+        name:
+          type: string
+          maxLength: 50
+          description: The name of the vat zone.
+        enabledForCustomer:
+          type: boolean
+          description: If this value is true, then the vat zone can be used for a customer.
+        enabledForSupplier:
+          type: boolean
+          description: If this value is true, then the vat zone can be used for a supplier.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the vat zone item.
     #endregion
 
     #region Handlers
@@ -2885,6 +3207,8 @@ components:
           type: number
           minimum: 1
           description: Journal voucher number that must be at least 1.
+        accountingYear:
+          $ref: '#/components/schemas/AccountingYearHandler'
         self:
           type: string
           format: uri
@@ -3013,4 +3337,68 @@ components:
           type: string
           format: uri
           description: A unique link reference to the payment type item.
+        
+    JournalEntryTemplateHandler:
+      type: object
+      description: Templates allowing easy entry creation, its existance depends
+         on the type of the entry.
+      properties:
+        customerPayment:
+          type: string
+          format: uri
+          description: The unique reference to the finance voucher template
+        account:
+          type: string
+          format: uri
+          description: The unique reference to the finance voucher template using
+            account
+        contraAccount:
+          type: string
+          format: uri
+          description: The unique reference to the finance voucher template using
+            contra account
+        accountAndContraAccount:
+          type: string
+          format: uri
+          description: The unique reference to the finance voucher template using
+            account and contra account
+
+    ContraAccountHandler:
+      type: object
+      properties:
+        accountNumber:
+          type: integer
+          minimum: 1
+          description: The account number.
+        self:
+          type: string
+          format: uri
+          description: A unique reference to the account resource.
+
+    contraVatAccountHandler:
+      type: object
+      description: The account for VAT.
+      properties:
+        vatCode:
+          type: string
+          maxLength: 5
+          description: The unique identifier of the contra vat account.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the contraVatAccount item.
+
+    EmployeeHandler:
+      type: object
+      description: Employee that this entry is related to. Requires Project module
+      properties:
+        employeeNumber:
+          type: integer
+          minimum: 1
+          description: A unique numerical identifier with a maximum of 9 digits.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the employee item.
+
     #endregion
