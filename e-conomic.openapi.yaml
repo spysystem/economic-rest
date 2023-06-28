@@ -18,6 +18,7 @@ tags:
   - name: PaymentTerm
   - name: Supplier
   - name: VatAccounts
+  - name: Entries
 
 security:
   - X-AppSecretToken: []
@@ -1020,6 +1021,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Supplier'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+  #endregion
+
+  #region entries
+  /entries/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getEntry
+      tags:
+        - Entries
+      responses:
+        200:
+          description: Get Entry
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Entry'
         400:
           $ref: '#/components/responses/ErrorResponse'
         401:
