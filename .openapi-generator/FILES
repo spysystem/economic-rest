@@ -13,6 +13,7 @@ docs/Api/JournalVouchersApi.md
 docs/Api/JournalsApi.md
 docs/Api/PaymentTermApi.md
 docs/Api/SupplierApi.md
+docs/Api/VATZonesApi.md
 docs/Api/VatAccountApi.md
 docs/Api/VatAccountsApi.md
 docs/Model/Account.md
@@ -97,6 +98,8 @@ docs/Model/SearchPaymentTermsResponse.md
 docs/Model/SearchPaymentTermsResponseAllOf.md
 docs/Model/SearchSuppliersResponse.md
 docs/Model/SearchSuppliersResponseAllOf.md
+docs/Model/SearchVATZonesResponse.md
+docs/Model/SearchVATZonesResponseAllOf.md
 docs/Model/SearchVatAccountsResponse.md
 docs/Model/SearchVatAccountsResponseAllOf.md
 docs/Model/SearchVouchersResponse.md
@@ -117,6 +120,7 @@ docs/Model/SupplierSupplierGroup.md
 docs/Model/SupplierVatZone.md
 docs/Model/UnitHandler.md
 docs/Model/User.md
+docs/Model/VATZone.md
 docs/Model/VatAccount.md
 docs/Model/VatAccountAccount.md
 docs/Model/VatAccountContraAccount.md
@@ -138,6 +142,7 @@ lib/Api/JournalVouchersApi.php
 lib/Api/JournalsApi.php
 lib/Api/PaymentTermApi.php
 lib/Api/SupplierApi.php
+lib/Api/VATZonesApi.php
 lib/Api/VatAccountApi.php
 lib/Api/VatAccountsApi.php
 lib/ApiException.php
@@ -390,6 +395,12 @@ lib/Model/SearchSuppliersResponseAllOfModelAttributes.php
 lib/Model/SearchSuppliersResponseAllOfModelFields.php
 lib/Model/SearchSuppliersResponseModelAttributes.php
 lib/Model/SearchSuppliersResponseModelFields.php
+lib/Model/SearchVATZonesResponse.php
+lib/Model/SearchVATZonesResponseAllOf.php
+lib/Model/SearchVATZonesResponseAllOfModelAttributes.php
+lib/Model/SearchVATZonesResponseAllOfModelFields.php
+lib/Model/SearchVATZonesResponseModelAttributes.php
+lib/Model/SearchVATZonesResponseModelFields.php
 lib/Model/SearchVatAccountsResponse.php
 lib/Model/SearchVatAccountsResponseAllOf.php
 lib/Model/SearchVatAccountsResponseAllOfModelAttributes.php
@@ -450,6 +461,9 @@ lib/Model/UnitHandlerModelFields.php
 lib/Model/User.php
 lib/Model/UserModelAttributes.php
 lib/Model/UserModelFields.php
+lib/Model/VATZone.php
+lib/Model/VATZoneModelAttributes.php
+lib/Model/VATZoneModelFields.php
 lib/Model/VatAccount.php
 lib/Model/VatAccountAccount.php
 lib/Model/VatAccountAccountModelAttributes.php
@@ -492,6 +506,7 @@ test/Api/JournalVouchersApiTest.php
 test/Api/JournalsApiTest.php
 test/Api/PaymentTermApiTest.php
 test/Api/SupplierApiTest.php
+test/Api/VATZonesApiTest.php
 test/Api/VatAccountApiTest.php
 test/Api/VatAccountsApiTest.php
 test/Model/AccountHandlerTest.php
@@ -576,6 +591,8 @@ test/Model/SearchPaymentTermsResponseAllOfTest.php
 test/Model/SearchPaymentTermsResponseTest.php
 test/Model/SearchSuppliersResponseAllOfTest.php
 test/Model/SearchSuppliersResponseTest.php
+test/Model/SearchVATZonesResponseAllOfTest.php
+test/Model/SearchVATZonesResponseTest.php
 test/Model/SearchVatAccountsResponseAllOfTest.php
 test/Model/SearchVatAccountsResponseTest.php
 test/Model/SearchVouchersResponseAllOfTest.php
@@ -596,6 +613,7 @@ test/Model/SupplierTest.php
 test/Model/SupplierVatZoneTest.php
 test/Model/UnitHandlerTest.php
 test/Model/UserTest.php
+test/Model/VATZoneTest.php
 test/Model/VatAccountAccountTest.php
 test/Model/VatAccountContraAccountTest.php
 test/Model/VatAccountHandlerTest.php

@@ -116,6 +116,8 @@ Class | Method | HTTP request | Description
 *PaymentTermApi* | [**updatePaymentTerm**](docs/Api/PaymentTermApi.md#updatepaymentterm) | **PUT** /payment-terms/{id} | 
 *SupplierApi* | [**getSupplier**](docs/Api/SupplierApi.md#getsupplier) | **GET** /suppliers/{id} | 
 *SupplierApi* | [**searchSuppliers**](docs/Api/SupplierApi.md#searchsuppliers) | **GET** /suppliers | 
+*VATZonesApi* | [**getVATZone**](docs/Api/VATZonesApi.md#getvatzone) | **GET** /vat-zones/{id} | 
+*VATZonesApi* | [**searchVatZones**](docs/Api/VATZonesApi.md#searchvatzones) | **GET** /vat-zones | 
 *VatAccountApi* | [**searchVatAccounts**](docs/Api/VatAccountApi.md#searchvataccounts) | **GET** /vat-accounts | 
 *VatAccountsApi* | [**getVatAccount**](docs/Api/VatAccountsApi.md#getvataccount) | **GET** /vat-accounts/{id} | 
 
@@ -203,6 +205,8 @@ Class | Method | HTTP request | Description
 - [SearchPaymentTermsResponseAllOf](docs/Model/SearchPaymentTermsResponseAllOf.md)
 - [SearchSuppliersResponse](docs/Model/SearchSuppliersResponse.md)
 - [SearchSuppliersResponseAllOf](docs/Model/SearchSuppliersResponseAllOf.md)
+- [SearchVATZonesResponse](docs/Model/SearchVATZonesResponse.md)
+- [SearchVATZonesResponseAllOf](docs/Model/SearchVATZonesResponseAllOf.md)
 - [SearchVatAccountsResponse](docs/Model/SearchVatAccountsResponse.md)
 - [SearchVatAccountsResponseAllOf](docs/Model/SearchVatAccountsResponseAllOf.md)
 - [SearchVouchersResponse](docs/Model/SearchVouchersResponse.md)
@@ -223,6 +227,7 @@ Class | Method | HTTP request | Description
 - [SupplierVatZone](docs/Model/SupplierVatZone.md)
 - [UnitHandler](docs/Model/UnitHandler.md)
 - [User](docs/Model/User.md)
+- [VATZone](docs/Model/VATZone.md)
 - [VatAccount](docs/Model/VatAccount.md)
 - [VatAccountAccount](docs/Model/VatAccountAccount.md)
 - [VatAccountContraAccount](docs/Model/VatAccountContraAccount.md)
