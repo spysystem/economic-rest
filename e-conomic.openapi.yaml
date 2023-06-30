@@ -19,6 +19,7 @@ tags:
   - name: Supplier
   - name: VatAccounts
   - name: Entries
+  - name: VATZones
 
 security:
   - X-AppSecretToken: []
@@ -1062,6 +1063,64 @@ paths:
           $ref: '#/components/responses/ErrorResponse'
         500:
           $ref: '#/components/responses/ErrorResponse'
+  #endregion
+
+  #region Vat-zones
+  /vat-zones:
+    get:
+      operationId: searchVATZones
+      tags:
+        - VATZones
+      parameters:
+        - $ref: '#/components/parameters/skipPagesParameter'
+        - $ref: '#/components/parameters/pageSizeParameter'
+      responses:
+        200:
+          description: Search VAT Zones Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchVATZonesResponse'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /vat-zones/{id}:
+    parameters:
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: getVATZone
+      tags:
+        - VATZones
+      responses:
+        200:
+          description: get VAT Zone
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VATZone'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
   #endregion
 
 components:
@@ -2897,6 +2956,39 @@ components:
           type: string
           description: A unique self reference of the supplier.
 
+    #endregion
+
+    #region VATZones
+    SearchVATZonesResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/VATZone'
+    VATZone:
+      type: object
+      description: A schema for retrieval of a single vat zone.
+      properties:
+        vatZoneNumber:
+          type: integer
+          description: A unique identifier of the vat zone.
+        name:
+          type: string
+          maxLength: 50
+          description: The name of the vat zone.
+        enabledForCustomer:
+          type: boolean
+          description: If this value is true, then the vat zone can be used for a customer.
+        enabledForSupplier:
+          type: boolean
+          description: If this value is true, then the vat zone can be used for a supplier.
+        self:
+          type: string
+          format: uri
+          description: A unique link reference to the vat zone item.
     #endregion
 
     #region Handlers
