@@ -143,7 +143,7 @@ try {
 ## `searchSuppliers()`
 
 ```php
-searchSuppliers($skip_pages, $page_size): \EconomicRest\Model\SearchSuppliersResponse
+searchSuppliers($filter, $skip_pages, $page_size): \EconomicRest\Model\SearchSuppliersResponse
 ```
 
 
@@ -172,11 +172,12 @@ $apiInstance = new EconomicRest\Api\SupplierApi(
     new GuzzleHttp\Client(),
     $config
 );
+$filter = 'filter_example'; // string
 $skip_pages = 56; // int
 $page_size = 500; // int
 
 try {
-    $result = $apiInstance->searchSuppliers($skip_pages, $page_size);
+    $result = $apiInstance->searchSuppliers($filter, $skip_pages, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SupplierApi->searchSuppliers: ', $e->getMessage(), PHP_EOL;
@@ -187,6 +188,7 @@ try {
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **filter** | **string**|  | [optional] |
 | **skip_pages** | **int**|  | [optional] |
 | **page_size** | **int**|  | [optional] [default to 500] |
 

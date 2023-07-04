@@ -1013,6 +1013,7 @@ class SupplierApi
     /**
      * Operation searchSuppliers
      *
+     * @param  string $filter filter (optional)
      * @param  int $skip_pages skip_pages (optional)
      * @param  int $page_size page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSuppliers'] to see the possible values for this operation
@@ -1021,15 +1022,16 @@ class SupplierApi
      * @throws \InvalidArgumentException
      * @return \EconomicRest\Model\SearchSuppliersResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
-    public function searchSuppliers($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
+    public function searchSuppliers($filter = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
     {
-        list($response) = $this->searchSuppliersWithHttpInfo($skip_pages, $page_size, $contentType);
+        list($response) = $this->searchSuppliersWithHttpInfo($filter, $skip_pages, $page_size, $contentType);
         return $response;
     }
 
     /**
      * Operation searchSuppliersWithHttpInfo
      *
+     * @param  string $filter (optional)
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSuppliers'] to see the possible values for this operation
@@ -1038,9 +1040,9 @@ class SupplierApi
      * @throws \InvalidArgumentException
      * @return array of \EconomicRest\Model\SearchSuppliersResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchSuppliersWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
+    public function searchSuppliersWithHttpInfo($filter = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
     {
-        $request = $this->searchSuppliersRequest($skip_pages, $page_size, $contentType);
+        $request = $this->searchSuppliersRequest($filter, $skip_pages, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1267,6 +1269,7 @@ class SupplierApi
     /**
      * Operation searchSuppliersAsync
      *
+     * @param  string $filter (optional)
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSuppliers'] to see the possible values for this operation
@@ -1274,9 +1277,9 @@ class SupplierApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchSuppliersAsync($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
+    public function searchSuppliersAsync($filter = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
     {
-        return $this->searchSuppliersAsyncWithHttpInfo($skip_pages, $page_size, $contentType)
+        return $this->searchSuppliersAsyncWithHttpInfo($filter, $skip_pages, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1287,6 +1290,7 @@ class SupplierApi
     /**
      * Operation searchSuppliersAsyncWithHttpInfo
      *
+     * @param  string $filter (optional)
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSuppliers'] to see the possible values for this operation
@@ -1294,10 +1298,10 @@ class SupplierApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchSuppliersAsyncWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
+    public function searchSuppliersAsyncWithHttpInfo($filter = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
     {
         $returnType = '\EconomicRest\Model\SearchSuppliersResponse';
-        $request = $this->searchSuppliersRequest($skip_pages, $page_size, $contentType);
+        $request = $this->searchSuppliersRequest($filter, $skip_pages, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1338,6 +1342,7 @@ class SupplierApi
     /**
      * Create request for operation 'searchSuppliers'
      *
+     * @param  string $filter (optional)
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSuppliers'] to see the possible values for this operation
@@ -1345,8 +1350,9 @@ class SupplierApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchSuppliersRequest($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
+    public function searchSuppliersRequest($filter = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
     {
+
 
 
         if ($page_size !== null && $page_size > 1000) {
@@ -1364,6 +1370,15 @@ class SupplierApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $skip_pages,
