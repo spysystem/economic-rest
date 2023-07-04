@@ -114,7 +114,7 @@ class VATZonesApi
         'getVATZone' => [
             'application/json',
         ],
-        'searchVatZones' => [
+        'searchVATZones' => [
             'application/json',
         ],
     ];
@@ -589,36 +589,36 @@ class VATZonesApi
     }
 
     /**
-     * Operation searchVatZones
+     * Operation searchVATZones
      *
      * @param  int $skip_pages skip_pages (optional)
      * @param  int $page_size page_size (optional, default to 500)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVatZones'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVATZones'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \EconomicRest\Model\SearchVATZonesResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
-    public function searchVatZones($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVatZones'][0])
+    public function searchVATZones($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVATZones'][0])
     {
-        list($response) = $this->searchVatZonesWithHttpInfo($skip_pages, $page_size, $contentType);
+        list($response) = $this->searchVATZonesWithHttpInfo($skip_pages, $page_size, $contentType);
         return $response;
     }
 
     /**
-     * Operation searchVatZonesWithHttpInfo
+     * Operation searchVATZonesWithHttpInfo
      *
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVatZones'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVATZones'] to see the possible values for this operation
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \EconomicRest\Model\SearchVATZonesResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchVatZonesWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVatZones'][0])
+    public function searchVATZonesWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVATZones'][0])
     {
-        $request = $this->searchVatZonesRequest($skip_pages, $page_size, $contentType);
+        $request = $this->searchVATZonesRequest($skip_pages, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -843,18 +843,18 @@ class VATZonesApi
     }
 
     /**
-     * Operation searchVatZonesAsync
+     * Operation searchVATZonesAsync
      *
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVatZones'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVATZones'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchVatZonesAsync($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVatZones'][0])
+    public function searchVATZonesAsync($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVATZones'][0])
     {
-        return $this->searchVatZonesAsyncWithHttpInfo($skip_pages, $page_size, $contentType)
+        return $this->searchVATZonesAsyncWithHttpInfo($skip_pages, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -863,19 +863,19 @@ class VATZonesApi
     }
 
     /**
-     * Operation searchVatZonesAsyncWithHttpInfo
+     * Operation searchVATZonesAsyncWithHttpInfo
      *
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVatZones'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVATZones'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchVatZonesAsyncWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVatZones'][0])
+    public function searchVATZonesAsyncWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVATZones'][0])
     {
         $returnType = '\EconomicRest\Model\SearchVATZonesResponse';
-        $request = $this->searchVatZonesRequest($skip_pages, $page_size, $contentType);
+        $request = $this->searchVATZonesRequest($skip_pages, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -914,24 +914,24 @@ class VATZonesApi
     }
 
     /**
-     * Create request for operation 'searchVatZones'
+     * Create request for operation 'searchVATZones'
      *
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
-     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVatZones'] to see the possible values for this operation
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchVATZones'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchVatZonesRequest($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVatZones'][0])
+    public function searchVATZonesRequest($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchVATZones'][0])
     {
 
 
         if ($page_size !== null && $page_size > 1000) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling VATZonesApi.searchVatZones, must be smaller than or equal to 1000.');
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling VATZonesApi.searchVATZones, must be smaller than or equal to 1000.');
         }
         if ($page_size !== null && $page_size < 1) {
-            throw new \InvalidArgumentException('invalid value for "$page_size" when calling VATZonesApi.searchVatZones, must be bigger than or equal to 1.');
+            throw new \InvalidArgumentException('invalid value for "$page_size" when calling VATZonesApi.searchVATZones, must be bigger than or equal to 1.');
         }
         
 

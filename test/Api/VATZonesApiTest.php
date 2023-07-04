@@ -84,12 +84,12 @@ class VATZonesApiTest extends TestCase
     }
 
     /**
-     * Test case for searchVatZones
+     * Test case for searchVATZones
      *
      * .
      *
      */
-    public function testSearchVatZones()
+    public function testSearchVATZones()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

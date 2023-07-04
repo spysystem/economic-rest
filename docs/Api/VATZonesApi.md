@@ -5,7 +5,7 @@ All URIs are relative to https://restapi.e-conomic.com, except if the operation 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**getVATZone()**](VATZonesApi.md#getVATZone) | **GET** /vat-zones/{id} |  |
-| [**searchVatZones()**](VATZonesApi.md#searchVatZones) | **GET** /vat-zones |  |
+| [**searchVATZones()**](VATZonesApi.md#searchVATZones) | **GET** /vat-zones |  |
 
 
 ## `getVATZone()`
@@ -73,10 +73,10 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `searchVatZones()`
+## `searchVATZones()`
 
 ```php
-searchVatZones($skip_pages, $page_size): \EconomicRest\Model\SearchVATZonesResponse
+searchVATZones($skip_pages, $page_size): \EconomicRest\Model\SearchVATZonesResponse
 ```
 
 
@@ -109,10 +109,10 @@ $skip_pages = 56; // int
 $page_size = 500; // int
 
 try {
-    $result = $apiInstance->searchVatZones($skip_pages, $page_size);
+    $result = $apiInstance->searchVATZones($skip_pages, $page_size);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling VATZonesApi->searchVatZones: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling VATZonesApi->searchVATZones: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

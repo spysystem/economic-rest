@@ -72,6 +72,18 @@ class SupplierApiTest extends TestCase
     }
 
     /**
+     * Test case for createSuppliers
+     *
+     * .
+     *
+     */
+    public function testCreateSuppliers()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getSupplier
      *
      * .
@@ -90,6 +102,18 @@ class SupplierApiTest extends TestCase
      *
      */
     public function testSearchSuppliers()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for updateSupplier
+     *
+     * .
+     *
+     */
+    public function testUpdateSupplier()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

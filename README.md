@@ -114,10 +114,12 @@ Class | Method | HTTP request | Description
 *PaymentTermApi* | [**getPaymentTerm**](docs/Api/PaymentTermApi.md#getpaymentterm) | **GET** /payment-terms/{id} | 
 *PaymentTermApi* | [**searchPaymentTerms**](docs/Api/PaymentTermApi.md#searchpaymentterms) | **GET** /payment-terms | 
 *PaymentTermApi* | [**updatePaymentTerm**](docs/Api/PaymentTermApi.md#updatepaymentterm) | **PUT** /payment-terms/{id} | 
+*SupplierApi* | [**createSuppliers**](docs/Api/SupplierApi.md#createsuppliers) | **POST** /suppliers | 
 *SupplierApi* | [**getSupplier**](docs/Api/SupplierApi.md#getsupplier) | **GET** /suppliers/{id} | 
 *SupplierApi* | [**searchSuppliers**](docs/Api/SupplierApi.md#searchsuppliers) | **GET** /suppliers | 
+*SupplierApi* | [**updateSupplier**](docs/Api/SupplierApi.md#updatesupplier) | **PUT** /suppliers/{id} | 
 *VATZonesApi* | [**getVATZone**](docs/Api/VATZonesApi.md#getvatzone) | **GET** /vat-zones/{id} | 
-*VATZonesApi* | [**searchVatZones**](docs/Api/VATZonesApi.md#searchvatzones) | **GET** /vat-zones | 
+*VATZonesApi* | [**searchVATZones**](docs/Api/VATZonesApi.md#searchvatzones) | **GET** /vat-zones | 
 *VatAccountApi* | [**searchVatAccounts**](docs/Api/VatAccountApi.md#searchvataccounts) | **GET** /vat-accounts | 
 *VatAccountsApi* | [**getVatAccount**](docs/Api/VatAccountsApi.md#getvataccount) | **GET** /vat-accounts/{id} | 
 
