@@ -986,6 +986,7 @@ paths:
       tags:
         - Supplier
       parameters:
+        - $ref: '#/components/parameters/filterParameter'
         - $ref: '#/components/parameters/skipPagesParameter'
         - $ref: '#/components/parameters/pageSizeParameter'
       responses:
