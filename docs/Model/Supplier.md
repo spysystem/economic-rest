@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **supplier_contact** | [**\EconomicRest\Model\SupplierSupplierContact**](SupplierSupplierContact.md) |  | [optional]
 **supplier_group** | [**\EconomicRest\Model\SupplierSupplierGroup**](SupplierSupplierGroup.md) |  | [optional]
 **supplier_number** | **int** | The supplier number is a positive unique numerical identifier with a maximum of 9 digits. | [optional]
-**vat_zone** | [**\EconomicRest\Model\SupplierVatZone**](SupplierVatZone.md) |  | [optional]
+**vat_zone** | [**\EconomicRest\Model\VatZoneHandler**](VatZoneHandler.md) |  | [optional]
 **zip** | **string** | The suppliers zipcode. | [optional]
 **self** | **string** | A unique self reference of the supplier. | [optional]
 

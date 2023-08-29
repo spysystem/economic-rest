@@ -117,7 +117,6 @@ docs/Model/SupplierRemittanceAdvicePaymentType.md
 docs/Model/SupplierSalesPerson.md
 docs/Model/SupplierSupplierContact.md
 docs/Model/SupplierSupplierGroup.md
-docs/Model/SupplierVatZone.md
 docs/Model/UnitHandler.md
 docs/Model/User.md
 docs/Model/VATZone.md
@@ -452,9 +451,6 @@ lib/Model/SupplierSupplierContactModelFields.php
 lib/Model/SupplierSupplierGroup.php
 lib/Model/SupplierSupplierGroupModelAttributes.php
 lib/Model/SupplierSupplierGroupModelFields.php
-lib/Model/SupplierVatZone.php
-lib/Model/SupplierVatZoneModelAttributes.php
-lib/Model/SupplierVatZoneModelFields.php
 lib/Model/UnitHandler.php
 lib/Model/UnitHandlerModelAttributes.php
 lib/Model/UnitHandlerModelFields.php
@@ -610,7 +606,6 @@ test/Model/SupplierSalesPersonTest.php
 test/Model/SupplierSupplierContactTest.php
 test/Model/SupplierSupplierGroupTest.php
 test/Model/SupplierTest.php
-test/Model/SupplierVatZoneTest.php
 test/Model/UnitHandlerTest.php
 test/Model/UserTest.php
 test/Model/VATZoneTest.php

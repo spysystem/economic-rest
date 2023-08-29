@@ -226,7 +226,6 @@ Class | Method | HTTP request | Description
 - [SupplierSalesPerson](docs/Model/SupplierSalesPerson.md)
 - [SupplierSupplierContact](docs/Model/SupplierSupplierContact.md)
 - [SupplierSupplierGroup](docs/Model/SupplierSupplierGroup.md)
-- [SupplierVatZone](docs/Model/SupplierVatZone.md)
 - [UnitHandler](docs/Model/UnitHandler.md)
 - [User](docs/Model/User.md)
 - [VATZone](docs/Model/VATZone.md)
