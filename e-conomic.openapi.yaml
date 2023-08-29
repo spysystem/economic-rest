@@ -2995,17 +2995,7 @@ components:
           maximum: 999999999
           minimum: 1
         vatZone:
-          type: object
-          description: Indicates whether the supplier is located domestically, in Europe
-            or elsewhere abroad
-          properties:
-            vatZoneNumber:
-              type: integer
-              description: Unique identifier of the vat zone.
-            self:
-              type: string
-              format: uri
-              description: A unique reference to the vat zone.
+          $ref: '#/components/schemas/VatZoneHandler'
         zip:
           type: string
           maxLength: 10
