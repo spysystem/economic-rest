@@ -1,6 +1,6 @@
 <?php
 /**
- * VoucherHandler
+ * VATZone
  *
  * PHP version 7.4
  *
@@ -32,37 +32,37 @@ use \ArrayAccess;
 use \EconomicRest\ObjectSerializer;
 
 /**
- * VoucherHandler Class Doc Comment
+ * VATZone Class Doc Comment
  *
  * @category Class
- * @description Voucher handler
+ * @description A schema for retrieval of a single vat zone.
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
+class VATZone implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
       * Return an object with the Model Fields
       *
-      * @return VoucherHandlerModelFields
+      * @return VATZoneModelFields
       */
-    public static function GetModelFields(): VoucherHandlerModelFields
+    public static function GetModelFields(): VATZoneModelFields
     {
-        return new VoucherHandlerModelFields();
+        return new VATZoneModelFields();
     }
 
     /**
       * Return an object with the Model Attributes
       *
-      * @return VoucherHandlerModelAttributes
+      * @return VATZoneModelAttributes
       */
-    public static function GetModelAttributes(): VoucherHandlerModelAttributes
+    public static function GetModelAttributes(): VATZoneModelAttributes
     {
-        return new VoucherHandlerModelAttributes();
+        return new VATZoneModelAttributes();
     }
 
     /**
@@ -70,7 +70,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'VoucherHandler';
+    protected static $openAPIModelName = 'VATZone';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -78,8 +78,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'voucher_number' => 'float',
-        'accounting_year' => '\EconomicRest\Model\AccountingYearHandler',
+        'vat_zone_number' => 'int',
+        'name' => 'string',
+        'enabled_for_customer' => 'bool',
+        'enabled_for_supplier' => 'bool',
         'self' => 'string'
     ];
 
@@ -91,8 +93,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'voucher_number' => null,
-        'accounting_year' => null,
+        'vat_zone_number' => null,
+        'name' => null,
+        'enabled_for_customer' => null,
+        'enabled_for_supplier' => null,
         'self' => 'uri'
     ];
 
@@ -102,8 +106,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'voucher_number' => false,
-		'accounting_year' => false,
+        'vat_zone_number' => false,
+		'name' => false,
+		'enabled_for_customer' => false,
+		'enabled_for_supplier' => false,
 		'self' => false
     ];
 
@@ -193,8 +199,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'voucher_number' => 'voucherNumber',
-        'accounting_year' => 'accountingYear',
+        'vat_zone_number' => 'vatZoneNumber',
+        'name' => 'name',
+        'enabled_for_customer' => 'enabledForCustomer',
+        'enabled_for_supplier' => 'enabledForSupplier',
         'self' => 'self'
     ];
 
@@ -204,8 +212,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'voucher_number' => 'setVoucherNumber',
-        'accounting_year' => 'setAccountingYear',
+        'vat_zone_number' => 'setVatZoneNumber',
+        'name' => 'setName',
+        'enabled_for_customer' => 'setEnabledForCustomer',
+        'enabled_for_supplier' => 'setEnabledForSupplier',
         'self' => 'setSelf'
     ];
 
@@ -215,8 +225,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'voucher_number' => 'getVoucherNumber',
-        'accounting_year' => 'getAccountingYear',
+        'vat_zone_number' => 'getVatZoneNumber',
+        'name' => 'getName',
+        'enabled_for_customer' => 'getEnabledForCustomer',
+        'enabled_for_supplier' => 'getEnabledForSupplier',
         'self' => 'getSelf'
     ];
 
@@ -277,8 +289,10 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('voucher_number', $data ?? [], null);
-        $this->setIfExists('accounting_year', $data ?? [], null);
+        $this->setIfExists('vat_zone_number', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('enabled_for_customer', $data ?? [], null);
+        $this->setIfExists('enabled_for_supplier', $data ?? [], null);
         $this->setIfExists('self', $data ?? [], null);
     }
 
@@ -309,8 +323,8 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['voucher_number']) && ($this->container['voucher_number'] < 1)) {
-            $invalidProperties[] = "invalid value for 'voucher_number', must be bigger than or equal to 1.";
+        if (!is_null($this->container['name']) && (mb_strlen($this->container['name']) > 50)) {
+            $invalidProperties[] = "invalid value for 'name', the character length must be smaller than or equal to 50.";
         }
 
         return $invalidProperties;
@@ -329,60 +343,113 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets voucher_number
+     * Gets vat_zone_number
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getVoucherNumber()
+    public function getVatZoneNumber()
     {
-        return $this->container['voucher_number'];
+        return $this->container['vat_zone_number'];
     }
 
     /**
-     * Sets voucher_number
+     * Sets vat_zone_number
      *
-     * @param float|null $voucher_number Journal voucher number that must be at least 1.
+     * @param int|null $vat_zone_number A unique identifier of the vat zone.
      *
      * @return self
      */
-    public function setVoucherNumber($voucher_number)
+    public function setVatZoneNumber($vat_zone_number)
     {
-        if (is_null($voucher_number)) {
-            throw new \InvalidArgumentException('non-nullable voucher_number cannot be null');
+        if (is_null($vat_zone_number)) {
+            throw new \InvalidArgumentException('non-nullable vat_zone_number cannot be null');
         }
-
-        if (($voucher_number < 1)) {
-            throw new \InvalidArgumentException('invalid value for $voucher_number when calling VoucherHandler., must be bigger than or equal to 1.');
-        }
-
-        $this->container['voucher_number'] = $voucher_number;
+        $this->container['vat_zone_number'] = $vat_zone_number;
 
         return $this;
     }
 
     /**
-     * Gets accounting_year
+     * Gets name
      *
-     * @return \EconomicRest\Model\AccountingYearHandler|null
+     * @return string|null
      */
-    public function getAccountingYear()
+    public function getName()
     {
-        return $this->container['accounting_year'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets accounting_year
+     * Sets name
      *
-     * @param \EconomicRest\Model\AccountingYearHandler|null $accounting_year accounting_year
+     * @param string|null $name The name of the vat zone.
      *
      * @return self
      */
-    public function setAccountingYear($accounting_year)
+    public function setName($name)
     {
-        if (is_null($accounting_year)) {
-            throw new \InvalidArgumentException('non-nullable accounting_year cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['accounting_year'] = $accounting_year;
+        if ((mb_strlen($name) > 50)) {
+            throw new \InvalidArgumentException('invalid length for $name when calling VATZone., must be smaller than or equal to 50.');
+        }
+
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets enabled_for_customer
+     *
+     * @return bool|null
+     */
+    public function getEnabledForCustomer()
+    {
+        return $this->container['enabled_for_customer'];
+    }
+
+    /**
+     * Sets enabled_for_customer
+     *
+     * @param bool|null $enabled_for_customer If this value is true, then the vat zone can be used for a customer.
+     *
+     * @return self
+     */
+    public function setEnabledForCustomer($enabled_for_customer)
+    {
+        if (is_null($enabled_for_customer)) {
+            throw new \InvalidArgumentException('non-nullable enabled_for_customer cannot be null');
+        }
+        $this->container['enabled_for_customer'] = $enabled_for_customer;
+
+        return $this;
+    }
+
+    /**
+     * Gets enabled_for_supplier
+     *
+     * @return bool|null
+     */
+    public function getEnabledForSupplier()
+    {
+        return $this->container['enabled_for_supplier'];
+    }
+
+    /**
+     * Sets enabled_for_supplier
+     *
+     * @param bool|null $enabled_for_supplier If this value is true, then the vat zone can be used for a supplier.
+     *
+     * @return self
+     */
+    public function setEnabledForSupplier($enabled_for_supplier)
+    {
+        if (is_null($enabled_for_supplier)) {
+            throw new \InvalidArgumentException('non-nullable enabled_for_supplier cannot be null');
+        }
+        $this->container['enabled_for_supplier'] = $enabled_for_supplier;
 
         return $this;
     }
@@ -400,7 +467,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets self
      *
-     * @param string|null $self A unique link reference to the voucher item.
+     * @param string|null $self A unique link reference to the vat zone item.
      *
      * @return self
      */

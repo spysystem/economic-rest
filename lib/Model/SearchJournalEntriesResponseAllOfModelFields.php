@@ -1,6 +1,6 @@
 <?php
 /**
- * SupplierVatZoneModelFields
+ * SearchJournalEntriesResponseAllOfModelFields
  *
  * PHP version 7.2
  *
@@ -29,17 +29,15 @@
 namespace EconomicRest\Model;
 
 /**
- * SupplierVatZoneModelFields Class Doc Comment
+ * SearchJournalEntriesResponseAllOfModelFields Class Doc Comment
  *
  * @category Class
- * @description Indicates whether the supplier is located domestically, in Europe or elsewhere abroad
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class SupplierVatZoneModelFields
+class SearchJournalEntriesResponseAllOfModelFields
 {
-    public string $strVatZoneNumber = 'vatZoneNumber';
-    public string $strSelf = 'self';
+    public string $strCollection = 'collection';
 }
 

@@ -40,6 +40,7 @@ namespace EconomicRest\Model;
 class VoucherHandlerModelAttributes
 {
     public string $strVoucherNumber = 'voucher_number';
+    public string $strAccountingYear = 'accounting_year';
     public string $strSelf = 'self';
 }
 

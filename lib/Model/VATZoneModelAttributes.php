@@ -1,6 +1,6 @@
 <?php
 /**
- * VoucherHandlerModelFields
+ * VATZoneModelAttributes
  *
  * PHP version 7.2
  *
@@ -29,18 +29,20 @@
 namespace EconomicRest\Model;
 
 /**
- * VoucherHandlerModelFields Class Doc Comment
+ * VATZoneModelAttributes Class Doc Comment
  *
  * @category Class
- * @description Voucher handler
+ * @description A schema for retrieval of a single vat zone.
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class VoucherHandlerModelFields
+class VATZoneModelAttributes
 {
-    public string $strVoucherNumber = 'voucherNumber';
-    public string $strAccountingYear = 'accountingYear';
+    public string $strVatZoneNumber = 'vat_zone_number';
+    public string $strName = 'name';
+    public string $strEnabledForCustomer = 'enabled_for_customer';
+    public string $strEnabledForSupplier = 'enabled_for_supplier';
     public string $strSelf = 'self';
 }
 

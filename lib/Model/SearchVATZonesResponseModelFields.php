@@ -1,6 +1,6 @@
 <?php
 /**
- * VoucherHandlerModelFields
+ * SearchVATZonesResponseModelFields
  *
  * PHP version 7.2
  *
@@ -29,18 +29,17 @@
 namespace EconomicRest\Model;
 
 /**
- * VoucherHandlerModelFields Class Doc Comment
+ * SearchVATZonesResponseModelFields Class Doc Comment
  *
  * @category Class
- * @description Voucher handler
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class VoucherHandlerModelFields
+class SearchVATZonesResponseModelFields
 {
-    public string $strVoucherNumber = 'voucherNumber';
-    public string $strAccountingYear = 'accountingYear';
     public string $strSelf = 'self';
+    public string $strPagination = 'pagination';
+    public string $strCollection = 'collection';
 }
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * SupplierVatZoneTest
+ * ContraAccountHandlerTest
  *
  * PHP version 7.4
  *
@@ -31,15 +31,15 @@ namespace EconomicRest\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * SupplierVatZoneTest Class Doc Comment
+ * ContraAccountHandlerTest Class Doc Comment
  *
  * @category    Class
- * @description Indicates whether the supplier is located domestically, in Europe or elsewhere abroad
+ * @description ContraAccountHandler
  * @package     EconomicRest
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class SupplierVatZoneTest extends TestCase
+class ContraAccountHandlerTest extends TestCase
 {
 
     /**
@@ -71,18 +71,18 @@ class SupplierVatZoneTest extends TestCase
     }
 
     /**
-     * Test "SupplierVatZone"
+     * Test "ContraAccountHandler"
      */
-    public function testSupplierVatZone()
+    public function testContraAccountHandler()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "vat_zone_number"
+     * Test attribute "account_number"
      */
-    public function testPropertyVatZoneNumber()
+    public function testPropertyAccountNumber()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

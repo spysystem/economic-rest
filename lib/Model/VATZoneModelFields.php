@@ -1,6 +1,6 @@
 <?php
 /**
- * SupplierVatZoneModelAttributes
+ * VATZoneModelFields
  *
  * PHP version 7.2
  *
@@ -29,17 +29,20 @@
 namespace EconomicRest\Model;
 
 /**
- * SupplierVatZoneModelAttributes Class Doc Comment
+ * VATZoneModelFields Class Doc Comment
  *
  * @category Class
- * @description Indicates whether the supplier is located domestically, in Europe or elsewhere abroad
+ * @description A schema for retrieval of a single vat zone.
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class SupplierVatZoneModelAttributes
+class VATZoneModelFields
 {
-    public string $strVatZoneNumber = 'vat_zone_number';
+    public string $strVatZoneNumber = 'vatZoneNumber';
+    public string $strName = 'name';
+    public string $strEnabledForCustomer = 'enabledForCustomer';
+    public string $strEnabledForSupplier = 'enabledForSupplier';
     public string $strSelf = 'self';
 }
 

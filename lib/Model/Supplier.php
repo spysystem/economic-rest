@@ -99,7 +99,7 @@ class Supplier implements ModelInterface, ArrayAccess, \JsonSerializable
         'supplier_contact' => '\EconomicRest\Model\SupplierSupplierContact',
         'supplier_group' => '\EconomicRest\Model\SupplierSupplierGroup',
         'supplier_number' => 'int',
-        'vat_zone' => '\EconomicRest\Model\SupplierVatZone',
+        'vat_zone' => '\EconomicRest\Model\VatZoneHandler',
         'zip' => 'string',
         'self' => 'string'
     ];
@@ -1155,7 +1155,7 @@ class Supplier implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets vat_zone
      *
-     * @return \EconomicRest\Model\SupplierVatZone|null
+     * @return \EconomicRest\Model\VatZoneHandler|null
      */
     public function getVatZone()
     {
@@ -1165,7 +1165,7 @@ class Supplier implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets vat_zone
      *
-     * @param \EconomicRest\Model\SupplierVatZone|null $vat_zone vat_zone
+     * @param \EconomicRest\Model\VatZoneHandler|null $vat_zone vat_zone
      *
      * @return self
      */

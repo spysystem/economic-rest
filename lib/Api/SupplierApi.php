@@ -111,10 +111,16 @@ class SupplierApi
     /**
     /** @var string[] $contentTypes **/
     public const contentTypes = [
+        'createSuppliers' => [
+            'application/json',
+        ],
         'getSupplier' => [
             'application/json',
         ],
         'searchSuppliers' => [
+            'application/json',
+        ],
+        'updateSupplier' => [
             'application/json',
         ],
     ];
@@ -163,6 +169,422 @@ class SupplierApi
     public function getConfig()
     {
         return $this->config;
+    }
+
+    /**
+     * Operation createSuppliers
+     *
+     * @param  \EconomicRest\Model\Supplier $supplier supplier (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSuppliers'] to see the possible values for this operation
+     *
+     * @throws \EconomicRest\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \EconomicRest\Model\Supplier|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
+     */
+    public function createSuppliers($supplier = null, string $contentType = self::contentTypes['createSuppliers'][0])
+    {
+        list($response) = $this->createSuppliersWithHttpInfo($supplier, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createSuppliersWithHttpInfo
+     *
+     * @param  \EconomicRest\Model\Supplier $supplier (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSuppliers'] to see the possible values for this operation
+     *
+     * @throws \EconomicRest\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \EconomicRest\Model\Supplier|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createSuppliersWithHttpInfo($supplier = null, string $contentType = self::contentTypes['createSuppliers'][0])
+    {
+        $request = $this->createSuppliersRequest($supplier, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\EconomicRest\Model\Supplier' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Supplier' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Supplier', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 405:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\EconomicRest\Model\Supplier';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Supplier',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createSuppliersAsync
+     *
+     * @param  \EconomicRest\Model\Supplier $supplier (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSuppliers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createSuppliersAsync($supplier = null, string $contentType = self::contentTypes['createSuppliers'][0])
+    {
+        return $this->createSuppliersAsyncWithHttpInfo($supplier, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createSuppliersAsyncWithHttpInfo
+     *
+     * @param  \EconomicRest\Model\Supplier $supplier (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSuppliers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createSuppliersAsyncWithHttpInfo($supplier = null, string $contentType = self::contentTypes['createSuppliers'][0])
+    {
+        $returnType = '\EconomicRest\Model\Supplier';
+        $request = $this->createSuppliersRequest($supplier, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createSuppliers'
+     *
+     * @param  \EconomicRest\Model\Supplier $supplier (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSuppliers'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createSuppliersRequest($supplier = null, string $contentType = self::contentTypes['createSuppliers'][0])
+    {
+
+
+
+        $resourcePath = '/suppliers';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($supplier)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($supplier));
+            } else {
+                $httpBody = $supplier;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-AgreementGrantToken');
+        if ($apiKey !== null) {
+            $headers['X-AgreementGrantToken'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-AppSecretToken');
+        if ($apiKey !== null) {
+            $headers['X-AppSecretToken'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
     }
 
     /**
@@ -591,6 +1013,7 @@ class SupplierApi
     /**
      * Operation searchSuppliers
      *
+     * @param  string $filter filter (optional)
      * @param  int $skip_pages skip_pages (optional)
      * @param  int $page_size page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSuppliers'] to see the possible values for this operation
@@ -599,15 +1022,16 @@ class SupplierApi
      * @throws \InvalidArgumentException
      * @return \EconomicRest\Model\SearchSuppliersResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
-    public function searchSuppliers($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
+    public function searchSuppliers($filter = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
     {
-        list($response) = $this->searchSuppliersWithHttpInfo($skip_pages, $page_size, $contentType);
+        list($response) = $this->searchSuppliersWithHttpInfo($filter, $skip_pages, $page_size, $contentType);
         return $response;
     }
 
     /**
      * Operation searchSuppliersWithHttpInfo
      *
+     * @param  string $filter (optional)
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSuppliers'] to see the possible values for this operation
@@ -616,9 +1040,9 @@ class SupplierApi
      * @throws \InvalidArgumentException
      * @return array of \EconomicRest\Model\SearchSuppliersResponse|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchSuppliersWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
+    public function searchSuppliersWithHttpInfo($filter = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
     {
-        $request = $this->searchSuppliersRequest($skip_pages, $page_size, $contentType);
+        $request = $this->searchSuppliersRequest($filter, $skip_pages, $page_size, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -845,6 +1269,7 @@ class SupplierApi
     /**
      * Operation searchSuppliersAsync
      *
+     * @param  string $filter (optional)
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSuppliers'] to see the possible values for this operation
@@ -852,9 +1277,9 @@ class SupplierApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchSuppliersAsync($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
+    public function searchSuppliersAsync($filter = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
     {
-        return $this->searchSuppliersAsyncWithHttpInfo($skip_pages, $page_size, $contentType)
+        return $this->searchSuppliersAsyncWithHttpInfo($filter, $skip_pages, $page_size, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -865,6 +1290,7 @@ class SupplierApi
     /**
      * Operation searchSuppliersAsyncWithHttpInfo
      *
+     * @param  string $filter (optional)
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSuppliers'] to see the possible values for this operation
@@ -872,10 +1298,10 @@ class SupplierApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchSuppliersAsyncWithHttpInfo($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
+    public function searchSuppliersAsyncWithHttpInfo($filter = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
     {
         $returnType = '\EconomicRest\Model\SearchSuppliersResponse';
-        $request = $this->searchSuppliersRequest($skip_pages, $page_size, $contentType);
+        $request = $this->searchSuppliersRequest($filter, $skip_pages, $page_size, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -916,6 +1342,7 @@ class SupplierApi
     /**
      * Create request for operation 'searchSuppliers'
      *
+     * @param  string $filter (optional)
      * @param  int $skip_pages (optional)
      * @param  int $page_size (optional, default to 500)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['searchSuppliers'] to see the possible values for this operation
@@ -923,8 +1350,9 @@ class SupplierApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function searchSuppliersRequest($skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
+    public function searchSuppliersRequest($filter = null, $skip_pages = null, $page_size = 500, string $contentType = self::contentTypes['searchSuppliers'][0])
     {
+
 
 
         if ($page_size !== null && $page_size > 1000) {
@@ -942,6 +1370,15 @@ class SupplierApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $filter,
+            'filter', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
         // query params
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $skip_pages,
@@ -1021,6 +1458,442 @@ class SupplierApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateSupplier
+     *
+     * @param  int $id id (required)
+     * @param  \EconomicRest\Model\Supplier $supplier supplier (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSupplier'] to see the possible values for this operation
+     *
+     * @throws \EconomicRest\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \EconomicRest\Model\Supplier|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
+     */
+    public function updateSupplier($id, $supplier = null, string $contentType = self::contentTypes['updateSupplier'][0])
+    {
+        list($response) = $this->updateSupplierWithHttpInfo($id, $supplier, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateSupplierWithHttpInfo
+     *
+     * @param  int $id (required)
+     * @param  \EconomicRest\Model\Supplier $supplier (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSupplier'] to see the possible values for this operation
+     *
+     * @throws \EconomicRest\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \EconomicRest\Model\Supplier|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateSupplierWithHttpInfo($id, $supplier = null, string $contentType = self::contentTypes['updateSupplier'][0])
+    {
+        $request = $this->updateSupplierRequest($id, $supplier, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\EconomicRest\Model\Supplier' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Supplier' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Supplier', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 405:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 500:
+                    if ('\EconomicRest\Model\Error' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\EconomicRest\Model\Error' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Error', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\EconomicRest\Model\Supplier';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Supplier',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateSupplierAsync
+     *
+     * @param  int $id (required)
+     * @param  \EconomicRest\Model\Supplier $supplier (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSupplier'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSupplierAsync($id, $supplier = null, string $contentType = self::contentTypes['updateSupplier'][0])
+    {
+        return $this->updateSupplierAsyncWithHttpInfo($id, $supplier, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateSupplierAsyncWithHttpInfo
+     *
+     * @param  int $id (required)
+     * @param  \EconomicRest\Model\Supplier $supplier (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSupplier'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSupplierAsyncWithHttpInfo($id, $supplier = null, string $contentType = self::contentTypes['updateSupplier'][0])
+    {
+        $returnType = '\EconomicRest\Model\Supplier';
+        $request = $this->updateSupplierRequest($id, $supplier, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateSupplier'
+     *
+     * @param  int $id (required)
+     * @param  \EconomicRest\Model\Supplier $supplier (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSupplier'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateSupplierRequest($id, $supplier = null, string $contentType = self::contentTypes['updateSupplier'][0])
+    {
+
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling updateSupplier'
+            );
+        }
+
+
+
+        $resourcePath = '/suppliers/{id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($supplier)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($supplier));
+            } else {
+                $httpBody = $supplier;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-AgreementGrantToken');
+        if ($apiKey !== null) {
+            $headers['X-AgreementGrantToken'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-AppSecretToken');
+        if ($apiKey !== null) {
+            $headers['X-AppSecretToken'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PUT',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

@@ -1,6 +1,6 @@
 <?php
 /**
- * VoucherHandlerModelFields
+ * EmployeeHandlerModelFields
  *
  * PHP version 7.2
  *
@@ -29,18 +29,17 @@
 namespace EconomicRest\Model;
 
 /**
- * VoucherHandlerModelFields Class Doc Comment
+ * EmployeeHandlerModelFields Class Doc Comment
  *
  * @category Class
- * @description Voucher handler
+ * @description Employee that this entry is related to. Requires Project module
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class VoucherHandlerModelFields
+class EmployeeHandlerModelFields
 {
-    public string $strVoucherNumber = 'voucherNumber';
-    public string $strAccountingYear = 'accountingYear';
+    public string $strEmployeeNumber = 'employeeNumber';
     public string $strSelf = 'self';
 }
 

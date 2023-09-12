@@ -1,6 +1,6 @@
 <?php
 /**
- * SupplierVatZone
+ * SearchVATZonesResponseAllOf
  *
  * PHP version 7.4
  *
@@ -32,37 +32,36 @@ use \ArrayAccess;
 use \EconomicRest\ObjectSerializer;
 
 /**
- * SupplierVatZone Class Doc Comment
+ * SearchVATZonesResponseAllOf Class Doc Comment
  *
  * @category Class
- * @description Indicates whether the supplier is located domestically, in Europe or elsewhere abroad
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class SupplierVatZone implements ModelInterface, ArrayAccess, \JsonSerializable
+class SearchVATZonesResponseAllOf implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
     /**
       * Return an object with the Model Fields
       *
-      * @return SupplierVatZoneModelFields
+      * @return SearchVATZonesResponseAllOfModelFields
       */
-    public static function GetModelFields(): SupplierVatZoneModelFields
+    public static function GetModelFields(): SearchVATZonesResponseAllOfModelFields
     {
-        return new SupplierVatZoneModelFields();
+        return new SearchVATZonesResponseAllOfModelFields();
     }
 
     /**
       * Return an object with the Model Attributes
       *
-      * @return SupplierVatZoneModelAttributes
+      * @return SearchVATZonesResponseAllOfModelAttributes
       */
-    public static function GetModelAttributes(): SupplierVatZoneModelAttributes
+    public static function GetModelAttributes(): SearchVATZonesResponseAllOfModelAttributes
     {
-        return new SupplierVatZoneModelAttributes();
+        return new SearchVATZonesResponseAllOfModelAttributes();
     }
 
     /**
@@ -70,7 +69,7 @@ class SupplierVatZone implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'Supplier_vatZone';
+    protected static $openAPIModelName = 'SearchVATZonesResponse_allOf';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -78,8 +77,7 @@ class SupplierVatZone implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'vat_zone_number' => 'int',
-        'self' => 'string'
+        'collection' => '\EconomicRest\Model\VATZone[]'
     ];
 
     /**
@@ -90,8 +88,7 @@ class SupplierVatZone implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'vat_zone_number' => null,
-        'self' => 'uri'
+        'collection' => null
     ];
 
     /**
@@ -100,8 +97,7 @@ class SupplierVatZone implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'vat_zone_number' => false,
-		'self' => false
+        'collection' => false
     ];
 
     /**
@@ -190,8 +186,7 @@ class SupplierVatZone implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'vat_zone_number' => 'vatZoneNumber',
-        'self' => 'self'
+        'collection' => 'collection'
     ];
 
     /**
@@ -200,8 +195,7 @@ class SupplierVatZone implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'vat_zone_number' => 'setVatZoneNumber',
-        'self' => 'setSelf'
+        'collection' => 'setCollection'
     ];
 
     /**
@@ -210,8 +204,7 @@ class SupplierVatZone implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'vat_zone_number' => 'getVatZoneNumber',
-        'self' => 'getSelf'
+        'collection' => 'getCollection'
     ];
 
     /**
@@ -271,8 +264,7 @@ class SupplierVatZone implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->setIfExists('vat_zone_number', $data ?? [], null);
-        $this->setIfExists('self', $data ?? [], null);
+        $this->setIfExists('collection', $data ?? [], null);
     }
 
     /**
@@ -318,55 +310,28 @@ class SupplierVatZone implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets vat_zone_number
+     * Gets collection
      *
-     * @return int|null
+     * @return \EconomicRest\Model\VATZone[]|null
      */
-    public function getVatZoneNumber()
+    public function getCollection()
     {
-        return $this->container['vat_zone_number'];
+        return $this->container['collection'];
     }
 
     /**
-     * Sets vat_zone_number
+     * Sets collection
      *
-     * @param int|null $vat_zone_number Unique identifier of the vat zone.
+     * @param \EconomicRest\Model\VATZone[]|null $collection collection
      *
      * @return self
      */
-    public function setVatZoneNumber($vat_zone_number)
+    public function setCollection($collection)
     {
-        if (is_null($vat_zone_number)) {
-            throw new \InvalidArgumentException('non-nullable vat_zone_number cannot be null');
+        if (is_null($collection)) {
+            throw new \InvalidArgumentException('non-nullable collection cannot be null');
         }
-        $this->container['vat_zone_number'] = $vat_zone_number;
-
-        return $this;
-    }
-
-    /**
-     * Gets self
-     *
-     * @return string|null
-     */
-    public function getSelf()
-    {
-        return $this->container['self'];
-    }
-
-    /**
-     * Sets self
-     *
-     * @param string|null $self A unique reference to the vat zone.
-     *
-     * @return self
-     */
-    public function setSelf($self)
-    {
-        if (is_null($self)) {
-            throw new \InvalidArgumentException('non-nullable self cannot be null');
-        }
-        $this->container['self'] = $self;
+        $this->container['collection'] = $collection;
 
         return $this;
     }

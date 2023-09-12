@@ -89,6 +89,15 @@ class VoucherHandlerTest extends TestCase
     }
 
     /**
+     * Test attribute "accounting_year"
+     */
+    public function testPropertyAccountingYear()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "self"
      */
     public function testPropertySelf()

@@ -104,6 +104,8 @@ Class | Method | HTTP request | Description
 *CustomerApi* | [**searchCustomers**](docs/Api/CustomerApi.md#searchcustomers) | **GET** /customers | 
 *CustomerApi* | [**updateCustomer**](docs/Api/CustomerApi.md#updatecustomer) | **PUT** /customers/{id} | 
 *CustomerApi* | [**updateCustomerGroup**](docs/Api/CustomerApi.md#updatecustomergroup) | **PUT** /customer-groups/{id} | 
+*EntriesApi* | [**getEntry**](docs/Api/EntriesApi.md#getentry) | **GET** /entries/{id} | 
+*JournalEntriesApi* | [**searchEntries**](docs/Api/JournalEntriesApi.md#searchentries) | **GET** /journals/{id}/entries | 
 *JournalVouchersApi* | [**createVoucher**](docs/Api/JournalVouchersApi.md#createvoucher) | **POST** /journals/{journalId}/vouchers | 
 *JournalVouchersApi* | [**searchVouchers**](docs/Api/JournalVouchersApi.md#searchvouchers) | **GET** /journals/{journalId}/vouchers | 
 *JournalsApi* | [**getJournal**](docs/Api/JournalsApi.md#getjournal) | **GET** /journals/{id} | 
@@ -112,8 +114,12 @@ Class | Method | HTTP request | Description
 *PaymentTermApi* | [**getPaymentTerm**](docs/Api/PaymentTermApi.md#getpaymentterm) | **GET** /payment-terms/{id} | 
 *PaymentTermApi* | [**searchPaymentTerms**](docs/Api/PaymentTermApi.md#searchpaymentterms) | **GET** /payment-terms | 
 *PaymentTermApi* | [**updatePaymentTerm**](docs/Api/PaymentTermApi.md#updatepaymentterm) | **PUT** /payment-terms/{id} | 
+*SupplierApi* | [**createSuppliers**](docs/Api/SupplierApi.md#createsuppliers) | **POST** /suppliers | 
 *SupplierApi* | [**getSupplier**](docs/Api/SupplierApi.md#getsupplier) | **GET** /suppliers/{id} | 
 *SupplierApi* | [**searchSuppliers**](docs/Api/SupplierApi.md#searchsuppliers) | **GET** /suppliers | 
+*SupplierApi* | [**updateSupplier**](docs/Api/SupplierApi.md#updatesupplier) | **PUT** /suppliers/{id} | 
+*VATZonesApi* | [**getVATZone**](docs/Api/VATZonesApi.md#getvatzone) | **GET** /vat-zones/{id} | 
+*VATZonesApi* | [**searchVATZones**](docs/Api/VATZonesApi.md#searchvatzones) | **GET** /vat-zones | 
 *VatAccountApi* | [**searchVatAccounts**](docs/Api/VatAccountApi.md#searchvataccounts) | **GET** /vat-accounts | 
 *VatAccountsApi* | [**getVatAccount**](docs/Api/VatAccountsApi.md#getvataccount) | **GET** /vat-accounts/{id} | 
 
@@ -130,6 +136,8 @@ Class | Method | HTTP request | Description
 - [BookedInvoiceHandler](docs/Model/BookedInvoiceHandler.md)
 - [Company](docs/Model/Company.md)
 - [CompanySettings](docs/Model/CompanySettings.md)
+- [ContraAccountHandler](docs/Model/ContraAccountHandler.md)
+- [ContraVatAccountHandler](docs/Model/ContraVatAccountHandler.md)
 - [CostTypeHandler](docs/Model/CostTypeHandler.md)
 - [CurrencyHandler](docs/Model/CurrencyHandler.md)
 - [Customer](docs/Model/Customer.md)
@@ -144,12 +152,15 @@ Class | Method | HTTP request | Description
 - [DepartmentalDistribution](docs/Model/DepartmentalDistribution.md)
 - [DepartmentalDistributionHandler](docs/Model/DepartmentalDistributionHandler.md)
 - [Distribution](docs/Model/Distribution.md)
+- [EmployeeHandler](docs/Model/EmployeeHandler.md)
 - [Entry](docs/Model/Entry.md)
 - [Error](docs/Model/Error.md)
 - [FinanceVoucherEntry](docs/Model/FinanceVoucherEntry.md)
 - [GetCompanySettingsResponse](docs/Model/GetCompanySettingsResponse.md)
 - [Journal](docs/Model/Journal.md)
 - [JournalContraAccounts](docs/Model/JournalContraAccounts.md)
+- [JournalEntry](docs/Model/JournalEntry.md)
+- [JournalEntryTemplateHandler](docs/Model/JournalEntryTemplateHandler.md)
 - [JournalHandler](docs/Model/JournalHandler.md)
 - [JournalSettings](docs/Model/JournalSettings.md)
 - [JournalTemplates](docs/Model/JournalTemplates.md)
@@ -188,12 +199,16 @@ Class | Method | HTTP request | Description
 - [SearchDepartmentalDistributionsResponseAllOf](docs/Model/SearchDepartmentalDistributionsResponseAllOf.md)
 - [SearchDepartmentsResponse](docs/Model/SearchDepartmentsResponse.md)
 - [SearchDepartmentsResponseAllOf](docs/Model/SearchDepartmentsResponseAllOf.md)
+- [SearchJournalEntriesResponse](docs/Model/SearchJournalEntriesResponse.md)
+- [SearchJournalEntriesResponseAllOf](docs/Model/SearchJournalEntriesResponseAllOf.md)
 - [SearchJournalsResponse](docs/Model/SearchJournalsResponse.md)
 - [SearchJournalsResponseAllOf](docs/Model/SearchJournalsResponseAllOf.md)
 - [SearchPaymentTermsResponse](docs/Model/SearchPaymentTermsResponse.md)
 - [SearchPaymentTermsResponseAllOf](docs/Model/SearchPaymentTermsResponseAllOf.md)
 - [SearchSuppliersResponse](docs/Model/SearchSuppliersResponse.md)
 - [SearchSuppliersResponseAllOf](docs/Model/SearchSuppliersResponseAllOf.md)
+- [SearchVATZonesResponse](docs/Model/SearchVATZonesResponse.md)
+- [SearchVATZonesResponseAllOf](docs/Model/SearchVATZonesResponseAllOf.md)
 - [SearchVatAccountsResponse](docs/Model/SearchVatAccountsResponse.md)
 - [SearchVatAccountsResponseAllOf](docs/Model/SearchVatAccountsResponseAllOf.md)
 - [SearchVouchersResponse](docs/Model/SearchVouchersResponse.md)
@@ -211,9 +226,9 @@ Class | Method | HTTP request | Description
 - [SupplierSalesPerson](docs/Model/SupplierSalesPerson.md)
 - [SupplierSupplierContact](docs/Model/SupplierSupplierContact.md)
 - [SupplierSupplierGroup](docs/Model/SupplierSupplierGroup.md)
-- [SupplierVatZone](docs/Model/SupplierVatZone.md)
 - [UnitHandler](docs/Model/UnitHandler.md)
 - [User](docs/Model/User.md)
+- [VATZone](docs/Model/VATZone.md)
 - [VatAccount](docs/Model/VatAccount.md)
 - [VatAccountAccount](docs/Model/VatAccountAccount.md)
 - [VatAccountContraAccount](docs/Model/VatAccountContraAccount.md)

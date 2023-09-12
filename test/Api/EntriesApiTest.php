@@ -1,6 +1,6 @@
 <?php
 /**
- * SupplierApiTest
+ * EntriesApiTest
  * PHP version 7.4
  *
  * @category Class
@@ -33,14 +33,14 @@ use \EconomicRest\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * SupplierApiTest Class Doc Comment
+ * EntriesApiTest Class Doc Comment
  *
  * @category Class
  * @package  EconomicRest
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class SupplierApiTest extends TestCase
+class EntriesApiTest extends TestCase
 {
 
     /**
@@ -72,48 +72,12 @@ class SupplierApiTest extends TestCase
     }
 
     /**
-     * Test case for createSuppliers
+     * Test case for getEntry
      *
      * .
      *
      */
-    public function testCreateSuppliers()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for getSupplier
-     *
-     * .
-     *
-     */
-    public function testGetSupplier()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for searchSuppliers
-     *
-     * .
-     *
-     */
-    public function testSearchSuppliers()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for updateSupplier
-     *
-     * .
-     *
-     */
-    public function testUpdateSupplier()
+    public function testGetEntry()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
