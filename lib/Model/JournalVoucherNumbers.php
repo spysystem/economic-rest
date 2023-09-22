@@ -305,8 +305,8 @@ class JournalVoucherNumbers implements ModelInterface, ArrayAccess, \JsonSeriali
             $invalidProperties[] = "invalid value for 'minimum_voucher_number', must be bigger than or equal to 0.";
         }
 
-        if (!is_null($this->container['maximum_voucher_number']) && ($this->container['maximum_voucher_number'] < 999999999)) {
-            $invalidProperties[] = "invalid value for 'maximum_voucher_number', must be bigger than or equal to 999999999.";
+        if (!is_null($this->container['maximum_voucher_number']) && ($this->container['maximum_voucher_number'] > 999999999)) {
+            $invalidProperties[] = "invalid value for 'maximum_voucher_number', must be smaller than or equal to 999999999.";
         }
 
         return $invalidProperties;
@@ -379,8 +379,8 @@ class JournalVoucherNumbers implements ModelInterface, ArrayAccess, \JsonSeriali
             throw new \InvalidArgumentException('non-nullable maximum_voucher_number cannot be null');
         }
 
-        if (($maximum_voucher_number < 999999999)) {
-            throw new \InvalidArgumentException('invalid value for $maximum_voucher_number when calling JournalVoucherNumbers., must be bigger than or equal to 999999999.');
+        if (($maximum_voucher_number > 999999999)) {
+            throw new \InvalidArgumentException('invalid value for $maximum_voucher_number when calling JournalVoucherNumbers., must be smaller than or equal to 999999999.');
         }
 
         $this->container['maximum_voucher_number'] = $maximum_voucher_number;

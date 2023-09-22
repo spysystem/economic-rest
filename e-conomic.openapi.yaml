@@ -1632,7 +1632,7 @@ components:
           description: Minimum voucher number defined in settings.
         maximumVoucherNumber:
           type: integer
-          minimum: 999999999
+          maximum: 999999999
           description: Maximum voucher number defined in settings.
 
     JournalContraAccounts:
