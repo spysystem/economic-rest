@@ -387,12 +387,9 @@ paths:
         500:
           $ref: '#/components/responses/ErrorResponse'
 
-  /accounting-years/{yearId}/periods/{id}:
+  /accounting-years/{accountingYear}/periods/{id}:
     parameters:
-      - name: yearId
-        in: path
-        schema:
-          type: integer
+      - $ref: '#/components/parameters/accountingYear'
       - $ref: '#/components/parameters/id'
     get:
       operationId: getAccountingYearPeriod
@@ -405,6 +402,34 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Period'
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
+  /accounting-years/{accountingYear}/periods/{id}/entries:
+    parameters:
+      - $ref: '#/components/parameters/accountingYear'
+      - $ref: '#/components/parameters/id'
+    get:
+      operationId: searchAccountingYearPeriodEntries
+      tags:
+          - AccountingYears
+      responses:
+        200:
+          description: Search Accounting Year Period Entries Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchAccountingYearPeriodEntriesResponse'
         400:
           $ref: '#/components/responses/ErrorResponse'
         401:
@@ -2344,6 +2369,16 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Period'
+
+    SearchAccountingYearPeriodEntriesResponse:
+      allOf:
+        - $ref: '#/components/schemas/DefaultResponse'
+        - type: object
+          properties:
+            collection:
+              type: array
+              items:
+                $ref: '#/components/schemas/Entry'
 
     Period:
       description: A schema for retrieving a period of an accounting year.

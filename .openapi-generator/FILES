@@ -76,6 +76,7 @@ docs/Model/Role.md
 docs/Model/SearchAccountAccountingYearEntriesResponse.md
 docs/Model/SearchAccountingYearEntriesResponse.md
 docs/Model/SearchAccountingYearEntriesResponseAllOf.md
+docs/Model/SearchAccountingYearPeriodEntriesResponse.md
 docs/Model/SearchAccountingYearPeriodsResponse.md
 docs/Model/SearchAccountingYearPeriodsResponseAllOf.md
 docs/Model/SearchAccountingYearsResponse.md
@@ -328,6 +329,9 @@ lib/Model/SearchAccountingYearEntriesResponseAllOfModelAttributes.php
 lib/Model/SearchAccountingYearEntriesResponseAllOfModelFields.php
 lib/Model/SearchAccountingYearEntriesResponseModelAttributes.php
 lib/Model/SearchAccountingYearEntriesResponseModelFields.php
+lib/Model/SearchAccountingYearPeriodEntriesResponse.php
+lib/Model/SearchAccountingYearPeriodEntriesResponseModelAttributes.php
+lib/Model/SearchAccountingYearPeriodEntriesResponseModelFields.php
 lib/Model/SearchAccountingYearPeriodsResponse.php
 lib/Model/SearchAccountingYearPeriodsResponseAllOf.php
 lib/Model/SearchAccountingYearPeriodsResponseAllOfModelAttributes.php
@@ -565,6 +569,7 @@ test/Model/RoleTest.php
 test/Model/SearchAccountAccountingYearEntriesResponseTest.php
 test/Model/SearchAccountingYearEntriesResponseAllOfTest.php
 test/Model/SearchAccountingYearEntriesResponseTest.php
+test/Model/SearchAccountingYearPeriodEntriesResponseTest.php
 test/Model/SearchAccountingYearPeriodsResponseAllOfTest.php
 test/Model/SearchAccountingYearPeriodsResponseTest.php
 test/Model/SearchAccountingYearsResponseAllOfTest.php
