@@ -419,6 +419,10 @@ paths:
     parameters:
       - $ref: '#/components/parameters/accountingYear'
       - $ref: '#/components/parameters/id'
+      - $ref: '#/components/parameters/filterParameter'
+      - $ref: '#/components/parameters/sortParameter'
+      - $ref: '#/components/parameters/skipPagesParameter'
+      - $ref: '#/components/parameters/pageSizeParameter'
     get:
       operationId: searchAccountingYearPeriodEntries
       tags:

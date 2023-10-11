@@ -220,7 +220,7 @@ try {
 ## `searchAccountingYearPeriodEntries()`
 
 ```php
-searchAccountingYearPeriodEntries($accounting_year, $id): \EconomicRest\Model\SearchAccountingYearPeriodEntriesResponse
+searchAccountingYearPeriodEntries($accounting_year, $id, $filter, $sort, $skip_pages, $page_size): \EconomicRest\Model\SearchAccountingYearPeriodEntriesResponse
 ```
 
 
@@ -251,9 +251,13 @@ $apiInstance = new EconomicRest\Api\AccountingYearsApi(
 );
 $accounting_year = 'accounting_year_example'; // string
 $id = 56; // int
+$filter = 'filter_example'; // string
+$sort = 'sort_example'; // string
+$skip_pages = 56; // int
+$page_size = 500; // int
 
 try {
-    $result = $apiInstance->searchAccountingYearPeriodEntries($accounting_year, $id);
+    $result = $apiInstance->searchAccountingYearPeriodEntries($accounting_year, $id, $filter, $sort, $skip_pages, $page_size);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountingYearsApi->searchAccountingYearPeriodEntries: ', $e->getMessage(), PHP_EOL;
@@ -266,6 +270,10 @@ try {
 | ------------- | ------------- | ------------- | ------------- |
 | **accounting_year** | **string**|  | |
 | **id** | **int**|  | |
+| **filter** | **string**|  | [optional] |
+| **sort** | **string**|  | [optional] |
+| **skip_pages** | **int**|  | [optional] |
+| **page_size** | **int**|  | [optional] [default to 500] |
 
 ### Return type
 
