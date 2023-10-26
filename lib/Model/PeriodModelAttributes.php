@@ -43,6 +43,7 @@ class PeriodModelAttributes
     public string $strAccountingYear = 'accounting_year';
     public string $strFromDate = 'from_date';
     public string $strToDate = 'to_date';
+    public string $strBarred = 'barred';
     public string $strClosed = 'closed';
     public string $strEntries = 'entries';
     public string $strTotals = 'totals';

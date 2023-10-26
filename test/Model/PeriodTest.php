@@ -116,6 +116,15 @@ class PeriodTest extends TestCase
     }
 
     /**
+     * Test attribute "barred"
+     */
+    public function testPropertyBarred()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "closed"
      */
     public function testPropertyClosed()

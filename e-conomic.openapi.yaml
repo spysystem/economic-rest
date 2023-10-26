@@ -1236,7 +1236,7 @@ components:
       required: true
       schema:
         type: string
-    
+
     journalId:
       name: journalId
       in: path
@@ -1675,7 +1675,7 @@ components:
         financeVouchers:
           $ref: '#/components/schemas/AccountHandler'
     #endregion
-    
+
     #region JournalEntries
     SearchJournalEntriesResponse:
       allOf:
@@ -2404,10 +2404,12 @@ components:
           format: full-date
           pattern: "\\d{4}-\\d{2}-\\d{2}"
           description: The last date in the period formatted according to ISO-8601(YYYY-MM-DD).
+        barred:
+          type: boolean
+          description: If true this indicates that the accounting period is barred for further transactions.
         closed:
           type: boolean
-          description: If true this indicates that the accounting period is closed for further
-            transactions.
+          description: If true this indicates that the accounting period is within a closed accounting year and no further transaction can be created.
         entries:
           type: string
           format: uri
@@ -3376,7 +3378,7 @@ components:
           type: string
           format: uri
           description: A unique link reference to the payment type item.
-        
+
     JournalEntryTemplateHandler:
       type: object
       description: Templates allowing easy entry creation, its existance depends

@@ -82,6 +82,7 @@ class Period implements ModelInterface, ArrayAccess, \JsonSerializable
         'accounting_year' => '\EconomicRest\Model\AccountingYearHandler',
         'from_date' => 'string',
         'to_date' => 'string',
+        'barred' => 'bool',
         'closed' => 'bool',
         'entries' => 'string',
         'totals' => 'string',
@@ -100,6 +101,7 @@ class Period implements ModelInterface, ArrayAccess, \JsonSerializable
         'accounting_year' => null,
         'from_date' => 'full-date',
         'to_date' => 'full-date',
+        'barred' => null,
         'closed' => null,
         'entries' => 'uri',
         'totals' => 'uri',
@@ -116,6 +118,7 @@ class Period implements ModelInterface, ArrayAccess, \JsonSerializable
 		'accounting_year' => false,
 		'from_date' => false,
 		'to_date' => false,
+		'barred' => false,
 		'closed' => false,
 		'entries' => false,
 		'totals' => false,
@@ -212,6 +215,7 @@ class Period implements ModelInterface, ArrayAccess, \JsonSerializable
         'accounting_year' => 'accountingYear',
         'from_date' => 'fromDate',
         'to_date' => 'toDate',
+        'barred' => 'barred',
         'closed' => 'closed',
         'entries' => 'entries',
         'totals' => 'totals',
@@ -228,6 +232,7 @@ class Period implements ModelInterface, ArrayAccess, \JsonSerializable
         'accounting_year' => 'setAccountingYear',
         'from_date' => 'setFromDate',
         'to_date' => 'setToDate',
+        'barred' => 'setBarred',
         'closed' => 'setClosed',
         'entries' => 'setEntries',
         'totals' => 'setTotals',
@@ -244,6 +249,7 @@ class Period implements ModelInterface, ArrayAccess, \JsonSerializable
         'accounting_year' => 'getAccountingYear',
         'from_date' => 'getFromDate',
         'to_date' => 'getToDate',
+        'barred' => 'getBarred',
         'closed' => 'getClosed',
         'entries' => 'getEntries',
         'totals' => 'getTotals',
@@ -311,6 +317,7 @@ class Period implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('accounting_year', $data ?? [], null);
         $this->setIfExists('from_date', $data ?? [], null);
         $this->setIfExists('to_date', $data ?? [], null);
+        $this->setIfExists('barred', $data ?? [], null);
         $this->setIfExists('closed', $data ?? [], null);
         $this->setIfExists('entries', $data ?? [], null);
         $this->setIfExists('totals', $data ?? [], null);
@@ -495,6 +502,33 @@ class Period implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets barred
+     *
+     * @return bool|null
+     */
+    public function getBarred()
+    {
+        return $this->container['barred'];
+    }
+
+    /**
+     * Sets barred
+     *
+     * @param bool|null $barred If true this indicates that the accounting period is barred for further transactions.
+     *
+     * @return self
+     */
+    public function setBarred($barred)
+    {
+        if (is_null($barred)) {
+            throw new \InvalidArgumentException('non-nullable barred cannot be null');
+        }
+        $this->container['barred'] = $barred;
+
+        return $this;
+    }
+
+    /**
      * Gets closed
      *
      * @return bool|null
@@ -507,7 +541,7 @@ class Period implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets closed
      *
-     * @param bool|null $closed If true this indicates that the accounting period is closed for further transactions.
+     * @param bool|null $closed If true this indicates that the accounting period is with a closed accounting year
      *
      * @return self
      */
