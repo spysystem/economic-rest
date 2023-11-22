@@ -11,7 +11,7 @@ All URIs are relative to https://restapi.e-conomic.com, except if the operation 
 ## `createVoucher()`
 
 ```php
-createVoucher($journal_id, $voucher): \EconomicRest\Model\Voucher
+createVoucher($journal_id, $voucher): \EconomicRest\Model\Voucher[]
 ```
 
 
@@ -60,7 +60,7 @@ try {
 
 ### Return type
 
-[**\EconomicRest\Model\Voucher**](../Model/Voucher.md)
+[**\EconomicRest\Model\Voucher[]**](../Model/Voucher.md)
 
 ### Authorization
 

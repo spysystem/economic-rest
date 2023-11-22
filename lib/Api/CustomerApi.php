@@ -249,7 +249,7 @@ class CustomerApi
             }
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     if ('\EconomicRest\Model\Customer' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -374,7 +374,7 @@ class CustomerApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\EconomicRest\Model\Customer',
@@ -665,7 +665,7 @@ class CustomerApi
             }
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     if ('\EconomicRest\Model\CustomerGroup' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -790,7 +790,7 @@ class CustomerApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\EconomicRest\Model\CustomerGroup',

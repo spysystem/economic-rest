@@ -541,7 +541,7 @@ class Period implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets closed
      *
-     * @param bool|null $closed If true this indicates that the accounting period is with a closed accounting year
+     * @param bool|null $closed If true this indicates that the accounting period is within a closed accounting year and no further transaction can be created.
      *
      * @return self
      */
