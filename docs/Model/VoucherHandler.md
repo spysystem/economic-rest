@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**voucher_number** | **float** | Journal voucher number that must be at least 1. | [optional]
+**voucher_number** | **int** | Journal voucher number that must be at least 1. | [optional]
 **accounting_year** | [**\EconomicRest\Model\AccountingYearHandler**](AccountingYearHandler.md) |  | [optional]
 **self** | **string** | A unique link reference to the voucher item. | [optional]
 

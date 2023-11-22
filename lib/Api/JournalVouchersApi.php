@@ -174,7 +174,7 @@ class JournalVouchersApi
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \EconomicRest\Model\Voucher|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
+     * @return \EconomicRest\Model\Voucher[]|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error
      */
     public function createVoucher($journal_id, $voucher = null, string $contentType = self::contentTypes['createVoucher'][0])
     {
@@ -191,7 +191,7 @@ class JournalVouchersApi
      *
      * @throws \EconomicRest\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \EconomicRest\Model\Voucher|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \EconomicRest\Model\Voucher[]|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error|\EconomicRest\Model\Error, HTTP status code, HTTP response headers (array of strings)
      */
     public function createVoucherWithHttpInfo($journal_id, $voucher = null, string $contentType = self::contentTypes['createVoucher'][0])
     {
@@ -233,18 +233,18 @@ class JournalVouchersApi
             }
 
             switch($statusCode) {
-                case 200:
-                    if ('\EconomicRest\Model\Voucher' === '\SplFileObject') {
+                case 201:
+                    if ('\EconomicRest\Model\Voucher[]' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
-                        if ('\EconomicRest\Model\Voucher' !== 'string') {
+                        if ('\EconomicRest\Model\Voucher[]' !== 'string') {
                             $content = json_decode($content);
                         }
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Voucher', []),
+                        ObjectSerializer::deserialize($content, '\EconomicRest\Model\Voucher[]', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -340,7 +340,7 @@ class JournalVouchersApi
                     ];
             }
 
-            $returnType = '\EconomicRest\Model\Voucher';
+            $returnType = '\EconomicRest\Model\Voucher[]';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -358,10 +358,10 @@ class JournalVouchersApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\EconomicRest\Model\Voucher',
+                        '\EconomicRest\Model\Voucher[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -451,7 +451,7 @@ class JournalVouchersApi
      */
     public function createVoucherAsyncWithHttpInfo($journal_id, $voucher = null, string $contentType = self::contentTypes['createVoucher'][0])
     {
-        $returnType = '\EconomicRest\Model\Voucher';
+        $returnType = '\EconomicRest\Model\Voucher[]';
         $request = $this->createVoucherRequest($journal_id, $voucher, $contentType);
 
         return $this->client

@@ -237,7 +237,7 @@ class PaymentTermApi
             }
 
             switch($statusCode) {
-                case 200:
+                case 201:
                     if ('\EconomicRest\Model\PaymentTerm' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
@@ -362,7 +362,7 @@ class PaymentTermApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
+                case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\EconomicRest\Model\PaymentTerm',

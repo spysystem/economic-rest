@@ -78,7 +78,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'voucher_number' => 'float',
+        'voucher_number' => 'int',
         'accounting_year' => '\EconomicRest\Model\AccountingYearHandler',
         'self' => 'string'
     ];
@@ -331,7 +331,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets voucher_number
      *
-     * @return float|null
+     * @return int|null
      */
     public function getVoucherNumber()
     {
@@ -341,7 +341,7 @@ class VoucherHandler implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets voucher_number
      *
-     * @param float|null $voucher_number Journal voucher number that must be at least 1.
+     * @param int|null $voucher_number Journal voucher number that must be at least 1.
      *
      * @return self
      */

@@ -82,7 +82,7 @@ class Voucher implements ModelInterface, ArrayAccess, \JsonSerializable
         'journal' => '\EconomicRest\Model\JournalHandler',
         'entries' => '\EconomicRest\Model\VoucherEntries',
         'attachment' => 'string',
-        'voucher_number' => 'float',
+        'voucher_number' => 'int',
         'self' => 'string'
     ];
 
@@ -460,7 +460,7 @@ class Voucher implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets voucher_number
      *
-     * @return float|null
+     * @return int|null
      */
     public function getVoucherNumber()
     {
@@ -470,7 +470,7 @@ class Voucher implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets voucher_number
      *
-     * @param float|null $voucher_number Voucher number
+     * @param int|null $voucher_number Voucher number
      *
      * @return self
      */

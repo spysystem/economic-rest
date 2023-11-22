@@ -489,7 +489,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Customer'
       responses:
-        200:
+        201:
           description: Create Customer Response
           content:
             application/json:
@@ -602,7 +602,7 @@ paths:
             schema:
               $ref: '#/components/schemas/CustomerGroup'
       responses:
-        200:
+        201:
           description: Create Customer Group Response
           content:
             application/json:
@@ -817,12 +817,12 @@ paths:
             schema:
               $ref: '#/components/schemas/Voucher'
       responses:
-        200:
+        201:
           description: Create Voucher Response
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Voucher'
+                $ref: '#/components/schemas/CreateVoucherResponse'
         400:
           $ref: '#/components/responses/ErrorResponse'
         401:
@@ -876,7 +876,7 @@ paths:
             schema:
               $ref: '#/components/schemas/PaymentTerm'
       responses:
-        200:
+        201:
           description: Create Customer Response
           content:
             application/json:
@@ -1047,7 +1047,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Supplier'
       responses:
-        200:
+        201:
           description: Create Suppliers Response
           content:
             application/json:
@@ -1804,6 +1804,11 @@ components:
               items:
                 $ref: '#/components/schemas/Voucher'
 
+    CreateVoucherResponse:
+      type: array
+      items:
+        $ref: '#/components/schemas/Voucher'
+
     Voucher:
       description: A schema for getting a specific entry belonging to a voucher.
       type: object
@@ -1819,7 +1824,7 @@ components:
           format: uri
           description: A unique reference to the attachment file on the given voucher.
         voucherNumber:
-          type: number
+          type: integer
           minimum: 1
           description: Voucher number
         self:
@@ -3245,7 +3250,7 @@ components:
       description: Voucher handler
       properties:
         voucherNumber:
-          type: number
+          type: integer
           minimum: 1
           description: Journal voucher number that must be at least 1.
         accountingYear:
