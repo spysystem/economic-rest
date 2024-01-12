@@ -836,6 +836,41 @@ paths:
         500:
           $ref: '#/components/responses/ErrorResponse'
 
+  /journals/{journalId}/vouchers/{accountingYear-voucherNumber}/attachment/file:
+    parameters:
+      - $ref: '#/components/parameters/journalId'
+      - $ref: '#/components/parameters/accountingYear-voucherNumber'
+    patch:
+      operationId: uploadVoucherAttachment
+      tags:
+        - JournalVouchers
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        201:
+          description: Upload Voucher Attachment Response
+        400:
+          $ref: '#/components/responses/ErrorResponse'
+        401:
+          $ref: '#/components/responses/ErrorResponse'
+        403:
+          $ref: '#/components/responses/ErrorResponse'
+        404:
+          $ref: '#/components/responses/ErrorResponse'
+        405:
+          $ref: '#/components/responses/ErrorResponse'
+        500:
+          $ref: '#/components/responses/ErrorResponse'
+
   #endregion
 
   #region PaymentTerm
@@ -1243,6 +1278,13 @@ components:
       required: true
       schema:
         type: integer
+
+    accountingYear-voucherNumber:
+      name: accountingYear-voucherNumber
+      in: path
+      required: true
+      schema:
+        type: string
 
     filterParameter:
       name: filter

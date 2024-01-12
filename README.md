@@ -109,6 +109,7 @@ Class | Method | HTTP request | Description
 *JournalEntriesApi* | [**searchEntries**](docs/Api/JournalEntriesApi.md#searchentries) | **GET** /journals/{id}/entries | 
 *JournalVouchersApi* | [**createVoucher**](docs/Api/JournalVouchersApi.md#createvoucher) | **POST** /journals/{journalId}/vouchers | 
 *JournalVouchersApi* | [**searchVouchers**](docs/Api/JournalVouchersApi.md#searchvouchers) | **GET** /journals/{journalId}/vouchers | 
+*JournalVouchersApi* | [**uploadVoucherAttachment**](docs/Api/JournalVouchersApi.md#uploadvoucherattachment) | **PATCH** /journals/{journalId}/vouchers/{accountingYear-voucherNumber}/attachment/file | 
 *JournalsApi* | [**getJournal**](docs/Api/JournalsApi.md#getjournal) | **GET** /journals/{id} | 
 *JournalsApi* | [**searchJournals**](docs/Api/JournalsApi.md#searchjournals) | **GET** /journals | 
 *PaymentTermApi* | [**createPaymentTerm**](docs/Api/PaymentTermApi.md#createpaymentterm) | **POST** /payment-terms | 

@@ -94,4 +94,16 @@ class JournalVouchersApiTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test case for uploadVoucherAttachment
+     *
+     * .
+     *
+     */
+    public function testUploadVoucherAttachment()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

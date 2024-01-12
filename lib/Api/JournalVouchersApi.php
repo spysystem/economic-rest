@@ -117,6 +117,9 @@ class JournalVouchersApi
         'searchVouchers' => [
             'application/json',
         ],
+        'uploadVoucherAttachment' => [
+            'multipart/form-data',
+        ],
     ];
 
 /**
@@ -1084,6 +1087,329 @@ class JournalVouchersApi
         $query = ObjectSerializer::buildQuery($queryParams);
         return new Request(
             'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation uploadVoucherAttachment
+     *
+     * @param  int $journal_id journal_id (required)
+     * @param  string $accounting_year_voucher_number accounting_year_voucher_number (required)
+     * @param  \SplFileObject $file file (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadVoucherAttachment'] to see the possible values for this operation
+     *
+     * @throws \EconomicRest\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return void
+     */
+    public function uploadVoucherAttachment($journal_id, $accounting_year_voucher_number, $file, string $contentType = self::contentTypes['uploadVoucherAttachment'][0])
+    {
+        $this->uploadVoucherAttachmentWithHttpInfo($journal_id, $accounting_year_voucher_number, $file, $contentType);
+    }
+
+    /**
+     * Operation uploadVoucherAttachmentWithHttpInfo
+     *
+     * @param  int $journal_id (required)
+     * @param  string $accounting_year_voucher_number (required)
+     * @param  \SplFileObject $file (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadVoucherAttachment'] to see the possible values for this operation
+     *
+     * @throws \EconomicRest\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function uploadVoucherAttachmentWithHttpInfo($journal_id, $accounting_year_voucher_number, $file, string $contentType = self::contentTypes['uploadVoucherAttachment'][0])
+    {
+        $request = $this->uploadVoucherAttachmentRequest($journal_id, $accounting_year_voucher_number, $file, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return [null, $statusCode, $response->getHeaders()];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\EconomicRest\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation uploadVoucherAttachmentAsync
+     *
+     * @param  int $journal_id (required)
+     * @param  string $accounting_year_voucher_number (required)
+     * @param  \SplFileObject $file (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadVoucherAttachment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadVoucherAttachmentAsync($journal_id, $accounting_year_voucher_number, $file, string $contentType = self::contentTypes['uploadVoucherAttachment'][0])
+    {
+        return $this->uploadVoucherAttachmentAsyncWithHttpInfo($journal_id, $accounting_year_voucher_number, $file, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation uploadVoucherAttachmentAsyncWithHttpInfo
+     *
+     * @param  int $journal_id (required)
+     * @param  string $accounting_year_voucher_number (required)
+     * @param  \SplFileObject $file (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadVoucherAttachment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function uploadVoucherAttachmentAsyncWithHttpInfo($journal_id, $accounting_year_voucher_number, $file, string $contentType = self::contentTypes['uploadVoucherAttachment'][0])
+    {
+        $returnType = '';
+        $request = $this->uploadVoucherAttachmentRequest($journal_id, $accounting_year_voucher_number, $file, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'uploadVoucherAttachment'
+     *
+     * @param  int $journal_id (required)
+     * @param  string $accounting_year_voucher_number (required)
+     * @param  \SplFileObject $file (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['uploadVoucherAttachment'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function uploadVoucherAttachmentRequest($journal_id, $accounting_year_voucher_number, $file, string $contentType = self::contentTypes['uploadVoucherAttachment'][0])
+    {
+
+        // verify the required parameter 'journal_id' is set
+        if ($journal_id === null || (is_array($journal_id) && count($journal_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $journal_id when calling uploadVoucherAttachment'
+            );
+        }
+
+        // verify the required parameter 'accounting_year_voucher_number' is set
+        if ($accounting_year_voucher_number === null || (is_array($accounting_year_voucher_number) && count($accounting_year_voucher_number) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $accounting_year_voucher_number when calling uploadVoucherAttachment'
+            );
+        }
+
+        // verify the required parameter 'file' is set
+        if ($file === null || (is_array($file) && count($file) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $file when calling uploadVoucherAttachment'
+            );
+        }
+
+
+        $resourcePath = '/journals/{journalId}/vouchers/{accountingYear-voucherNumber}/attachment/file';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($journal_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'journalId' . '}',
+                ObjectSerializer::toPathValue($journal_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($accounting_year_voucher_number !== null) {
+            $resourcePath = str_replace(
+                '{' . 'accountingYear-voucherNumber' . '}',
+                ObjectSerializer::toPathValue($accounting_year_voucher_number),
+                $resourcePath
+            );
+        }
+
+        // form params
+        if ($file !== null) {
+            $multipart = true;
+            $formParams['file'] = [];
+            $paramFiles = is_array($file) ? $file : [$file];
+            foreach ($paramFiles as $paramFile) {
+                $formParams['file'][] = \GuzzleHttp\Psr7\Utils::tryFopen(
+                    ObjectSerializer::toFormValue($paramFile),
+                    'rb'
+                );
+            }
+        }
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-AgreementGrantToken');
+        if ($apiKey !== null) {
+            $headers['X-AgreementGrantToken'] = $apiKey;
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('X-AppSecretToken');
+        if ($apiKey !== null) {
+            $headers['X-AppSecretToken'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'PATCH',
             $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
