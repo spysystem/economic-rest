@@ -2114,6 +2114,8 @@ components:
           pattern: "\\d{4}-\\d{2}-\\d{2}"
           description: The date the entry is due for payment. Format according
             to ISO-8601 (YYYY-MM-DD).
+        paymentDetails:
+          $ref: '#/components/schemas/PaymentDetailsHandler'
 
     SupplierPaymentEntry:
       type: object
@@ -3366,6 +3368,37 @@ components:
         IBAN type, ibanSwift and message is expected. For the +75 type, fiSupplierNo
         and ocrLineMessage is expected. Please refer to the schema for validation
         rules details.
+      allOf:
+        - properties:
+            fiSupplierNo:
+              type: string
+            ocrLine:
+              type: string
+        - properties:
+            fiSupplierNo:
+              type: string
+            message:
+              type: string
+        - properties:
+            giroAccount:
+              type: string
+            ocrLine:
+              type: string
+        - properties:
+            accountNo:
+              type: string
+            message:
+              type: string
+        - properties:
+            ibanSwift:
+              type: string
+            message:
+              type: string
+        - properties:
+            fiSupplierNo:
+              type: string
+            ocrLineMessage:
+              type: string
       properties:
         paymentType:
           $ref: '#/components/schemas/PaymentTypeHandler'
@@ -3373,49 +3406,7 @@ components:
     PaymentTypeHandler:
       type: object
       description: A specific payment type on the entry.
-      oneOf:
-        - properties:
-            fiSupplierNo:
-              type: string
-            ocrLine:
-              type: string
-              minLength: 15
-              maxLength: 15
-        - properties:
-            fiSupplierNo:
-              type: string
-            message:
-              type: string
-              minLength: 5
-              maxLength: 100
-        - properties:
-            giroAccount:
-              type: string
-            ocrLine:
-              type: string
-              minLength: 16
-              maxLength: 16
-        - properties:
-            accountNo:
-              type: string
-            message:
-              type: string
-              minLength: 5
-              maxLength: 100
-        - properties:
-            ibanSwift:
-              type: string
-            message:
-              type: string
-              minLength: 5
-              maxLength: 100
-        - properties:
-            fiSupplierNo:
-              type: string
-            ocrLineMessage:
-              type: string
-              minLength: 16
-              maxLength: 157
+
       properties:
         paymentTypeNumber:
           type: integer
