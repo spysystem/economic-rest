@@ -24,5 +24,6 @@ Name | Type | Description | Notes
 **supplier** | [**\EconomicRest\Model\SupplierHandler**](SupplierHandler.md) |  | [optional]
 **supplier_invoice_number** | **string** | The unique identifier of the supplier invoice gotten from the supplier. | [optional]
 **due_date** | **string** | The date the entry is due for payment. Format according to ISO-8601 (YYYY-MM-DD). | [optional]
+**payment_details** | [**\EconomicRest\Model\PaymentDetailsHandler**](PaymentDetailsHandler.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
